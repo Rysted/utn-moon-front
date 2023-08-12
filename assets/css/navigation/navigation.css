@@ -1,0 +1,165 @@
+/*! ------------------ */
+/*!        Mobile      */
+/*! ------------------ */
+
+/*? Statics */
+.visibility-hidden {
+  display: none;
+}
+
+.visibility-show {
+  display: block;
+}
+/*? Statics */
+
+/*? sideBar */
+.sideBar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--Primary);
+  box-shadow: 0px -2px 5px 0px rgba(181, 181, 181, 0.25);
+}
+
+.sideBar__logo-mouseover {
+  display: none;
+}
+
+.sideBar__logo-mouseout {
+  display: none;
+}
+
+.userNav__nav {
+  height: 6rem;
+}
+
+.userNav__list {
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.userNav__item {
+  list-style: none;
+}
+
+.userNav__link {
+  display: inline-block;
+  padding: 1rem;
+}
+
+.userNav__svg {
+  height: 2.2rem;
+  stroke: var(--Primary);
+}
+
+.userNav__home-fill {
+  fill: #dfdfdf;
+}
+
+.userNav__shop-fill {
+  fill: #dfdfdf;
+}
+
+.userNav_search-border {
+  height: 2rem;
+  stroke: #dfdfdf;
+}
+
+.userNav__notification {
+  display: none;
+}
+
+.userNav__user-fill {
+  fill: #dfdfdf;
+}
+/*? sideBar */
+
+/*! ------------------ */
+/*!    Query Tablet    */
+/*! ------------------ */
+@media (min-width: 480px) {
+  .userNav__notification {
+    display: block;
+  }
+
+  .userNav__notification-fill {
+    fill: #dfdfdf;
+    stroke: none;
+  }
+
+  .userNav__notification-border {
+    stroke: #dfdfdf;
+  }
+}
+
+/*! ------------------ */
+/*!    Query Laptop    */
+/*! ------------------ */
+@media (min-width: 768px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+  }
+
+  .sideBar {
+    position: relative;
+    bottom: unset;
+    width: 5rem;
+    height: 100%;
+    background-color: blue;
+    box-shadow: 2px 0px 5px 0px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+
+  .sideBar__logo {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+  }
+
+  .sideBar__logo-mouseover {
+    display: none;
+  }
+
+  .sideBar__logo-mouseout {
+    display: block;
+    width: 3.5rem;
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+  }
+
+  .userNav {
+    background-color: red;
+    overflow: scroll;
+  }
+
+  .userNav__nav {
+    height: auto;
+    box-shadow: none;
+  }
+
+  .userNav__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  /*  header {
+    padding: 100px;
+    background-color: blue;
+  }
+
+  main {
+    padding: 600px;
+    background-color: blueviolet;
+  } */
+}
+
+/*! ------------------ */
+/*!      Query PC      */
+/*! ------------------ */
+@media (min-width: 1500px) {
+}
