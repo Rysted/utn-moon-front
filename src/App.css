@@ -1,0 +1,91 @@
+@supports (scroll-behavior: smooth) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+/* 
+@font-face {
+  font-family: "Montserrat";
+  src:
+    url("montserrat-vf.woff2") format(woff2) tech(variations);  
+  font-weight: 100 900;
+  font-stretch: 50% 200%;
+} */
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+:root {
+  --primary: #090918;
+  --secondary: #191932;
+  --tertiary: #dfdfdf;
+  --quaternary: #262649;
+  --quinary: #1565C0;
+
+  --primary-contrast: #ffffff;
+  --secondary-contrast: #eeeeee;
+
+  --font-semibold: 600;
+  --font-bold: 700;
+  
+  --filter-primary: brightness(0) saturate(100%) invert(46%) sepia(73%)
+    saturate(2158%) hue-rotate(172deg) brightness(104%) contrast(103%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-margin-top: 10rem;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  background-color: var(--primary);
+  font-size: 62.5%;
+  color: var(--primary-contrast);
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  overflow: hidden;
+  width: 95%;
+  margin: 0 auto;
+}
+
+/*! ------------------ */
+/*!    Query Laptop    */
+/*! ------------------ */
+
+@media (min-width: 768px) {
+  
+  .container {
+    padding-left: 5rem;
+    /* tiene un minimo de 50px de padding porque 
+    el menu de navegacion tiene posion fixed*/
+  }
+}
