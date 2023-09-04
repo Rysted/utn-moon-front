@@ -1,0 +1,72 @@
+:root{
+  --primary: #090918;
+  --quaternary: #262649;
+ 
+  --star-colour: #F3F71D;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+    
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+}
+
+body{
+  width: 100vw;
+  height: 100vh;
+  background: var(--primary);
+}
+
+.stars{
+  width: 80%;
+  max-width: 200px;
+  transform: rotateY(180deg);
+}
+
+.stars__items{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 .5em;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.stars__items input{
+  display: none;
+}
+
+.stars__items label{
+  width: 20%;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+.star__stroke{
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background: var(--quaternary);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  transition: .3s background linear;
+}
+
+.star__fill{
+  width: 70%;
+  aspect-ratio: 1;
+  background: var(--primary);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  transition: .3s background linear;
+}
+
+input:hover ~ label .star__stroke, input:checked ~ label .star__stroke{
+  background: var(--star-colour);
+}
+
+input:checked ~ label .star__fill{
+  background: var(--star-colour);
+}
