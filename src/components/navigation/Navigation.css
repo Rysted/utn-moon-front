@@ -53,11 +53,14 @@
   justify-content: center;
   transition: margin 0.5s ease;
   color: var(--primary-contrast);
+  text-decoration: none;
 }
 
-.menu__link p {
+.menu__link h2 {
   position: absolute;
   left: 4rem;
+  font-size: 1.6rem;
+  font-weight: var(--regular);
 }
 
 .menu__nav--secondary .menu__link {
@@ -65,8 +68,8 @@
   margin-left: 1rem;
   margin-right: 1rem;
   position: relative;
-  border-radius: 5px;
   padding: 0.2em 0;
+  border-radius: 5px;
   overflow: hidden;
 }
 
@@ -81,6 +84,10 @@
 
 .menu__link--select {
   background-color: var(--quinary);
+}
+
+.menu__nav--secondary .menu__link--height {
+  padding: 0.6em 0;
 }
 
 .menu__picture {
@@ -101,7 +108,7 @@
 
   height: unset;
   width: unset;
-  margin: .5em 0;
+  margin: 0.5em 0;
 }
 
 .menu__img {
@@ -134,13 +141,9 @@
   transition: width 0.5s ease;
   width: 5rem;
 }
-/* 
-* {
-  outline: 1px solid red;
-} */
 
 .menu__sidebar:hover {
-  width: 16.5rem;
+  width: 17.5rem;
 }
 
 .menu__logo {
@@ -162,7 +165,7 @@
 
 .menu__sidebar:hover .menu__logo img {
   object-position: 0px;
-} 
+}
 
 /*! ------------------ */
 /*!    Query Tablet    */
@@ -179,6 +182,10 @@
 /*! ------------------ */
 
 @media (min-width: 768px) {
+  .menu__nav {
+    /* font-size: 1.6rem; */
+  }
+
   .menu__nav--primary {
     opacity: 0;
     pointer-events: none;
@@ -193,13 +200,20 @@
 /*! ------------------ */
 /*!      Query PC      */
 /*! ------------------ */
+
+@media (min-width: 1200px) {
+}
+
+/*! ------------------ */
+/*!      Query PC      */
+/*! ------------------ */
+
 @media (min-height: 560px) {
-  
   .menu__nav--secondary:nth-child(3) {
     position: absolute;
     bottom: 2rem;
   }
-  
+
   .menu__sidebar {
     height: max-content;
     overflow-y: unset;
@@ -209,10 +223,8 @@
     margin-left: 2rem;
     margin-right: 2rem;
   }
-  
-  .menu__logo .menu__picture{
+
+  .menu__logo .menu__picture {
     margin: unset;
   }
-
 }
-

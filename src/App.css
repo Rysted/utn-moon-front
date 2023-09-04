@@ -14,14 +14,14 @@
 
 @font-face {
   font-family: "Poppins";
-  src: url("./assets/fonts/Poppins-Regular.woff2") format("woff2");
+  src: url("./../fonts/Poppins-Regular.woff2") format("woff2");
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Poppins";
-  src: url("./assets/fonts/Poppins-SemiBold.woff2") format("woff2");
+  src: url("./../fonts/Poppins-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -29,7 +29,7 @@
 
 @font-face {
   font-family: "Poppins";
-  src: url("./assets/fonts/Poppins-Bold.woff2") format("woff2");
+  src: url("./../fonts/Poppins-Bold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -39,9 +39,11 @@
 :root {
   --primary: #090918;
   --secondary: #191932;
-  --tertiary: #dfdfdf;
+  --tertiary: #c7c7c7;
   --quaternary: #262649;
   --quinary: #1565C0;
+  --star-colour: #F3F71D;
+  --offer-colour: #33cc33;
 
   --primary-contrast: #ffffff;
   --secondary-contrast: #eeeeee;
@@ -57,8 +59,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  scroll-margin-top: 10rem;
   font-family: "Poppins", sans-serif;
+  scroll-margin-top: 10rem;
 }
 
 html {
@@ -67,13 +69,18 @@ html {
   color: var(--primary-contrast);
 }
 
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
 li {
   list-style: none;
 }
 
 .container {
   overflow: hidden;
-  width: 95%;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -82,10 +89,10 @@ li {
 /*! ------------------ */
 
 @media (min-width: 768px) {
-  
   .container {
     padding-left: 5rem;
     /* tiene un minimo de 50px de padding porque 
     el menu de navegacion tiene posion fixed*/
+    width: 90%;
   }
 }
