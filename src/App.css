@@ -14,14 +14,14 @@
 
 @font-face {
   font-family: "Poppins";
-  src: url("./../fonts/Poppins-Regular.woff2") format("woff2");
+  src: url("./assets/fonts/Poppins-Regular.woff2") format("woff2");
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Poppins";
-  src: url("./../fonts/Poppins-SemiBold.woff2") format("woff2");
+  src: url("./assets/fonts/Poppins-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -29,7 +29,7 @@
 
 @font-face {
   font-family: "Poppins";
-  src: url("./../fonts/Poppins-Bold.woff2") format("woff2");
+  src: url("./assets/fonts/Poppins-Bold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -48,6 +48,7 @@
   --primary-contrast: #ffffff;
   --secondary-contrast: #eeeeee;
 
+  --font-regular: 400;
   --font-semibold: 600;
   --font-bold: 700;
   
@@ -76,6 +77,14 @@ a{
 
 li {
   list-style: none;
+}
+
+button{
+  width: 100%;
+  text-align: left;
+  color: inherit;
+  border: none;
+  background-color: transparent;
 }
 
 .container {

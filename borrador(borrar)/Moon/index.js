@@ -5,7 +5,7 @@ const dateFilters = {
 };
 
 const recordsPerPage = 6;
-
+let pagination;
 let totalPages;
 let iterator;
 let currentPage = 1;
