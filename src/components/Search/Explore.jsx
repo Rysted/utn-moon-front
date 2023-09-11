@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import arrowDownIcon from "../../assets/images/icons/nav-arrow-down.svg";
 
 export const Explore = () => {
@@ -29,14 +30,14 @@ export const Explore = () => {
           <nav className="header__dropdown">
             <ul className="options__list">
               <li className="options__item">
-                <a href="nuevos" className="options__link">
+                <NavLink to="/nuevos" className="options__link">
                   Nuevos
-                </a>
+                </NavLink>
               </li>
               <li className="options__item">
-                <a href="oferta" className="options__link">
+                <NavLink to="/oferta" className="options__link">
                   Ofertas
-                </a>
+                </NavLink>
               </li>
             </ul>
           </nav>

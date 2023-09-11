@@ -50,7 +50,7 @@ const Shop = () => {
       }
     };
 
-    const calcPages = total => {
+    const calcPages = (total) => {
       return Math.ceil(total / recordsPerPage);
     };
 
@@ -58,7 +58,7 @@ const Shop = () => {
     callApi();
   }, [currentPage, dateFilters]);
 
-  const handlePageChange = newPage => {
+  const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
 
@@ -69,9 +69,6 @@ const Shop = () => {
 
   return (
     <>
-      <div className="header">
-        <h1>Hola</h1>
-      </div>
       <Filters />
       <main className="shop container">
         <div className="hola"></div>

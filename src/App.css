@@ -78,7 +78,7 @@ li {
   list-style: none;
 }
 
-button{
+button {
   width: 100%;
   text-align: left;
   color: inherit;
@@ -87,7 +87,7 @@ button{
   cursor: pointer;
 }
 
-input{
+input {
   border: none;
   outline: none;
 }
@@ -97,36 +97,6 @@ input{
   width: 93%;
   margin: 0 auto;
 }
-
-/* *{
-  outline: 1px solid red;
-} */
-
-.header{
-  /* position: fixed; */
-  /* left: calc(5rem + 5vw); */
-  /* right: 5vw; */
-  /* padding-left: 5rem; */
-  /* margin-left: calc(5rem + 5vw); */
-  /* width: 90%; */
-  /* margin-left: auto; */
-  /* margin: 0 auto; */
-  top: 0;
-  /* position: fixed; */
-  background-color: rebeccapurple;
-  /* display: block; */
-  /* width: 100vw; */
-  height: 5rem;
-}
-
-.header h1{
-  margin: 0;
-}
-/* 
-*{
-  outline: 1px solid red;
-} */
-
 
 /*! ------------------ */
 /*!    Query Laptop    */
