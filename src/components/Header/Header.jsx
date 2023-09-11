@@ -17,7 +17,6 @@ const Header = () => {
     // Por ahora, uso una lista de productos dummy (ficticia)
     const dummyProducts = [
       { id: 1, name: "Fortnite", imageUrl: "./user/seba.jpg" },
-      { id: 1, name: "Fortnite", imageUrl: "./user/seba.jpg" },
       { id: 2, name: "Cyberpunk", imageUrl: "./user/seba.jpg" },
       { id: 3, name: "NBA 2K23", imageUrl: "./user/seba.jpg" },
     ];
@@ -33,11 +32,13 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header__wrapper">
-        <img
-          src="./images/Logo.svg"
-          alt="Logotipo Moon"
-          className="header__logo"
-        />
+        <a href="/home" className="header__link">
+          <img
+            src="./images/Logo.svg"
+            alt="Logotipo Moon"
+            className="header__logo"
+          />
+        </a>
         <Form
           handleInputChange={handleInputChange}
           searchQuery={searchQuery}
@@ -45,12 +46,14 @@ const Header = () => {
         />
 
         <div className="header__user">
-          <img
-            src={cartIcon}
-            alt="Icono del carrito"
-            className="header__icon icon--cart"
-          />
-          <div className="header__profile">
+          <a href="/cart" className="header__link">
+            <img
+              src={cartIcon}
+              alt="Icono del carrito"
+              className="header__icon icon--cart"
+            />
+          </a>
+          <a href="/profile" className="header__link header__profile">
             <img
               src="./user/seba.jpg"
               alt="Imagen del usuario"
@@ -60,7 +63,7 @@ const Header = () => {
               <span className="header__profile-name">@sebastianszz</span>
               <span className="header__profile-email">sebastian@gmail.com</span>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </header>
