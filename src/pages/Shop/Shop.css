@@ -1,0 +1,55 @@
+/*! ------------------ */
+/*!        Mobile      */
+/*! ------------------ */
+
+.shop {
+  /* padding-top: 15rem; */
+  padding-top: 5rem;
+  width: 85%;
+  font-size: 1.6rem;
+  padding-bottom: 5rem;
+  overflow: hidden;
+  /* overflow: auto !important; */
+}
+
+.shop h2 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2.1rem;
+  margin-bottom: 1em;
+}
+
+
+@media (min-width: 768px) {
+  .shop {
+    width: 90%;
+  }
+
+  .shop h2 {
+    font-size: 3rem;
+    text-align: unset;
+  }
+
+  .shop__link,
+  .shop__next,
+  .shop__prev {
+    width: 45px;
+    height: 45px;
+  }
+
+  .shop__next,
+  .shop__prev {
+    font-size: 2.3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .shop{
+    min-height: 700px;
+  }
+  
+  .shop h2 {
+    margin-left: auto;
+  }
+}

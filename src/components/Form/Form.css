@@ -1,0 +1,120 @@
+/*! ------------------ */
+/*!        Mobile      */
+/*! ------------------ */
+
+.form__filter {
+  z-index: 2;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  font-size: 1.6rem;
+  width: 20%;
+  position: absolute;
+  left: calc(3.5vw + 5rem);
+  top: 165px;
+  border-radius: 5px;
+  justify-items: center;
+  padding: 2rem 1.5rem;
+  /* padding: 0 1rem; */
+  /* justify-content: center; */
+  display: grid;
+  gap: 1.2rem;
+  background-color: var(--secondary);
+  box-shadow: 2px 0px 4px 0px #00000084, -2px 0px 4px 0px #00000084;
+}
+
+.form__group {
+  display: grid;
+  gap: 0.5rem;
+  width: 90%;
+  /* align-items: center; */
+  /* justify-items: center; */
+  align-content: center;
+}
+
+.form__groups {
+  display: flex;
+  /* width: 100%; */
+  column-gap: 1rem;
+  position: relative;
+}
+
+.form__group--flex {
+  width: 90px;
+  /* width: min-content; */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form__group--flex label {
+  font-size: 1.4rem;
+}
+
+.form__group input {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: var(--quaternary);
+  border: 1px solid var(--primary);
+  color: var(--primary-contrast);
+  width: 100%;
+}
+
+.form__group select {
+  border-radius: 5px;
+
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: var(--quaternary);
+  color: var(--primary-contrast);
+  outline: none;
+  border: 1px solid var(--primary);
+}
+
+.form__group option {
+  border: none;
+}
+
+.form__linear {
+  position: absolute;
+  top: 34px;
+  left: 90px;
+  height: 2px;
+  width: 10px;
+  background-color: var(--quaternary);
+}
+
+.btn {
+  border-radius: 5px;
+  color: var(--primary-contrast);
+  padding: 0.7rem;
+  border: 2px solid var(--quinary);
+  cursor: pointer;
+  width: 90%;
+}
+
+.btn:hover {
+  border-color: var(--quaternary);
+  background-color: var(--quaternary);
+}
+
+.btn--primary {
+  border-color: var(--quinary);
+  background-color: var(--quinary);
+}
+
+.btn--secondary {
+  border-color: var(--quaternary);
+  background-color: transparent;
+}
+
+/*! ------------------ */
+/*!      Query PC      */
+/*! ------------------ */
+
+@media (min-width: 1200px) {
+  .form__filter {
+    opacity: 1;
+    pointer-events: unset;
+  }
+}

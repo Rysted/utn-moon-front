@@ -1,84 +1,120 @@
-export const renderAdminMenu = () => {
+// import { renderAdminMenu } from "./renderAdminMenu.jsx";
+import { NavLink } from "react-router-dom";
+import "./Nav.css";
+
+export default function Nav() {
   return (
     <>
       <nav className="menu__nav menu__nav--primary">
         <ul className="menu__list">
           <li className="menu__item">
-            <a href="#" className="menu__link" aria-label="Inicio">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "menu__link menu__item--hover" : "menu__link"
+              }
+              aria-label="Inicio"
+            >
               <img
                 className="menu__img"
                 src="./src/assets/images/icons/home.svg"
                 alt="icono de inicio"
               />
-            </a>
+            </NavLink>
           </li>
           <li className="menu__item">
-            <a href="#" className="menu__link" aria-label="Buscar">
+            <button href="#search" className="menu__link" aria-label="Buscar">
               <img
                 className="nav__img"
                 src="./src/assets/images/icons/"
                 alt="icono de buscar"
               />
-            </a>
+            </button>
           </li>
           <li className="menu__item">
-            <a href="#" className="menu__link" aria-label="Tienda">
+            <NavLink
+              to="/shop"
+              className={({ isActive }) =>
+                isActive ? "menu__link menu__item--hover" : "menu__link"
+              }
+              aria-label="Tienda"
+            >
               <img
                 className="menu__img"
                 src="/src/assets/images/icons/shopping-bag.svg"
                 alt="icono de tienda"
               />
-            </a>
+            </NavLink>
           </li>
           <li className="menu__item menu__item--notification">
-            <a href="#" className="menu__link" aria-label="Notificaciones">
+            <NavLink
+              to="/notification"
+              className={({ isActive }) =>
+                isActive ? "menu__link menu__item--hover" : "menu__link"
+              }
+              aria-label="Notificaciones"
+            >
               <img
                 className="menu__img"
                 src="/src/assets/images/icons/"
                 alt="icono de notificación"
               />
-            </a>
+            </NavLink>
           </li>
           <li className="menu__item">
-            <a href="#" className="menu__link" aria-label="Usuario">
+            <NavLink
+              to="/user"
+              className={({ isActive }) =>
+                isActive ? "menu__link menu__item--hover" : "menu__link"
+              }
+              aria-label="Usuario"
+            >
               <img
                 className="menu__img"
                 src="/src/assets/images/icons/user.svg"
                 alt="icono de usuario"
               />
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>
 
       <div className="menu__sidebar">
-        <a className="menu__logo" href="#">
+        <NavLink to="/" className="menu__logo" href="#">
           <picture className="menu__picture">
             <img src="./src/assets/images/icons/Logo.svg" alt="Logo de Moon" />
           </picture>
-        </a>
+        </NavLink>
 
         <nav className="menu__nav menu__nav--secondary">
           <ul className="menu__list menu__list--sidebar">
             <li className="menu__item">
-              <a
-                href="#"
+              <NavLink
+                to="/"
                 aria-label="Inicio"
-                className="menu__link menu__link--select"
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
               >
                 <picture className="menu__picture">
                   <img
                     className="menu__img"
-                    src="./src/assets/images/icons/home.svg"
+                    src="./public/icons/home.svg"
                     alt="logo de inicio"
                   />
                 </picture>
                 <h2>Inicio</h2>
-              </a>
+              </NavLink>
             </li>
 
             <li className="menu__item">
-              <a href="#" aria-label="Tienda" className="menu__link">
+              <NavLink
+                to="/shop"
+                aria-label="Tienda"
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
+              >
                 <picture className="menu__picture">
                   <img
                     className="menu__img"
@@ -87,11 +123,17 @@ export const renderAdminMenu = () => {
                   />
                 </picture>
                 <h2>Tienda</h2>
-              </a>
+              </NavLink>
             </li>
 
             <li className="menu__item">
-              <a href="#" aria-label="Biblioteca" className="menu__link">
+              <NavLink
+                to="/library"
+                aria-label="Biblioteca"
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
+              >
                 <picture className="menu__picture">
                   <img
                     className="menu__img"
@@ -100,11 +142,17 @@ export const renderAdminMenu = () => {
                   />
                 </picture>
                 <h2>Biblioteca</h2>
-              </a>
+              </NavLink>
             </li>
 
             <li className="menu__item">
-              <a href="#" aria-label="Usuario" className="menu__link">
+              <NavLink
+                to="/user"
+                aria-label="Usuario"
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
+              >
                 <picture className="menu__picture">
                   <img
                     className="menu__img"
@@ -113,11 +161,17 @@ export const renderAdminMenu = () => {
                   />
                 </picture>
                 <h2>Usuario</h2>
-              </a>
+              </NavLink>
             </li>
 
             <li className="menu__item">
-              <a href="#" aria-label="Analisis" className="menu__link">
+              <NavLink
+                to="/analysis"
+                aria-label="Analisis"
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
+              >
                 <picture className="menu__picture">
                   <img
                     className="menu__img"
@@ -126,11 +180,17 @@ export const renderAdminMenu = () => {
                   />
                 </picture>
                 <h2>Análisis</h2>
-              </a>
+              </NavLink>
             </li>
 
             <li className="menu__item">
-              <a href="#" aria-label="Papelera" className="menu__link">
+              <NavLink
+                to="/bin"
+                aria-label="Papelera"
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
+              >
                 <picture className="menu__picture">
                   <img
                     className="menu__img"
@@ -139,11 +199,17 @@ export const renderAdminMenu = () => {
                   />
                 </picture>
                 <h2>Papelera</h2>
-              </a>
+              </NavLink>
             </li>
 
             <li className="menu__item">
-              <a href="#" aria-label="Ajustes" className="menu__link">
+              <NavLink
+                to="/settings"
+                aria-label="Ajustes"
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
+              >
                 <picture className="menu__picture">
                   <img
                     className="menu__img"
@@ -152,11 +218,17 @@ export const renderAdminMenu = () => {
                   />
                 </picture>
                 <h2>Ajustes</h2>
-              </a>
+              </NavLink>
             </li>
 
             <li className="menu__item">
-              <a href="#" aria-label="Ayuda" className="menu__link">
+              <NavLink
+                to="/help"
+                aria-label="Ayuda"
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
+              >
                 <picture className="menu__picture">
                   <img
                     className="menu__img"
@@ -165,7 +237,7 @@ export const renderAdminMenu = () => {
                   />
                 </picture>
                 <h2>Ayuda</h2>
-              </a>
+              </NavLink>
             </li>
           </ul>
         </nav>
@@ -173,7 +245,13 @@ export const renderAdminMenu = () => {
         <nav className="menu__nav menu__nav--secondary">
           <ul className="menu__list menu__list--sidebar">
             <li className="menu__item">
-              <a href="#" aria-label="Salir" className="menu__link">
+              <NavLink
+                to="/exit"
+                aria-label="Salir"
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
+              >
                 <picture className="menu__picture">
                   <img
                     className="menu__img"
@@ -182,11 +260,11 @@ export const renderAdminMenu = () => {
                   />
                 </picture>
                 <h2>Salir</h2>
-              </a>
+              </NavLink>
             </li>
           </ul>
         </nav>
       </div>
     </>
   );
-};
+}

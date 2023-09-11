@@ -47,6 +47,7 @@
   --primary-contrast: #ffffff;
   --secondary-contrast: #eeeeee;
 
+  --font-regular: 400;
   --font-semibold: 600;
   --font-bold: 700;
 
@@ -77,11 +78,55 @@ li {
   list-style: none;
 }
 
+button{
+  width: 100%;
+  text-align: left;
+  color: inherit;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+input{
+  border: none;
+  outline: none;
+}
+
 .container {
   overflow: hidden;
-  width: 80%;
+  width: 93%;
   margin: 0 auto;
 }
+
+/* *{
+  outline: 1px solid red;
+} */
+
+.header{
+  /* position: fixed; */
+  /* left: calc(5rem + 5vw); */
+  /* right: 5vw; */
+  /* padding-left: 5rem; */
+  /* margin-left: calc(5rem + 5vw); */
+  /* width: 90%; */
+  /* margin-left: auto; */
+  /* margin: 0 auto; */
+  top: 0;
+  /* position: fixed; */
+  background-color: rebeccapurple;
+  /* display: block; */
+  /* width: 100vw; */
+  height: 5rem;
+}
+
+.header h1{
+  margin: 0;
+}
+/* 
+*{
+  outline: 1px solid red;
+} */
+
 
 /*! ------------------ */
 /*!    Query Laptop    */
@@ -92,6 +137,5 @@ li {
     padding-left: 5rem;
     /* tiene un minimo de 50px de padding porque 
     el menu de navegacion tiene posion fixed*/
-    width: 90%;
   }
 }
