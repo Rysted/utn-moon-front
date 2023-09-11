@@ -3,7 +3,7 @@
 /*! ------------------ */
 
 .menu {
-  z-index: 10;
+  z-index: 3;
 }
 
 .menu__nav--primary {
@@ -15,7 +15,7 @@
   inset: auto 0 0 0;
   position: fixed;
   background-color: var(--primary);
-  z-index: 1;
+  z-index: 3;
 }
 
 .menu__nav--secondary {
@@ -42,7 +42,7 @@
   display: none;
 }
 
-.menu__nav--primary .menu__item:hover img {
+.menu__nav--primary .menu__item:hover img, .menu__item--hover {
   filter: var(--filter-primary);
 }
 
@@ -141,6 +141,7 @@
   position: fixed;
   transition: width 0.5s ease;
   width: 5rem;
+  z-index: 3;
 }
 
 .menu__sidebar:hover {
@@ -183,9 +184,6 @@
 /*! ------------------ */
 
 @media (min-width: 768px) {
-  .menu__nav {
-    /* font-size: 1.6rem; */
-  }
 
   .menu__nav--primary {
     opacity: 0;
@@ -196,13 +194,6 @@
     opacity: 1;
     pointer-events: unset;
   }
-}
-
-/*! ------------------ */
-/*!      Query PC      */
-/*! ------------------ */
-
-@media (min-width: 1200px) {
 }
 
 /*! ------------------ */

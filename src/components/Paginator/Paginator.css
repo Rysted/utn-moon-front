@@ -1,0 +1,82 @@
+/*! ------------------ */
+/*!        Mobile      */
+/*! ------------------ */
+
+.pagination {
+  padding: 2rem 0 1rem;
+  /* margin: 0 auto; */
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  justify-content: center;
+}
+
+.pagination__list {
+  display: flex;
+  column-gap: min(4vw, 1.5rem);
+}
+
+.pagination__button,
+.pagination__next,
+.pagination__prev {
+  border-radius: 5px;
+  width: 35px;
+  height: 35px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: var(--quaternary);
+  border: 1px solid transparent;
+}
+
+.pagination__button--select {
+  border-color: var(--primary-contrast);
+}
+
+.pagination__next,
+.pagination__prev {
+  font-size: 2rem;
+}
+
+.pagination__button:hover,
+.pagination__next:hover,
+.pagination__prev:hover {
+  background-color: var(--quinary);
+  border-color: var(--quinary);
+}
+
+.pagination__prev--disabled,
+.pagination__next--disabled {
+  background-color: var(--secondary);
+  pointer-events: none;
+}
+
+.pagination__prev--disabled:hover,
+.pagination__next--disabled:hover {
+  background-color: var(--secondary);
+}
+
+/*! ------------------ */
+/*!    Query Laptop    */
+/*! ------------------ */
+
+@media (min-width: 768px) {
+  .pagination__button,
+  .pagination__next,
+  .pagination__prev {
+    width: 45px;
+    height: 45px;
+  }
+
+  .pagination__next,
+  .pagination__prev {
+    font-size: 2.3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .pagination {
+    width: 76%;
+  }
+}

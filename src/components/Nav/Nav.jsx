@@ -1,18 +1,18 @@
 // import { renderAdminMenu } from "./renderAdminMenu.jsx";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Nav.css";
 
 export default function Nav() {
-  // const active = ({ isActive }) => (isActive ? "menu__link--select" : "");
-
   return (
     <>
-      {/* <nav className="menu__nav menu__nav--primary">
+      <nav className="menu__nav menu__nav--primary">
         <ul className="menu__list">
           <li className="menu__item">
             <NavLink
               to="/"
-              className={`menu__link ${active}`}
+              className={({ isActive }) =>
+                isActive ? "menu__link menu__item--hover" : "menu__link"
+              }
               aria-label="Inicio"
             >
               <img
@@ -23,18 +23,20 @@ export default function Nav() {
             </NavLink>
           </li>
           <li className="menu__item">
-            <NavLink className={`menu__link ${active}`} aria-label="Buscar">
+            <button href="#search" className="menu__link" aria-label="Buscar">
               <img
                 className="nav__img"
                 src="./src/assets/images/icons/"
                 alt="icono de buscar"
               />
-            </NavLink>
+            </button>
           </li>
           <li className="menu__item">
             <NavLink
               to="/shop"
-              className={`menu__link ${active}`}
+              className={({ isActive }) =>
+                isActive ? "menu__link menu__item--hover" : "menu__link"
+              }
               aria-label="Tienda"
             >
               <img
@@ -47,7 +49,9 @@ export default function Nav() {
           <li className="menu__item menu__item--notification">
             <NavLink
               to="/notification"
-              className={`menu__link ${active}`}
+              className={({ isActive }) =>
+                isActive ? "menu__link menu__item--hover" : "menu__link"
+              }
               aria-label="Notificaciones"
             >
               <img
@@ -60,7 +64,9 @@ export default function Nav() {
           <li className="menu__item">
             <NavLink
               to="/user"
-              className={`menu__link ${active}`}
+              className={({ isActive }) =>
+                isActive ? "menu__link menu__item--hover" : "menu__link"
+              }
               aria-label="Usuario"
             >
               <img
@@ -74,11 +80,11 @@ export default function Nav() {
       </nav>
 
       <div className="menu__sidebar">
-        <a className="menu__logo" href="#">
+        <NavLink to="/" className="menu__logo" href="#">
           <picture className="menu__picture">
             <img src="./src/assets/images/icons/Logo.svg" alt="Logo de Moon" />
           </picture>
-        </a>
+        </NavLink>
 
         <nav className="menu__nav menu__nav--secondary">
           <ul className="menu__list menu__list--sidebar">
@@ -86,12 +92,14 @@ export default function Nav() {
               <NavLink
                 to="/"
                 aria-label="Inicio"
-                className={`menu__link ${active}`}
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
               >
                 <picture className="menu__picture">
                   <img
                     className="menu__img"
-                    src="./src/assets/images/icons/home.svg"
+                    src="./public/icons/home.svg"
                     alt="logo de inicio"
                   />
                 </picture>
@@ -101,9 +109,11 @@ export default function Nav() {
 
             <li className="menu__item">
               <NavLink
-                href="#"
+                to="/shop"
                 aria-label="Tienda"
-                className={`menu__link ${active}`}
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
               >
                 <picture className="menu__picture">
                   <img
@@ -120,7 +130,9 @@ export default function Nav() {
               <NavLink
                 to="/library"
                 aria-label="Biblioteca"
-                className={`menu__link ${active}`}
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
               >
                 <picture className="menu__picture">
                   <img
@@ -137,7 +149,9 @@ export default function Nav() {
               <NavLink
                 to="/user"
                 aria-label="Usuario"
-                className={`menu__link ${active}`}
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
               >
                 <picture className="menu__picture">
                   <img
@@ -154,7 +168,9 @@ export default function Nav() {
               <NavLink
                 to="/analysis"
                 aria-label="Analisis"
-                className={`menu__link ${active}`}
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
               >
                 <picture className="menu__picture">
                   <img
@@ -171,7 +187,9 @@ export default function Nav() {
               <NavLink
                 to="/bin"
                 aria-label="Papelera"
-                className={`menu__link ${active}`}
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
               >
                 <picture className="menu__picture">
                   <img
@@ -188,7 +206,9 @@ export default function Nav() {
               <NavLink
                 to="/settings"
                 aria-label="Ajustes"
-                className={`menu__link ${active}`}
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
               >
                 <picture className="menu__picture">
                   <img
@@ -205,7 +225,9 @@ export default function Nav() {
               <NavLink
                 to="/help"
                 aria-label="Ayuda"
-                className={`menu__link ${active}`}
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
               >
                 <picture className="menu__picture">
                   <img
@@ -226,7 +248,9 @@ export default function Nav() {
               <NavLink
                 to="/exit"
                 aria-label="Salir"
-                className={`menu__link ${active}`}
+                className={({ isActive }) =>
+                  isActive ? "menu__link menu__link--select" : "menu__link"
+                }
               >
                 <picture className="menu__picture">
                   <img
@@ -240,7 +264,7 @@ export default function Nav() {
             </li>
           </ul>
         </nav>
-      </div> */}
+      </div>
     </>
   );
 }

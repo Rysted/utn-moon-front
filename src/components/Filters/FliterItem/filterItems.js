@@ -1,4 +1,4 @@
-export const filterElement = [
+export const filterItems = [
   {
     id: 1,
     name: "Filtrar",
@@ -7,7 +7,7 @@ export const filterElement = [
       {
         id: 2,
         name: "categorias",
-        element: ["hola", "hola2"],
+        element: [],
       },
       {
         id: 3,

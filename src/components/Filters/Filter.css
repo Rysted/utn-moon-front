@@ -1,10 +1,16 @@
 .filters {
-  position: fixed;
-  top: 5rem;
+  position: sticky;
+  /* top: 5rem; */
+  top: 0rem;
   background-color: var(--primary);
-  left: 0;
-  right: 0;
   height: 5rem;
+  /* right: 0; */
+  /* left: 5vw; */
+  /* right: 5vw; */
+  width: 93%;
+  margin: 0 auto;
+
+  z-index: 2;
 }
 
 .filters__container {
@@ -18,8 +24,8 @@
   margin: auto 0;
   display: flex;
   width: 45%;
-  justify-content: center;
-  gap: min(4.5vw, 2rem);
+  justify-content: space-around;
+  /* gap: min(4.5vw, 1rem); */
   height: min-content;
   background-color: var(--quaternary);
   cursor: pointer;
@@ -42,21 +48,23 @@
 
 .filter__order--desactive,
 .filter__element--desactive {
+  transform: translateY(100%);
   opacity: 0;
   pointer-events: none;
 }
 
 .filter-order__background,
 .filter-element__background {
-  transition: opacity 0.5s linear;
+  /* transform: translate(0); */
+  transition: opacity 0.5s linear, transform 0.5s linear;
   padding-top: 4vh;
 
   position: fixed;
-  top: 5rem;
+  top: 0;
   left: 0;
   right: 0;
   background-color: var(--secondary);
-  height: calc(100vh - 11rem);
+  height: calc(100vh - 6rem);
   padding-bottom: 1rem;
 
   display: flex;
@@ -64,9 +72,11 @@
   gap: 5vh;
 }
 
+/* @container (min-height: 300px){ */
 .filter-element__background {
-  overflow-y: scroll;
+  overflow: auto;
 }
+/* } */
 
 .filter-order__background h4,
 .filter-element__background h4 {
@@ -97,7 +107,7 @@
 }
 
 .filter-order__item--select {
-  border-left: 3px solid var(--primary-contrast);
+  border-left: 3px solid var(--quinary);
 }
 
 .filter__link {
@@ -236,14 +246,27 @@
 
 @media (min-width: 768px) {
   .filters {
+    /* margin: unset; */
+    /* margin-left: auto; */
+    /* width: 93%; */
+    /* left: 5rem; */
+    padding-left: 5rem;
+    /* padding-right: 5rem; */
+  }
+
+  .filter-order__background,
+  .filter-element__background {
     left: 5rem;
-    right: 0.3rem;
+    height: 100vh;
   }
 }
 
 @media (min-width: 1200px) {
   .filters {
+    position: absolute;
     opacity: 0;
     pointer-events: none;
   }
+  
+
 }
