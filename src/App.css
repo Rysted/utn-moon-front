@@ -14,14 +14,14 @@
 
 @font-face {
   font-family: "Poppins";
-  src: url("./../fonts/Poppins-Regular.woff2") format("woff2");
+  src: url("./assets/fonts/Poppins-Regular.woff2") format("woff2");
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Poppins";
-  src: url("./../fonts/Poppins-SemiBold.woff2") format("woff2");
+  src: url("./assets/fonts/Poppins-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -29,20 +29,19 @@
 
 @font-face {
   font-family: "Poppins";
-  src: url("./../fonts/Poppins-Bold.woff2") format("woff2");
+  src: url("./assets/fonts/Poppins-Bold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
-
 
 :root {
   --primary: #090918;
   --secondary: #191932;
   --tertiary: #c7c7c7;
   --quaternary: #262649;
-  --quinary: #1565C0;
-  --star-colour: #F3F71D;
+  --quinary: #1565c0;
+  --star-colour: #f3f71d;
   --offer-colour: #33cc33;
 
   --primary-contrast: #ffffff;
@@ -50,7 +49,7 @@
 
   --font-semibold: 600;
   --font-bold: 700;
-  
+
   --filter-primary: brightness(0) saturate(100%) invert(46%) sepia(73%)
     saturate(2158%) hue-rotate(172deg) brightness(104%) contrast(103%);
 }
@@ -69,7 +68,7 @@ html {
   color: var(--primary-contrast);
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
