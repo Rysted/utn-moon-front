@@ -7,7 +7,7 @@ export const Form = ({ handleInputChange, searchQuery, products }) => {
   return (
     <form action="" className="header__form">
       <div className="header__form-container">
-        <label htmlFor="search" className="header__form-label">
+        <div className="header__form-label">
           <input
             onChange={handleInputChange}
             type="search"
@@ -51,7 +51,7 @@ export const Form = ({ handleInputChange, searchQuery, products }) => {
               </ul>
             </nav>
           )}
-        </label>
+        </div>
       </div>
       <Explore />
     </form>
