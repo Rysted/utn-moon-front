@@ -77,8 +77,13 @@
 }
 
 /*! Listado de productos buscados */
+.product-list__item:hover {
+  background-color: var(--secondary-contrast);
+}
+
 .product-list__link {
   padding: 1rem;
+  font-size: 1.2rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -94,14 +99,23 @@
   color: var(--primary);
   font-weight: var(--font-semibold);
 }
+
+.product-list__results {
+  display: block;
+  text-align: center;
+}
 /*!*/
 
 /*! se utiliza para ocultar un elemento y eliminarlo del diseño de la página. */
 .header__explore {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 .header__profile {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 /*!*/
 
@@ -113,9 +127,10 @@
   }
 
   .header__explore {
-    display: block;
     position: relative;
+    opacity: 1;
     cursor: pointer;
+    display: block;
     width: max-content;
   }
 
@@ -185,11 +200,13 @@
   }
 
   .header__profile {
+    position: relative;
+    opacity: 1;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    cursor: pointer;
     margin-right: 1.5rem;
   }
 
@@ -199,14 +216,20 @@
   }
 
   .header__profile-detail {
-    display: none;
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
 @media (min-width: 1200px) {
   .header__profile-detail {
+    position: relative;
+    opacity: 1;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
 
   .header__profile-name {

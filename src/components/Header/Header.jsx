@@ -5,8 +5,6 @@ import cartIcon from "../../assets/images/icons/cart.svg";
 import "./Header.css";
 
 const Header = ({ games }) => {
-  console.log("esta todo bien: ", games);
-
   const [searchQuery, setSearchQuery] = useState("");
   const [products, setProducts] = useState([]);
 
@@ -14,18 +12,9 @@ const Header = ({ games }) => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(query);
 
-    // Realizar la lógica para obtener los productos basados en la query implicar una llamada a una API
-
-    // Por ahora, uso una lista de productos dummy (ficticia)
-    const dummyProducts = [
-      { id: 1, name: "Fortnite", imageUrl: "./user/seba.jpg" },
-      { id: 2, name: "Cyberpunk", imageUrl: "./user/seba.jpg" },
-      { id: 3, name: "NBA 2K23", imageUrl: "./user/seba.jpg" },
-    ];
-
     // Filtrar los productos basados en la query
-    const filteredProducts = dummyProducts.filter((product) =>
-      product.name.toLowerCase().includes(query)
+    const filteredProducts = games.filter((product) =>
+      product.title.toLowerCase().includes(query)
     );
 
     setProducts(filteredProducts);
@@ -41,6 +30,7 @@ const Header = ({ games }) => {
             className="header__logo"
           />
         </Link>
+
         <Form
           handleInputChange={handleInputChange}
           searchQuery={searchQuery}
