@@ -39,6 +39,11 @@ export const Explore = () => {
                   Ofertas
                 </NavLink>
               </li>
+              <li className="options__item">
+                <NavLink to="/destacados" className="options__link">
+                  Destacados
+                </NavLink>
+              </li>
             </ul>
           </nav>
         )}

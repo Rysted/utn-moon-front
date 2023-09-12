@@ -20,6 +20,10 @@ const Header = ({ games }) => {
     setProducts(filteredProducts);
   };
 
+  const closeList = () => {
+    setSearchQuery("");
+  };
+
   return (
     <header className="header">
       <div className="header__wrapper">
@@ -33,6 +37,7 @@ const Header = ({ games }) => {
 
         <Form
           handleInputChange={handleInputChange}
+          closeList={closeList}
           searchQuery={searchQuery}
           products={products}
         />
