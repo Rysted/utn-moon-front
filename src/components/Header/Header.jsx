@@ -1,31 +1,12 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Form } from "../Search/Form";
-import cartIcon from "../../assets/images/icons/cart.svg";
+
 import "./Header.css";
+import cartIcon from "../../assets/images/icons/cart.svg";
 
-const Header = ({ games }) => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [products, setProducts] = useState([]);
-
-  const handleInputChange = (e) => {
-    const query = e.target.value.toLowerCase();
-    setSearchQuery(query);
-
-    // Filtrar los productos basados en la query
-    const filteredProducts = games.filter((product) =>
-      product.title.toLowerCase().includes(query)
-    );
-
-    setProducts(filteredProducts);
-  };
-
-  const closeList = () => {
-    setSearchQuery("");
-  };
-
+const Header = () => {
   return (
-    <header className="header">
+    <header className="header right-shifted">
       <div className="header__wrapper">
         <Link to="/" className="header__link">
           <img
@@ -35,12 +16,7 @@ const Header = ({ games }) => {
           />
         </Link>
 
-        <Form
-          handleInputChange={handleInputChange}
-          closeList={closeList}
-          searchQuery={searchQuery}
-          products={products}
-        />
+        <Form />
 
         <div className="header__user">
           <Link to="/profile" className="header__link header__profile">

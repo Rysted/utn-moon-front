@@ -1,15 +1,15 @@
+import { useContext } from "react";
+import { ProductsContext } from "../../context/ProductsContext";
 import { NavLink } from "react-router-dom";
+
 import { Explore } from "./Explore";
 import searchIcon from "../../assets/images/icons/search.svg";
 
-export const Form = ({
-  handleInputChange,
-  closeList,
-  searchQuery,
-  products,
-}) => {
-  const displayedProducts = products.slice(0, 3);
-  console.log(products);
+export const Form = ({}) => {
+  const { getGamesFilter, searchQuery, filteredProducts, onCloseList } =
+    useContext(ProductsContext);
+
+  const displayedProducts = filteredProducts.slice(0, 3);
 
   return (
     <form action="" className="header__form">
@@ -17,7 +17,7 @@ export const Form = ({
         <div className="header__form-label">
           <input
             value={searchQuery}
-            onChange={handleInputChange}
+            onChange={(e) => getGamesFilter(e.target.value.toLowerCase())}
             type="search"
             placeholder="buscar en la tienda"
             name="search"
@@ -39,7 +39,7 @@ export const Form = ({
                     <NavLink
                       to={`detail/${id}`}
                       className="product-list__link"
-                      onClick={closeList}
+                      onClick={onCloseList}
                     >
                       <img
                         src={img}
@@ -56,7 +56,7 @@ export const Form = ({
                 ))}
                 <li className="product-list__results">
                   <span className="product-list__name">
-                    Resultados: {products.length}
+                    Resultados: {filteredProducts.length}
                   </span>
                 </li>
               </ul>

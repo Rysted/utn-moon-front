@@ -153,20 +153,14 @@
 }
 
 @media (min-width: 768px) {
+  .header__logo {
+    display: none;
+  }
+
   .header__form {
     display: flex;
     align-items: center;
     column-gap: 2rem;
-  }
-
-  .header {
-    width: calc(100% - 5rem);
-    position: relative;
-    right: -5rem;
-  }
-
-  .header__logo {
-    display: none;
   }
 
   /*  */
@@ -201,7 +195,8 @@
 
   .header__dropdown {
     position: absolute;
-    top: 3.5rem;
+    z-index: 1;
+    top: 3.4rem;
     background-color: var(--secondary);
     width: 12rem;
     border-radius: 0.5rem;
