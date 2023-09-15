@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import arrowDownIcon from "../../assets/images/icons/nav-arrow-down.svg";
+import { Link } from "react-router-dom";
+import arrowDownIcon from "./../../assets/images/icons/nav-arrow-down.svg";
 
 import "./Explore.css";
 
@@ -33,19 +33,19 @@ export const Explore = () => {
         <nav className={`explore__dropdown ${showMenu && "explore__open"}`}>
           <ul className="explore__list">
             <li className="explore__item">
-              <NavLink to="/nuevos" className="explore__link">
+              <Link to="/nuevos" className="explore__link">
                 Nuevos
-              </NavLink>
+              </Link>
             </li>
             <li className="explore__item">
-              <NavLink to="/oferta" className="explore__link">
+              <Link to="/oferta" className="explore__link">
                 Ofertas
-              </NavLink>
+              </Link>
             </li>
             <li className="explore__item">
-              <NavLink to="/destacados" className="explore__link">
+              <Link to="/destacados" className="explore__link">
                 Destacados
-              </NavLink>
+              </Link>
             </li>
           </ul>
         </nav>

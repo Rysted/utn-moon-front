@@ -5,10 +5,11 @@ export const Product = ({ genreData, titleGenre }) => {
   const sliceTitle = (title) => {
     return title.length > 30 ? `${title.slice(0, 30)}...` : title;
   };
+  const products = genreData.slice(0, 3);
   return (
     <div className="products__related">
       <h3 className="products__title-genre">{titleGenre}</h3>
-      {genreData.map(({ id, img, title, price, offer }) => (
+      {products.map(({ id, img, title, price, offer }) => (
         <article className="product" key={id}>
           <Link to={`/shop/${id}`} className="product__link">
             <img className="product__image" src={`${img}`} alt={title} />

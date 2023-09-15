@@ -229,9 +229,9 @@ input:checked ~ label .star__fill {
 
 @media (min-width: 768px) {
   .details {
-      padding-left: 5rem;
-    }
-  
+    padding-left: 5rem;
+  }
+
   .details__content {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, min-content);
@@ -306,8 +306,6 @@ input:checked ~ label .star__fill {
 /*! ------------------ */
 
 @media (min-width: 1200px) {
-
-
   .details__datas {
     gap: 1.5em;
     font-size: 1.8rem;
@@ -323,7 +321,4 @@ input:checked ~ label .star__fill {
   .details__price span {
     font-size: 2.4rem;
   }
-}
-*{
-  outline: 1px solid red;
 }

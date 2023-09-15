@@ -9,30 +9,9 @@ export const ProductsContext = createContext([initialProduct]);
 // Crear el proveedor de contexto de productos
 export const ProductContextProvider = ({ children }) => {
   //! Variables de estado para los juegos, la carga y el error
-  const [games, setGames] = useState([]);
+  const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  //! Variables de estado para el buscador
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  //! Función para abrir la lista de productos
-  const getGamesFilter = (query) => {
-    setSearchQuery(query);
-    // Filtrar los productos basados en la query
-    const gamesFilter = games.filter((game) =>
-      game.title.toLowerCase().includes(query)
-    );
-    setFilteredProducts(gamesFilter);
-  };
-  const onCloseList = () => {
-    setSearchQuery("");
-    setFilteredProducts([]);
-  };
-  //! Función para obtener los datos de los juegos por género
-  const getGamesByGenre = (genre) => {
-    const gamesFilter = games.filter((game) => game.genre.includes(genre));
-    return gamesFilter;
-  };
 
   //! Función para obtener los datos de los productos
   const fetchData = async () => {
@@ -40,7 +19,7 @@ export const ProductContextProvider = ({ children }) => {
       setError(null);
       setIsLoading(true);
       const data = await getAllProducts();
-      setGames(data);
+      setProducts(data);
     } catch (err) {
       console.error(err);
       setError(err.message);
@@ -58,14 +37,9 @@ export const ProductContextProvider = ({ children }) => {
   return (
     <ProductsContext.Provider
       value={{
-        games,
+        products,
         isLoading,
         error,
-        getGamesFilter,
-        searchQuery,
-        onCloseList,
-        filteredProducts,
-        getGamesByGenre,
       }}
     >
       {children}

@@ -1,12 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
-import { Link /* Form */ } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { Explore } from "../Explore/Explore";
 import searchIcon from "../../assets/images/icons/search.svg";
 
 export const FormSearch = ({}) => {
-  const { games, isLoading, error } = useContext(ProductsContext);
+  const { products } = useContext(ProductsContext);
 
   //! Variables de estado para el buscador
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,26 +15,26 @@ export const FormSearch = ({}) => {
   //! Función para abrir la lista de productos
   const getGamesFilter = (query) => {
     setSearchQuery(query);
+
     // Filtrar los productos basados en la query
-    const gamesFilter = games.filter((game) =>
+    const gamesFilter = products.filter((game) =>
       game.title.toLowerCase().includes(query)
     );
-    setFilteredProducts(gamesFilter);
+
+    setFilteredProducts(gamesFilter.slice(0, 3));
   };
+
   const onCloseList = () => {
     setSearchQuery("");
     setFilteredProducts([]);
   };
 
-  const displayedProducts = filteredProducts.slice(0, 3);
-
   const sliceTitle = (title) => {
     return title.length > 30 ? `${title.slice(0, 30)}...` : title;
   };
 
-  console.log("render");
   return (
-    <form method="post" action="/DEFINIR" className="header__form">
+    <form onSubmit={(e) => e.preventDefault()} className="header__form">
       <div className="header__form-container">
         <div className="header__form-label">
           <input
@@ -56,10 +56,10 @@ export const FormSearch = ({}) => {
           {searchQuery && (
             <nav className="product-list">
               <ul className="product-list__items">
-                {displayedProducts.map(({ id, img, title }) => (
+                {filteredProducts.map(({ id, img, title }) => (
                   <li key={id} className="product-list__item">
                     <Link
-                      to={`detail/${id}`}
+                      to={`/shop/${id}`}
                       className="product-list__link"
                       onClick={onCloseList}
                     >

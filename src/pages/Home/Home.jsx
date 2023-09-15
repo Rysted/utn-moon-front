@@ -7,41 +7,21 @@ import "./Home.css";
 const Home = () => {
   //! Variables de estado para los Datos de géneros
 
-  const { getGamesByGenre } = useContext(ProductsContext);
+  const { products } = useContext(ProductsContext);
 
   const arrayGenres = ["Estrategia", "Aventura", "Shooter"];
 
-  /*  const [genreData, setGenreData] = useState([]);
-
-  const arrayGenres = ["Estrategia", "Aventura", "Shooter"];
-  useEffect(() => {
-    for (const genre of arrayGenres) {
-      genreData[genre] = games
-        .filter((game) => game.genre.includes(genre))
-        .slice(0, 3);
-    }
-
-    setGenreData(genreData);
-  }, []); */
-
-  /*   const arrayGenres = ["Estrategia", "Aventura", "Shooter"];
-
-  const genreData = {};
-
-  arrayGenres.forEach((genre) => {
-    genreData[genre] = games
-      .filter((game) => game.genre.includes(genre))
-      .slice(0, 3);
-  });
-
-  console.log(genreData); */
+  //! Función para obtener los datos de los juegos por género
+  const getGamesByGenre = (genre) => {
+    const gamesFilter = products.filter((game) => game.genre.includes(genre));
+    return gamesFilter;
+  };
 
   return (
     <main className="main right-shifted">
       <section className="recommended">
         <h2 className="recommended__title">Recomendado para ti</h2>
         <div className="products">
-          {/* {genreData ? console.log(genreData) : console.log(genreData)} */}
           {arrayGenres.map((genre) => (
             <Product
               key={genre}
@@ -49,13 +29,6 @@ const Home = () => {
               titleGenre={genre}
             />
           ))}
-          {/* {arrayGenres.map((genre) => (
-            <Product
-              key={genre}
-              genreData={genreData[genre]}
-              titleGenre={genre}
-            />
-          ))} */}
         </div>
       </section>
     </main>

@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { Form } from "../Search/Form";
+import { FormSearch } from "../Search/FormSearch";
 
 import "./Header.css";
+import logoIcon from "../../assets/images/logo/Logo.svg";
+import userIcon from "../../assets/images/user/seba.jpg";
 import cartIcon from "../../assets/images/icons/cart.svg";
 
 const Header = () => {
@@ -9,19 +11,15 @@ const Header = () => {
     <header className="header right-shifted">
       <div className="header__wrapper">
         <Link to="/" className="header__link">
-          <img
-            src="./images/Logo.svg"
-            alt="Logotipo Moon"
-            className="header__logo"
-          />
+          <img src={logoIcon} alt="Logotipo Moon" className="header__logo" />
         </Link>
 
-        <Form />
+        <FormSearch />
 
         <div className="header__user">
           <Link to="/profile" className="header__link header__profile">
             <img
-              src="./user/seba.jpg"
+              src={userIcon}
               alt="Imagen del usuario"
               className="header__profile-image"
             />
