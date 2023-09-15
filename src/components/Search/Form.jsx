@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
 import { NavLink } from "react-router-dom";
 
-import { Explore } from "./Explore";
+import { Explore } from "../Explore/Explore";
 import searchIcon from "../../assets/images/icons/search.svg";
 
 export const Form = ({}) => {
@@ -11,6 +11,9 @@ export const Form = ({}) => {
 
   const displayedProducts = filteredProducts.slice(0, 3);
 
+  const sliceTitle = (title) => {
+    return title.length > 30 ? `${title.slice(0, 30)}...` : title;
+  };
   return (
     <form action="" className="header__form">
       <div className="header__form-container">
@@ -47,9 +50,7 @@ export const Form = ({}) => {
                         className="product-list__image"
                       />
                       <span className="product-list__name">
-                        {title.length <= 50
-                          ? title
-                          : `${title.slice(0, 50)}...`}
+                        {sliceTitle(title)}
                       </span>
                     </NavLink>
                   </li>

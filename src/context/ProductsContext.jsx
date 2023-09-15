@@ -15,7 +15,7 @@ export const ProductContextProvider = ({ children }) => {
   //! Variables de estado para el buscador
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
-  // Función para abrir la lista de productos
+  //! Función para abrir la lista de productos
   const getGamesFilter = (query) => {
     setSearchQuery(query);
     // Filtrar los productos basados en la query
@@ -28,16 +28,11 @@ export const ProductContextProvider = ({ children }) => {
     setSearchQuery("");
     setFilteredProducts([]);
   };
-
-  /*  const getGenresFilter = (array) => {
-    const gamesFilter = {};
-
-    array.forEach((genre) => {
-      gamesFilter[genre] = games.filter((game) => game.genre.includes(genre));
-    });
-
+  //! Función para obtener los datos de los juegos por género
+  const getGamesByGenre = (genre) => {
+    const gamesFilter = games.filter((game) => game.genre.includes(genre));
     return gamesFilter;
-  }; */
+  };
 
   //! Función para obtener los datos de los productos
   const fetchData = async () => {
@@ -70,6 +65,7 @@ export const ProductContextProvider = ({ children }) => {
         searchQuery,
         onCloseList,
         filteredProducts,
+        getGamesByGenre,
       }}
     >
       {children}

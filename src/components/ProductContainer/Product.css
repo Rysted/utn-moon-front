@@ -38,6 +38,10 @@
   font-size: 1.2rem;
 }
 
+.product__priceOnOffer {
+  color: var(--star-colour);
+}
+
 .product__offer {
   margin-left: 1rem;
   font-size: 1.5rem;
