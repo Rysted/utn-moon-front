@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { calcPrice } from "../../utils/shopFunctions.js";
 import "./ShopDetails.css";
-import { ProductsContext } from "../../context/ProductContext.jsx";
+import { ProductsContext } from "../../context/ProductsContext.jsx";
 import { useContext } from "react";
 
 const ShopDetails = () => {
@@ -12,7 +12,7 @@ const ShopDetails = () => {
   const handlePagePrev = () => pagePrev("/shop");
   const { id } = useParams();
 
-  const newData = products.find(objeto => objeto.id == id);
+  const newData = products.find((objeto) => objeto.id == id);
 
   return (
     <>

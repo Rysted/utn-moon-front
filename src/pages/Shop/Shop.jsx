@@ -1,6 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+// import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { ProductsContext } from "../../context/ProductContext";
-import { calcPrice } from "../../utils/shopFunctions.js";
+import { calcPages, calcPrice } from "../../utils/shopFunctions.js";
+// import Paginator from "../../components/Paginator/Paginator.jsx";
 import Filters from "../../components/Filters/Filters.jsx";
 import Games from "../../components/Games/Games.jsx";
 import "./Shop.css";
@@ -18,9 +20,22 @@ const Shop = () => {
   const recordsPerPage = 6;
   // const totalPagesRef = useRef(null);
 
-  // Función para filtrar productos por minPrice y maxPrice
-  const filterProducts = () => {
-    const filteredProducts = products.filter(element => {
+  // const calculateTotalPages = () => {
+  //   totalPagesRef.current = calcPages(products.length, recordsPerPage);
+  // };
+
+  // console.log(minPrice);
+
+  // if (
+  // products.length !== totalPagesRef.current ||
+  // recordsPerPage !== totalPagesRef.current
+  // ) {
+  // calculateTotalPages();
+  // }
+
+  // Función para filtrar productos por minPrice
+  const filterProductsByMinPrice = minPrice => {
+    products.filter(element => {
       const total = calcPrice(element.price, element.offer);
 
       // Filtrar por precio mínimo y máximo
@@ -39,7 +54,7 @@ const Shop = () => {
     setFilterResult(filteredProducts);
   };
 
-  // Llamado cuando se cambian los valores de minPrice o maxPrice
+  // Llamado cuando se cambia el valor de minPrice
   const handleMinPriceChange = value => {
     setMinPrice(value);
   };

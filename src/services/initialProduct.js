@@ -1,0 +1,16 @@
+export const initialProduct = {
+  id: 0,
+  title: "",
+  developer: "",
+  genre: [],
+  img: "",
+  offer: 0,
+  platform: "",
+  price: 0,
+  publisher: "",
+  rating: 0,
+  release_date: "",
+  short_description: "",
+  status: "",
+  stock: 0,
+};

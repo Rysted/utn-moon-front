@@ -107,6 +107,12 @@ input {
 /*! ------------------ */
 
 @media (min-width: 768px) {
+  .right-shifted {
+    width: calc(100% - 5rem);
+    position: relative;
+    right: -5rem;
+  }
+
   .container {
     padding-left: 5rem;
     /* tiene un minimo de 50px de padding porque 
