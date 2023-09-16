@@ -6,27 +6,42 @@ export const FormFilter = ({
   developer,
   publisher,
   onMinPriceChange,
+  onMaxPriceChange,
+  onNameGameSubmit,
 }) => {
   const formRef = useRef(null);
-  const [minPriceValue, setMinPriceValue] = useState(""); // Nuevo estado para el precio mínimo
 
   const handleSubmit = event => {
     event.preventDefault();
-    // Llama a la función onMinPriceChange para pasar el valor del precio mínimo al componente Shop
-    onMinPriceChange(minPriceValue);
+    const priceMin = Number(event.target.priceMin.value);
+    const priceMax = Number(event.target.priceMax.value);
+
+    if (!isNaN(priceMin)) {
+      onMinPriceChange(priceMin);
+    }
+
+    if (!isNaN(priceMax)) {
+      onMaxPriceChange(priceMax);
+    }
+
+    if (event.target.name.value) {
+      onNameGameSubmit(event.target.name.value);
+    }
+    // onMaxPriceChange
   };
 
   // Función para manejar cambios en el campo de entrada del precio mínimo
-  const handleMinPriceChange = event => {
-    // Actualiza el estado del precio mínimo cuando cambia el campo de entrada
-    setMinPriceValue(event.target.value);
-  };
 
   return (
     <form ref={formRef} className="form__filter" onSubmit={handleSubmit}>
       <div className="form__group">
-        <label htmlFor="name2">Nombre</label>
-        <input type="text" name="" id="name2" placeholder="Nombre del juego" />
+        <label htmlFor="name">Nombre</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Nombre del juego"
+        />
       </div>
       <div className="form__group">
         <label htmlFor="genre2">Género</label>
@@ -48,12 +63,10 @@ export const FormFilter = ({
             <label htmlFor="priceMin">Precio Min</label>
             <input
               type="text"
-              name="priceMin" // Nombre del campo debe coincidir con el evento de obtención de valor
+              name="priceMin"
               id="priceMin"
-              placeholder="0"
               maxLength="4"
-              value={minPriceValue} // Asigna el valor del estado al campo de entrada
-              onChange={handleMinPriceChange} //
+              placeholder="0"
             />
             <div className="form__linear"></div>
           </div>
@@ -61,7 +74,7 @@ export const FormFilter = ({
             <label htmlFor="priceMax">Precio Max</label>
             <input
               type="text"
-              name=""
+              name="priceMax"
               id="priceMax"
               maxLength="4"
               placeholder="5000"

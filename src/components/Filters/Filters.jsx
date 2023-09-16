@@ -4,7 +4,12 @@ import { filterItems } from "./FliterItem/filterItems";
 import { FormFilter } from "./FilterPc/Form";
 import "./Filter.css";
 
-const Filters = ({ games, onMinPriceChange }) => {
+const Filters = ({
+  games,
+  onMinPriceChange,
+  onMaxPriceChange,
+  onNameGameSubmit,
+}) => {
   const uniqueGenres = Array.from(
     new Set(
       games.reduce((genres, game) => {
@@ -49,12 +54,17 @@ const Filters = ({ games, onMinPriceChange }) => {
           }));
           setSelectedFilter(filter);
         }}
+        genres={uniqueGenres}
+        developer={uniqueDeveloper}
+        publisher={uniquePublishers}
       />
       <FormFilter
         genres={uniqueGenres}
         developer={uniqueDeveloper}
         publisher={uniquePublishers}
         onMinPriceChange={onMinPriceChange}
+        onMaxPriceChange={onMaxPriceChange}
+        onNameGameSubmit={onNameGameSubmit}
       />
     </>
   );

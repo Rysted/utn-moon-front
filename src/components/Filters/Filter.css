@@ -42,17 +42,21 @@
   height: 20px;
 }
 
+.filter__img:hover{
+  filter: var(--filter-primary);
+}
+
 .filters__container {
   height: 100%;
   position: relative;
 }
-
-.filter__order--desactive,
-.filter__element--desactive {
+.filter__element--desactive ,
+.filter__order--desactive{
   transform: translateY(100%);
   opacity: 0;
   pointer-events: none;
 }
+
 
 .filter-order__background,
 .filter-element__background {
@@ -79,8 +83,8 @@
 }
 /* } */
 
-.filter-order__background h4,
-.filter-element__background h4 {
+.filter-order__background h3,
+.filter-element__background h3 {
   font-weight: var(--font-semibold);
   width: 80%;
   margin: 0 auto;
