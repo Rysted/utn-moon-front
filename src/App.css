@@ -53,6 +53,10 @@
 
   --filter-primary: brightness(0) saturate(100%) invert(46%) sepia(73%)
     saturate(2158%) hue-rotate(172deg) brightness(104%) contrast(103%);
+  --firter-secondary: brightness(0) saturate(100%) invert(13%) sepia(89%)
+    saturate(6233%) hue-rotate(6deg) brightness(97%) contrast(117%);
+  --firter-tertiary: brightness(0) saturate(100%) invert(15%) sepia(7%)
+    saturate(4670%) hue-rotate(201deg) brightness(91%) contrast(94%);
 }
 
 * {

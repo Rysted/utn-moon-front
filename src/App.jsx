@@ -8,7 +8,7 @@ import Home from "./pages/Home/Home.jsx";
 import Shop from "./pages/Shop/Shop.jsx";
 import ShopDetails from "./pages/ShopDetails/ShopDetails";
 
-export default function App() {
+export const App = () => {
   return (
     <BrowserRouter>
       <ProductContextProvider>
@@ -26,4 +26,4 @@ export default function App() {
       </ProductContextProvider>
     </BrowserRouter>
   );
-}
+};

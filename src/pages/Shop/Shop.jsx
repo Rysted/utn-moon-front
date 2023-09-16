@@ -1,89 +1,110 @@
-import { useState, useEffect } from "react";
-import { selection } from "../../utils/functions/shopFunctions.js";
-import Paginator from "../../components/Paginator/Paginator.jsx";
+// import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import { ProductsContext } from "../../context/ProductsContext";
+import { calcPages, calcPrice } from "../../utils/shopFunctions.js";
+// import Paginator from "../../components/Paginator/Paginator.jsx";
 import Filters from "../../components/Filters/Filters.jsx";
 import Games from "../../components/Games/Games.jsx";
 import "./Shop.css";
 
 const Shop = () => {
-  console.log("render");
+  const { products, isLoading, error } = useContext(ProductsContext);
+
+  const [filterResult, setFilterResult] = useState([]);
+  const [minPrice, setMinPrice] = useState(0); // Nuevo estado para minPrice
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
-  const [filterResult, setFilterResult] = useState([]);
-  const [dateFilters, setDateFilters] = useState({
-    name: "",
-    genre: "",
-    editor: "",
-    priceMin: 0,
-    priceMax: "",
-    developer: "",
-    order: "",
-  });
   const recordsPerPage = 6;
-  const baseUrl = "https://api.npoint.io/c5896f30ed32b1b4cc8e"; // Cambia la URL de la API
+  const totalPagesRef = useRef(null);
 
-  useEffect(() => {
-    const callApi = async () => {
-      try {
-        const response = await fetch(baseUrl);
-        const result = await response.json();
+  // const calculateTotalPages = () => {
+  //   totalPagesRef.current = calcPages(products.length, recordsPerPage);
+  // };
 
-        const filteredResult = selection(result);
+  // console.log(minPrice);
 
-        if (filteredResult.length) {
-          const totalPages = calcPages(filteredResult.length);
-          setTotalPages(totalPages);
+  // if (
+  // products.length !== totalPagesRef.current ||
+  // recordsPerPage !== totalPagesRef.current
+  // ) {
+  // calculateTotalPages();
+  // }
 
-          const startIndex = (currentPage - 1) * recordsPerPage;
-          const endIndex = startIndex + recordsPerPage;
-          const gamesToDisplay = filteredResult.slice(startIndex, endIndex);
-
-          // Utiliza el estado de React para gestionar los datos en lugar de manipular el DOM directamente
-          setFilterResult(gamesToDisplay);
-        } else {
-          setTotalPages(1);
-          setFilterResult([]);
-        }
-      } catch (error) {
-        console.error("Error al llamar a la API:", error);
-      }
-    };
-
-    const calcPages = (total) => {
-      return Math.ceil(total / recordsPerPage);
-    };
-
-    // Llama a la función cuando cambia currentPage o dateFilters
-    callApi();
-  }, [currentPage, dateFilters]);
-
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
+  // Función para filtrar productos por minPrice
+  const filterProductsByMinPrice = (minPrice) => {
+    products.filter((element) => {
+      const total = calcPrice(element.price, element.offer);
+      const productItem = total >= minPrice;
+      return productItem;
+    });
   };
 
-  const handleFilterChange = (filterType, value) => {
-    // Actualiza el estado de los filtros
-    setDateFilters({ ...dateFilters, [filterType]: value });
+  // const filterProductsByMinPrice = () => {
+  //   products.forEach(element => {
+  //     console.log(element.price)
+  //   });
+
+  // const filterPriceMin = (games, dateFilters) => {
+  // const { priceMin } = dateFilters;
+  // return !priceMin || calcPrice(games.price, games.offer) >= priceMin;
+  // };
+
+  // const filteredProducts = products.filter(product => {
+  // Asegúrate de que minPrice no esté vacío antes de aplicar el filtro
+  // if (minPrice.trim() === "") {
+  // return true; // Si minPrice está vacío, muestra todos los productos
+  // }
+  // return product.price >= parseFloat(minPrice);
+  // });
+
+  // setFilterResult(filteredProducts);
+  // setCurrentPage(1); // Restablecer la página actual al filtrar
+  // };
+
+  // Llamado cuando se cambia el valor de minPrice
+  const handleMinPriceChange = (value) => {
+    setMinPrice(value);
+    filterProductsByMinPrice(value);
   };
 
+  const startIndex = (currentPage - 1) * recordsPerPage;
+  const endIndex = startIndex + recordsPerPage;
+
+  const gamesToDisplay =
+    filterResult.length > 0
+      ? filterResult.slice(startIndex, endIndex)
+      : products.slice(startIndex, endIndex);
+
+  console.log(gamesToDisplay);
   return (
     <>
-      <Filters />
+      {/* <Filters games={products} /> */}
+      <Filters games={gamesToDisplay} onMinPriceChange={handleMinPriceChange} />
       <main className="shop container">
-        <div className="hola"></div>
         <h2>Juegos</h2>
-        {filterResult.length > 0 ? (
-          <>
-            <Games games={filterResult} />
-            <Paginator
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-            />
-          </>
+        {isLoading ? (
+          <div>
+            <h2>Loading...</h2>
+          </div>
+        ) : error ? (
+          <div>
+            <h2>{error}</h2>
+          </div>
         ) : (
-          <p>No hay resultado</p>
+          <>
+            {gamesToDisplay.length > 0 ? (
+              <>
+                <Games games={gamesToDisplay} />
+                {/* <Paginator
+                  currentPage={currentPage}
+                  totalPages={totalPagesRef.current}
+                  onPageChange={newPage => setCurrentPage(newPage)}
+                /> */}
+              </>
+            ) : (
+              <p>No hay resultados</p>
+            )}
+          </>
         )}
       </main>
     </>
@@ -91,3 +112,71 @@ const Shop = () => {
 };
 
 export default Shop;
+
+// import { useContext, useState, useEffect } from "react";
+// import { ProductsContext } from "../../context/ProductContext";
+// import { calcPages } from "../../utils/shopFunctions.js";
+// import Paginator from "../../components/Paginator/Paginator.jsx";
+// import Filters from "../../components/Filters/Filters.jsx";
+// import Games from "../../components/Games/Games.jsx";
+// import "./Shop.css";
+
+// const Shop = () => {
+//   console.log("render");
+//   const { products, isLoading, error } = useContext(ProductsContext);
+//   const [filterResult, setFilterResult] = useState([]);
+//   const [currentPage, setCurrentPage] = useState(1);
+//   const [totalPages, setTotalPages] = useState(null);
+//   const recordsPerPage = 6;
+
+//   useEffect(() => {
+//     const startIndex = (currentPage - 1) * recordsPerPage;
+//     const endIndex = startIndex + recordsPerPage;
+//     const gamesToDisplay = products.slice(startIndex, endIndex);
+//     setTotalPages(calcPages(products.length, recordsPerPage));
+//     setFilterResult(gamesToDisplay);
+//   }, [products, currentPage, recordsPerPage]);
+
+//   const handlePageChange = newPage => {
+//     setCurrentPage(newPage);
+//   };
+
+//   if (isLoading) {
+//     return (
+//       <div>
+//         <h2>Loading...</h2>
+//       </div>
+//     );
+//   }
+
+//   if (error) {
+//     return (
+//       <div>
+//         <h2>{error}</h2>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <>
+//       <Filters games={products}/>
+//       <main className="shop container">
+//         <h2>Juegos</h2>
+//         {filterResult.length > 0 ? (
+//           <>
+//             <Games games={filterResult} />
+//             <Paginator
+//               currentPage={currentPage}
+//               totalPages={totalPages}
+//               onPageChange={handlePageChange}
+//             />
+//           </>
+//         ) : (
+//           <p>No hay resultado</p>
+//         )}
+//       </main>
+//     </>
+//   );
+// };
+
+// export default Shop;

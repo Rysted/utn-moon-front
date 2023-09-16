@@ -21,13 +21,15 @@ export const FormSearch = ({}) => {
       game.title.toLowerCase().includes(query)
     );
 
-    setFilteredProducts(gamesFilter.slice(0, 3));
+    setFilteredProducts(gamesFilter);
   };
 
   const onCloseList = () => {
     setSearchQuery("");
     setFilteredProducts([]);
   };
+
+  const displayedProducts = filteredProducts.slice(0, 3);
 
   const sliceTitle = (title) => {
     return title.length > 30 ? `${title.slice(0, 30)}...` : title;
@@ -56,7 +58,7 @@ export const FormSearch = ({}) => {
           {searchQuery && (
             <nav className="product-list">
               <ul className="product-list__items">
-                {filteredProducts.map(({ id, img, title }) => (
+                {displayedProducts.map(({ id, img, title }) => (
                   <li key={id} className="product-list__item">
                     <Link
                       to={`/shop/${id}`}

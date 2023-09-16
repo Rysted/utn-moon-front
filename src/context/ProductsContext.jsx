@@ -20,9 +20,9 @@ export const ProductContextProvider = ({ children }) => {
       setIsLoading(true);
       const data = await getAllProducts();
       setProducts(data);
-    } catch (err) {
-      console.error(err);
-      setError(err.message);
+    } catch (error) {
+      console.error(error);
+      setError(error.message);
     } finally {
       setIsLoading(false);
     }
@@ -34,14 +34,10 @@ export const ProductContextProvider = ({ children }) => {
   }, []);
 
   // Devolver el proveedor de contexto
+  const contextValues = { products, isLoading, error };
+
   return (
-    <ProductsContext.Provider
-      value={{
-        products,
-        isLoading,
-        error,
-      }}
-    >
+    <ProductsContext.Provider value={contextValues}>
       {children}
     </ProductsContext.Provider>
   );
