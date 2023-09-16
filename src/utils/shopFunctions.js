@@ -13,9 +13,9 @@ export function removeElements(parentElement) {
   }
 }
 
-// function calcPages(total, recordsPerPage) {
-//   return Math.ceil(total / recordsPerPage);
-// }
+export function calcPages(total, recordsPerPage) {
+  return Math.ceil(total / recordsPerPage);
+}
 
 export function calcPrice(price, offer) {
   const totalOffer = (price * offer) / 100;

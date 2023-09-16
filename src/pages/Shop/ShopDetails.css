@@ -22,12 +22,27 @@
   display: flex;
 }
 
+.details__icon{
+  filter: var(--filter-primary);
+  font-size: 4rem;
+  font-weight: var(--font-regular);
+  line-height: 2.5rem;
+}
+/* 
+*{
+  outline: 1px solid red;
+} */
+
 .details__link {
   display: flex;
   align-items: center;
   column-gap: 1em;
   font-weight: 200;
   width: min-content;
+}
+
+.details__link:hover{
+  filter: var(--filter-primary);
 }
 
 .details__content,
@@ -323,7 +338,4 @@ input:checked ~ label .star__fill {
   .details__price span {
     font-size: 2.4rem;
   }
-}
-*{
-  outline: 1px solid red;
 }

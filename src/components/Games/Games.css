@@ -51,7 +51,7 @@
   column-gap: 1rem;
 }
 
-.game__text h4 {
+.game__text h3 {
   font-size: 1.4rem;
   text-transform: uppercase;
   /* min-height: 30px; */

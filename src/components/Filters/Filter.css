@@ -1,7 +1,7 @@
 .filters {
-  position: sticky;
+  position: relative;
   /* top: 5rem; */
-  top: 0rem;
+  /* top: 0rem; */
   background-color: var(--primary);
   height: 5rem;
   /* right: 0; */
@@ -10,7 +10,8 @@
   width: 93%;
   margin: 0 auto;
 
-  z-index: 2;
+  z-index: 1; 
+  /* decidir si eliminar descubirir: ofertas y nuevo */
 }
 
 .filters__container {

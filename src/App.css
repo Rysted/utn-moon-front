@@ -35,14 +35,13 @@
   font-display: swap;
 }
 
-
 :root {
   --primary: #090918;
   --secondary: #191932;
   --tertiary: #c7c7c7;
   --quaternary: #262649;
-  --quinary: #1565C0;
-  --star-colour: #F3F71D;
+  --quinary: #1565c0;
+  --star-colour: #f3f71d;
   --offer-colour: #33cc33;
 
   --primary-contrast: #ffffff;
@@ -51,9 +50,13 @@
   --font-regular: 400;
   --font-semibold: 600;
   --font-bold: 700;
-  
+
   --filter-primary: brightness(0) saturate(100%) invert(46%) sepia(73%)
     saturate(2158%) hue-rotate(172deg) brightness(104%) contrast(103%);
+  --firter-secondary: brightness(0) saturate(100%) invert(13%) sepia(89%)
+    saturate(6233%) hue-rotate(6deg) brightness(97%) contrast(117%);
+  --firter-tertiary: brightness(0) saturate(100%) invert(15%) sepia(7%)
+    saturate(4670%) hue-rotate(201deg) brightness(91%) contrast(94%);
 }
 
 * {
@@ -70,7 +73,7 @@ html {
   color: var(--primary-contrast);
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
@@ -79,7 +82,7 @@ li {
   list-style: none;
 }
 
-button{
+button {
   width: 100%;
   text-align: left;
   color: inherit;
@@ -88,7 +91,7 @@ button{
   cursor: pointer;
 }
 
-input{
+input {
   border: none;
   outline: none;
 }
@@ -98,36 +101,6 @@ input{
   width: 93%;
   margin: 0 auto;
 }
-
-/* *{
-  outline: 1px solid red;
-} */
-
-.header{
-  /* position: fixed; */
-  /* left: calc(5rem + 5vw); */
-  /* right: 5vw; */
-  /* padding-left: 5rem; */
-  /* margin-left: calc(5rem + 5vw); */
-  /* width: 90%; */
-  /* margin-left: auto; */
-  /* margin: 0 auto; */
-  top: 0;
-  /* position: fixed; */
-  background-color: rebeccapurple;
-  /* display: block; */
-  /* width: 100vw; */
-  height: 5rem;
-}
-
-.header h1{
-  margin: 0;
-}
-/* 
-*{
-  outline: 1px solid red;
-} */
-
 
 /*! ------------------ */
 /*!    Query Laptop    */

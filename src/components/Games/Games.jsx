@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 
-import { calcPrice } from "../../utils/functions/shopFunctions";
+import { calcPrice } from "../../utils/shopFunctions";
 import "./Games.css";
 
 export const Games = ({ games }) => {
@@ -14,7 +14,7 @@ export const Games = ({ games }) => {
             alt={`imagen de ${game.title}`}
           />
           <div className="game__text">
-            <h4>{game.title}</h4>
+            <h3>{game.title}</h3>
             <div className="game__prices">
               <p className="game__total">
                 $ {calcPrice(game.price, game.offer)}

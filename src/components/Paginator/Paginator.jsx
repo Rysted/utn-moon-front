@@ -50,7 +50,7 @@ const Paginator = ({ currentPage, totalPages, onPageChange }) => {
             onClick={handlePrevPage}
             aria-label="anterior pagina"
           >
-            &laquo;
+            &#60;
           </button>
         </li>
         {renderPageNumbers()}
@@ -64,7 +64,7 @@ const Paginator = ({ currentPage, totalPages, onPageChange }) => {
             onClick={handleNextPage}
             aria-label="siguiente pagina"
           >
-            &raquo;
+            &#62;
           </button>
         </li>
       </ul>
