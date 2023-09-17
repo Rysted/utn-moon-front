@@ -1,0 +1,12 @@
+.boton {
+  padding: 50px;
+  color: aquamarine;
+}
+
+.texto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
