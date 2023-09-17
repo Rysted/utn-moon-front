@@ -1,4 +1,10 @@
-export function FilterElement({ name, element }) {
+export function FilterElement({ name, element, value, filterValues, onClick }) {
+  const handleItemClick = itemValue => {
+    onClick({ ...filterValues, [value]: itemValue.toLowerCase() });
+
+    console.log(value);
+  };
+
   return (
     <div className="filter-dropdown__container">
       <div className="filter-dropdown">
@@ -27,7 +33,25 @@ export function FilterElement({ name, element }) {
         <div className="filter-dropdown__content">
           <div className="filter-dropdown__info">
             <ul className="filter-dropdown__lists">
-              <li className="filter-dropdown__list">{element}</li>
+              <li
+                key="all"
+                value=""
+                onClick={() => handleItemClick("")}
+                className="filter-dropdown__list"
+              >
+                <button>Cualquier {name}</button>
+              </li>
+
+              {element.map((item, index) => (
+                <li
+                  key={index}
+                  value={item}
+                  onClick={() => handleItemClick(item)}
+                  className="filter-dropdown__list"
+                >
+                  <button>{item}</button>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

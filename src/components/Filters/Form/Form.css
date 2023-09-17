@@ -3,7 +3,6 @@
 /*! ------------------ */
 
 .form__filter {
-  z-index: 2;
   position: absolute;
   opacity: 0;
   pointer-events: none;

@@ -7,7 +7,10 @@ export const FilterMovil = (
   activeFilters,
   handleFilterClick,
   selectedFilter,
-  handleSelectedClick
+  handleSelectedClick,
+  genres,
+  developer,
+  publisher
 ) => {
   return (
     <section className="filters">

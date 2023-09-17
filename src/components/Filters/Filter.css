@@ -1,20 +1,14 @@
 .filters {
   position: relative;
-  /* top: 5rem; */
-  /* top: 0rem; */
   background-color: var(--primary);
   height: 5rem;
-  /* right: 0; */
-  /* left: 5vw; */
-  /* right: 5vw; */
   width: 93%;
   margin: 0 auto;
 
-  z-index: 1; 
-  /* decidir si eliminar descubirir: ofertas y nuevo */
 }
 
 .filters__container {
+  position: relative;
   display: flex;
   justify-content: space-between;
 }
@@ -42,17 +36,21 @@
   height: 20px;
 }
 
+.filter__img:hover{
+  filter: var(--filter-primary);
+}
+
 .filters__container {
   height: 100%;
   position: relative;
 }
-
-.filter__order--desactive,
-.filter__element--desactive {
+.filter__element--desactive ,
+.filter__order--desactive{
   transform: translateY(100%);
   opacity: 0;
   pointer-events: none;
 }
+
 
 .filter-order__background,
 .filter-element__background {
@@ -71,16 +69,15 @@
   display: flex;
   flex-direction: column;
   gap: 5vh;
+  z-index: 2;
 }
 
-/* @container (min-height: 300px){ */
 .filter-element__background {
   overflow: auto;
 }
-/* } */
 
-.filter-order__background h4,
-.filter-element__background h4 {
+.filter-order__background h3,
+.filter-element__background h3 {
   font-weight: var(--font-semibold);
   width: 80%;
   margin: 0 auto;
@@ -221,7 +218,6 @@
   transition: max-height 0.3s ease-out;
   display: flex;
   justify-content: center;
-  border-top: 1px solid transparent;
 }
 
 .filter-dropdown
@@ -230,6 +226,7 @@
   + .filter-dropdown__content {
   max-height: max-content;
   border-top: 1px solid var(--primary);
+  /* border-bottom: none; */
 }
 
 .filter-dropdown__info {
@@ -241,33 +238,32 @@
   display: grid;
 }
 
-.filter-dropdown__list {
-  padding: 2.5vh 10vw;
+.filter-dropdown__list:first-child {
+  /* border: none; */
+  /* border-top: none; */
+  /* background-color: rebeccapurple; */
 }
+.filter-dropdown__list {
+  border-bottom: 1px solid var(--primary);
+  border-left: 3px solid transparent;  
+}
+/* 
+*{
+  outline: 1px solid red;
+} */
 
 @media (min-width: 768px) {
-  .filters {
-    /* margin: unset; */
-    /* margin-left: auto; */
-    /* width: 93%; */
-    /* left: 5rem; */
-    padding-left: 5rem;
-    /* padding-right: 5rem; */
-  }
-
-  .filter-order__background,
-  .filter-element__background {
-    left: 5rem;
-    height: 100vh;
-  }
-}
-
-@media (min-width: 1200px) {
+ 
   .filters {
     position: absolute;
     opacity: 0;
     pointer-events: none;
   }
   
-
+  .filter-order__background,
+  .filter-element__background {
+    left: 5rem;
+    height: 100vh;
+  }
+   
 }

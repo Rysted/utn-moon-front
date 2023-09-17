@@ -63,6 +63,8 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  color: var(--star-colour)
+
 }
 
 .game__offer {
@@ -125,14 +127,11 @@
   }
 
   .game__total {
-    font-size: 1.8rem;
-    /* background-color: rebeccapurple; */
-    /* text-align: center !; */
-    /* justify-content: center; */
+    font-size: 1.6rem;
   }
 
   .game__offer {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .game__price {
@@ -150,9 +149,6 @@
 /*!      Query Laptop  */
 /*! ------------------ */
 @media (min-width: 768px) {
-  /* .games {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  } */
 
   .game__prices {
     display: grid;
@@ -173,7 +169,11 @@
   .game__text {
     row-gap: 1rem;
   }
-
+  
+  .game__total {
+    font-size: 1.8rem;
+  }
+  
   .game__text h4 {
     font-size: 1.8rem;
   }

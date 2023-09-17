@@ -1,13 +1,12 @@
-import { Link, Outlet } from "react-router-dom";
-
 import { calcPrice } from "../../utils/shopFunctions";
+import { Link, Outlet } from "react-router-dom";
 import "./Games.css";
 
 export const Games = ({ games }) => {
   return (
     <div className="games">
       {games.map(game => (
-        <Link to={`/shop/${game.id}`} className="game" key={game.id}>
+        <Link to={`/detail/${game.id}`} className="game" key={game.id}>
           <img
             className="game__img"
             src={game.img}
@@ -18,7 +17,7 @@ export const Games = ({ games }) => {
             <div className="game__prices">
               <p className="game__total">
                 $ {calcPrice(game.price, game.offer)}
-                <span className="game__offer">{game.offer} % off</span>
+                <span className="game__offer">{game.offer}%</span>
               </p>
               <p className="game__price">$ {game.price}</p>
             </div>

@@ -43,7 +43,7 @@ export const FormSearch = ({}) => {
             value={searchQuery}
             onChange={(e) => getGamesFilter(e.target.value.toLowerCase())}
             type="search"
-            placeholder="buscar en la tienda"
+            placeholder="Buscar en la tienda"
             name="search"
             id="search"
             className="header__form-input"

@@ -4,11 +4,9 @@
 
 .pagination {
   padding: 2rem 0 1rem;
-  /* margin: 0 auto; */
   margin-left: auto;
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
   justify-content: center;
 }
 
@@ -31,7 +29,8 @@
 }
 
 .pagination__button--select {
-  border-color: var(--primary-contrast);
+  background-color: var(--quinary);
+  border-color: var(--quinary);
 }
 
 .pagination__next,
@@ -42,8 +41,7 @@
 .pagination__button:hover,
 .pagination__next:hover,
 .pagination__prev:hover {
-  background-color: var(--quinary);
-  border-color: var(--quinary);
+  border-color: var(--primary-contrast);
 }
 
 .pagination__prev--disabled,

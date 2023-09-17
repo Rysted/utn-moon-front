@@ -6,22 +6,14 @@ export const filterItems = [
     item: [
       {
         id: 2,
-        name: "categorias",
+        name: "categoria",
+        value: "genre",
         element: [],
       },
       {
         id: 3,
-        name: "editor",
-        element: [],
-      },
-      {
-        id: 4,
-        name: "lanzamiento",
-        element: [],
-      },
-      {
-        id: 5,
         name: "desarrollador",
+        value: "developer",
         element: [],
       },
     ],
@@ -29,18 +21,22 @@ export const filterItems = [
   {
     id: 6,
     name: "Ordenar",
+    value: "order",
     iconSrc: "./src/assets/images/icons/arrows.svg",
     item: [
       {
         id: 7,
+        value: "relevant",
         name: "Mas relevantes",
       },
       {
         id: 8,
+        value: "lowPrice",
         name: "Menor precio",
       },
       {
         id: 9,
+        value: "highPrice",
         name: "Mayor precio",
       },
     ],
