@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
+import { Link } from "react-router-dom";
 
 import { Product } from "../../components/ProductContainer/Product";
+import diabloImmortalImage from "../../assets/images/publicity/diablo-immortal.gif";
 import "./Home.css";
 
 const Home = () => {
@@ -19,6 +21,18 @@ const Home = () => {
 
   return (
     <main className="main right-shifted">
+      <section className="publicity">
+        <article className="publicity__container">
+          <Link to={`/detail/1`} className="publicity__link">
+            <img
+              src={diabloImmortalImage}
+              alt="gif publicitario Remnant"
+              className="publicity__img"
+            />
+          </Link>
+        </article>
+      </section>
+      <section></section>
       <section className="recommended">
         <h2 className="recommended__title">Recomendado para ti</h2>
         <div className="products">

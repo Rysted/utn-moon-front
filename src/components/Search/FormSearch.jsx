@@ -61,7 +61,7 @@ export const FormSearch = ({}) => {
                 {displayedProducts.map(({ id, img, title }) => (
                   <li key={id} className="product-list__item">
                     <Link
-                      to={`/shop/${id}`}
+                      to={`/detail/${id}`}
                       className="product-list__link"
                       onClick={onCloseList}
                     >
