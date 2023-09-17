@@ -32,7 +32,7 @@ export default function Nav() {
           <li className="menu__item">
             <button href="#search" className="menu__link" aria-label="Buscar">
               <img
-                className="nav__img"
+                className="menu__img"
                 src={searchIcon}
                 alt="icono de buscar"
               />

@@ -13,11 +13,11 @@ export const FormSearch = ({}) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   //! Función para abrir la lista de productos
-  const getGamesFilter = (query) => {
+  const getGamesFilter = query => {
     setSearchQuery(query);
 
     // Filtrar los productos basados en la query
-    const gamesFilter = products.filter((game) =>
+    const gamesFilter = products.filter(game =>
       game.title.toLowerCase().includes(query)
     );
 
@@ -31,19 +31,19 @@ export const FormSearch = ({}) => {
 
   const displayedProducts = filteredProducts.slice(0, 3);
 
-  const sliceTitle = (title) => {
+  const sliceTitle = title => {
     return title.length > 30 ? `${title.slice(0, 30)}...` : title;
   };
 
   return (
-    <form onSubmit={(e) => e.preventDefault()} className="header__form">
+    <form onSubmit={e => e.preventDefault()} className="header__form">
       <div className="header__form-container">
         <div className="header__form-label">
           <input
             value={searchQuery}
-            onChange={(e) => getGamesFilter(e.target.value.toLowerCase())}
+            onChange={e => getGamesFilter(e.target.value.toLowerCase())}
             type="search"
-            placeholder="buscar en la tienda"
+            placeholder="Buscar en la tienda"
             name="search"
             id="search"
             className="header__form-input"

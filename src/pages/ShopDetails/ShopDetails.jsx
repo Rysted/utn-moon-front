@@ -1,8 +1,8 @@
+import { ProductsContext } from "../../context/ProductsContext.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 import { calcPrice } from "../../utils/shopFunctions.js";
-import "./ShopDetails.css";
-import { ProductsContext } from "../../context/ProductsContext.jsx";
 import { useContext } from "react";
+import "./ShopDetails.css";
 
 const ShopDetails = () => {
   const { products, isLoading, error } = useContext(ProductsContext);
@@ -12,7 +12,20 @@ const ShopDetails = () => {
   const handlePagePrev = () => pagePrev("/shop");
   const { id } = useParams();
 
-  const newData = products.find((objeto) => objeto.id == id);
+  const newData = products.find(objeto => objeto.id == id);
+
+  if (!newData) {
+    return (
+      <>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod aliquid
+          quo, repellendus officia perspiciatis quam tempore exercitationem
+          quis, error cupiditate itaque dolorum maxime! Magnam facere nulla a?
+          In, voluptas expedita.
+        </p>
+      </>
+    );
+  }
 
   return (
     <>
@@ -22,7 +35,7 @@ const ShopDetails = () => {
         </div>
       ) : error ? (
         <div>
-          <h2>{error}</h2>
+          <h2>ERROR</h2>
         </div>
       ) : (
         <div className="details container">

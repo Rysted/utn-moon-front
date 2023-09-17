@@ -3,8 +3,7 @@
 /*! ------------------ */
 
 .details {
-  margin-top: 5rem;
-  padding: 2em 0;
+  /* margin-top: 5rem; */
   font-size: 1.6rem;
 }
 
@@ -22,12 +21,23 @@
   display: flex;
 }
 
+.details__icon{
+  font-weight: var(--font-regular);
+  filter: var(--filter-primary);
+  font-size: 3rem;
+  line-height: 2rem;
+}
+
 .details__link {
   display: flex;
   align-items: center;
   column-gap: 1em;
   font-weight: 200;
   width: min-content;
+}
+
+.details__link:hover{
+  filter: var(--filter-primary);
 }
 
 .details__content,
@@ -229,6 +239,9 @@ input:checked ~ label .star__fill {
 
 @media (min-width: 768px) {
   .details {
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+
     padding-left: 5rem;
   }
 

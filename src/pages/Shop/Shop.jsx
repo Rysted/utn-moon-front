@@ -1,91 +1,62 @@
-// import { useContext, useState } from "react";
-import { useContext, useRef, useState } from "react";
-import { ProductsContext } from "../../context/ProductContext";
-import { calcPages, calcPrice } from "../../utils/shopFunctions.js";
-// import Paginator from "../../components/Paginator/Paginator.jsx";
+import { useContext, useEffect, useState, useCallback } from "react";
+import { ProductsContext } from "../../context/ProductsContext.jsx";
+import {
+  filterAndSortProducts,
+  calcPages,
+  calcPrice,
+} from "../../utils/shopFunctions.js";
 import Filters from "../../components/Filters/Filters.jsx";
 import Games from "../../components/Games/Games.jsx";
+import Paginator from "../../components/Paginator/Paginator.jsx";
 import "./Shop.css";
-// import { inicialProduct } from "../../service/inicialProduct";
 
 const Shop = () => {
   const { products, isLoading, error } = useContext(ProductsContext);
   const [filterResult, setFilterResult] = useState([]);
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(5000);
-  const [nameGame, setNameGame] = useState("");
-
-  // const [formData, setFormData] = useState(inicialProduct);
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(null);
   const recordsPerPage = 6;
-  // const totalPagesRef = useRef(null);
-
-  // const calculateTotalPages = () => {
-  //   totalPagesRef.current = calcPages(products.length, recordsPerPage);
-  // };
-
-  // console.log(minPrice);
-
-  // if (
-  // products.length !== totalPagesRef.current ||
-  // recordsPerPage !== totalPagesRef.current
-  // ) {
-  // calculateTotalPages();
-  // }
-
-  // Función para filtrar productos por minPrice
-  const filterProductsByMinPrice = minPrice => {
-    products.filter(element => {
-      const total = calcPrice(element.price, element.offer);
-
-      // Filtrar por precio mínimo y máximo
-      const priceFilter =
-        (!minPrice || total >= minPrice) && (!maxPrice || total <= maxPrice);
-
-      // Filtrar por nombre del juego (ignorar mayúsculas/minúsculas)
-      const nameFilter =
-        !nameGame ||
-        element.title.toLowerCase().includes(nameGame.toLowerCase());
-
-      // Combinar los filtros
-      return priceFilter && nameFilter;
-    });
-
-    setFilterResult(filteredProducts);
-  };
-
-  // Llamado cuando se cambia el valor de minPrice
-  const handleMinPriceChange = value => {
-    setMinPrice(value);
-  };
-
-  const handleMaxPriceChange = value => {
-    setMaxPrice(value);
-  };
-
-  const handleNameGame = value => {
-    setNameGame(value);
-  };
-
-  // Cuando products, minPrice o maxPrice cambian, aplicar el filtro
-  useEffect(() => {
-    filterProducts();
-  }, [products, minPrice, maxPrice, nameGame]);
-
   const startIndex = (currentPage - 1) * recordsPerPage;
   const endIndex = startIndex + recordsPerPage;
-
   const gamesToDisplay = filterResult.slice(startIndex, endIndex);
+  const [filterValues, setFilterValues] = useState({
+    developer: "",
+    nameGame: "",
+    genre: "",
+    maxPrice: 5000,
+    minPrice: 0,
+    order: "relevant",
+    publisher: "",
+  });
 
-  // console.log(nameGame);
+  console.log(filterValues);
+
+  const filterProducts = useCallback(() => {
+    const filteredProducts = filterAndSortProducts(products, filterValues);
+
+    setCurrentPage(1);
+    setTotalPages(calcPages(filteredProducts.length, recordsPerPage));
+    setFilterResult(filteredProducts);
+  }, [filterValues, products]);
+
+  useEffect(() => {
+    filterProducts();
+  }, [filterProducts]);
+
+  const handleFilterSubmit = value => {
+    setFilterValues(value);
+  };
+
+  const handlePageChange = newPage => {
+    setCurrentPage(newPage);
+  };
 
   return (
     <>
       <Filters
         games={products}
-        onMinPriceChange={handleMinPriceChange}
-        onMaxPriceChange={handleMaxPriceChange}
-        onNameGameSubmit={handleNameGame}
+        onFilterSubmit={handleFilterSubmit}
+        filterValues={filterValues}
       />
       <main className="shop container">
         <h2>Juegos</h2>
@@ -102,6 +73,11 @@ const Shop = () => {
             {gamesToDisplay.length > 0 ? (
               <>
                 <Games games={gamesToDisplay} />
+                <Paginator
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
               </>
             ) : (
               <p className="shop__result">No hay resultados</p>
@@ -114,71 +90,3 @@ const Shop = () => {
 };
 
 export default Shop;
-
-// import { useContext, useState, useEffect } from "react";
-// import { ProductsContext } from "../../context/ProductContext";
-// import { calcPages } from "../../utils/shopFunctions.js";
-// import Paginator from "../../components/Paginator/Paginator.jsx";
-// import Filters from "../../components/Filters/Filters.jsx";
-// import Games from "../../components/Games/Games.jsx";
-// import "./Shop.css";
-
-// const Shop = () => {
-//   console.log("render");
-//   const { products, isLoading, error } = useContext(ProductsContext);
-//   const [filterResult, setFilterResult] = useState([]);
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const [totalPages, setTotalPages] = useState(null);
-//   const recordsPerPage = 6;
-
-//   useEffect(() => {
-//     const startIndex = (currentPage - 1) * recordsPerPage;
-//     const endIndex = startIndex + recordsPerPage;
-//     const gamesToDisplay = products.slice(startIndex, endIndex);
-//     setTotalPages(calcPages(products.length, recordsPerPage));
-//     setFilterResult(gamesToDisplay);
-//   }, [products, currentPage, recordsPerPage]);
-
-//   const handlePageChange = newPage => {
-//     setCurrentPage(newPage);
-//   };
-
-//   if (isLoading) {
-//     return (
-//       <div>
-//         <h2>Loading...</h2>
-//       </div>
-//     );
-//   }
-
-//   if (error) {
-//     return (
-//       <div>
-//         <h2>{error}</h2>
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <>
-//       <Filters games={products}/>
-//       <main className="shop container">
-//         <h2>Juegos</h2>
-//         {filterResult.length > 0 ? (
-//           <>
-//             <Games games={filterResult} />
-//             <Paginator
-//               currentPage={currentPage}
-//               totalPages={totalPages}
-//               onPageChange={handlePageChange}
-//             />
-//           </>
-//         ) : (
-//           <p>No hay resultado</p>
-//         )}
-//       </main>
-//     </>
-//   );
-// };
-
-// export default Shop;
