@@ -79,7 +79,7 @@
   display: block;
 }
 
-.header__icon:hover{
+.header__icon:hover {
   filter: var(--filter-primary);
 }
 
@@ -161,6 +161,7 @@
 
   .header__form {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     column-gap: 2rem;
   }

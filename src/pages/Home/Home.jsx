@@ -9,15 +9,17 @@ import "./Home.css";
 const Home = () => {
   //! Variables de estado para los Datos de géneros
 
-  const { products } = useContext(ProductsContext);
+  const { products, isLoading } = useContext(ProductsContext);
 
   const arrayGenres = ["Estrategia", "Aventura", "Shooter"];
 
   //! Función para obtener los datos de los juegos por género
   const getGamesByGenre = (genre) => {
     const gamesFilter = products.filter((game) => game.genre.includes(genre));
-    return gamesFilter;
+    return gamesFilter.slice(0, 3);
   };
+
+  // console.log(isLoading ? "Loading" : "Rendering...");
 
   return (
     <main className="main right-shifted">
@@ -39,7 +41,7 @@ const Home = () => {
           {arrayGenres.map((genre) => (
             <Product
               key={genre}
-              genreData={getGamesByGenre(genre)}
+              products={getGamesByGenre(genre)}
               titleGenre={genre}
             />
           ))}
