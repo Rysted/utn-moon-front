@@ -6,12 +6,9 @@ import "./ShopDetails.css";
 
 const ShopDetails = () => {
   const { products, isLoading, error } = useContext(ProductsContext);
-
   const pagePrev = useNavigate();
-
   const handlePagePrev = () => pagePrev("/shop");
   const { id } = useParams();
-
   const newData = products.find(objeto => objeto.id == id);
 
   if (!newData) {
@@ -24,6 +21,19 @@ const ShopDetails = () => {
           In, voluptas expedita.
         </p>
       </>
+    );
+  }
+
+  const starTotal = newData.rating;
+  const starsAndNone = [];
+
+  for (let i = 0; i < 5; i++) {
+    starsAndNone.push(
+      starTotal >= i + 1
+        ? "star"
+        : starTotal >= `${i}.5`
+        ? "star--half"
+        : "star--none"
     );
   }
 
@@ -62,38 +72,9 @@ const ShopDetails = () => {
               <div className="details__datas">
                 <h2>{newData.title}</h2>
                 <div className="stars">
-                  <fieldset className="stars__items">
-                    <input type="radio" name="stars" id="st5" />
-                    <label aria-label="estrella 5" htmlFor="st5">
-                      <span className="star__stroke">
-                        <span className="star__fill"></span>
-                      </span>
-                    </label>
-                    <input type="radio" name="stars" id="st4" />
-                    <label aria-label="estrella 4" htmlFor="st4">
-                      <span className="star__stroke">
-                        <span className="star__fill"></span>
-                      </span>
-                    </label>
-                    <input type="radio" name="stars" id="st3" />
-                    <label aria-label="estrella 3" htmlFor="st3">
-                      <span className="star__stroke">
-                        <span className="star__fill"></span>
-                      </span>
-                    </label>
-                    <input type="radio" name="stars" id="st2" />
-                    <label aria-label="estrella 2" htmlFor="st2">
-                      <span className="star__stroke">
-                        <span className="star__fill"></span>
-                      </span>
-                    </label>
-                    <input type="radio" name="stars" id="st1" />
-                    <label aria-label="estrella 1" htmlFor="st1">
-                      <span className="star__stroke">
-                        <span className="star__fill"></span>
-                      </span>
-                    </label>
-                  </fieldset>
+                  {starsAndNone.map((element, index) => (
+                    <div className={element} key={index}></div>
+                  ))}
                 </div>
                 <div className="details__cost">
                   <p className="details__price">

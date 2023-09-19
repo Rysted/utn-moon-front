@@ -15,10 +15,6 @@ const Shop = () => {
   const [filterResult, setFilterResult] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
-  const recordsPerPage = 6;
-  const startIndex = (currentPage - 1) * recordsPerPage;
-  const endIndex = startIndex + recordsPerPage;
-  const gamesToDisplay = filterResult.slice(startIndex, endIndex);
   const [filterValues, setFilterValues] = useState({
     developer: "",
     nameGame: "",
@@ -29,7 +25,10 @@ const Shop = () => {
     publisher: "",
   });
 
-  console.log(filterValues);
+  const recordsPerPage = 6;
+  const startIndex = (currentPage - 1) * recordsPerPage;
+  const endIndex = startIndex + recordsPerPage;
+  const gamesToDisplay = filterResult.slice(startIndex, endIndex);
 
   const filterProducts = useCallback(() => {
     const filteredProducts = filterAndSortProducts(products, filterValues);

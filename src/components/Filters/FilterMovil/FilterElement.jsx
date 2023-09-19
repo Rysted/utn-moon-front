@@ -1,8 +1,23 @@
-export function FilterElement({ name, element, value, filterValues, onClick }) {
-  const handleItemClick = itemValue => {
-    onClick({ ...filterValues, [value]: itemValue.toLowerCase() });
+import React from "react";
 
-    console.log(value);
+export function FilterElement({
+  filter,
+  element,
+  filterValues,
+  onClick,
+  setActiveFilters,
+  filterItems,
+  filterLabel,
+}) {
+  const handleItemClick = itemValue => {
+    // Primero, llama a la función onClick existente para manejar la lógica actual
+    onClick({ ...filterValues, [filter.value]: itemValue.toLowerCase() });
+
+    // Luego, establece el filtro correspondiente en activeFilters como true
+    setActiveFilters(prevFilters => ({
+      ...prevFilters,
+      [filterItems.id]: !prevFilters,
+    }));
   };
 
   return (
@@ -11,10 +26,10 @@ export function FilterElement({ name, element, value, filterValues, onClick }) {
         <input
           className="filter-dropdown__checkbox filter-dropdown__checkbox--none"
           type="checkbox"
-          id={name}
+          id={filter.name}
         />
-        <label className="filter-dropdown__menu" htmlFor={name}>
-          <span className="filter-dropdown__title">{name}</span>
+        <label className="filter-dropdown__menu" htmlFor={filter.name}>
+          <span className="filter-dropdown__title">{filter.name}</span>
           <span className="filter-dropdown__icon filter-dropdown__icon--hidden">
             <img
               className="filter-dropdown__img"
@@ -37,17 +52,23 @@ export function FilterElement({ name, element, value, filterValues, onClick }) {
                 key="all"
                 value=""
                 onClick={() => handleItemClick("")}
-                className="filter-dropdown__list"
+                className={`filter-dropdown__list ${
+                  "" === filterLabel ? "filter-dropdown__list--select" : ""
+                }`}
               >
-                <button>Cualquier {name}</button>
+                <button>Cualquier {filter.name}</button>
               </li>
 
               {element.map((item, index) => (
                 <li
                   key={index}
-                  value={item}
+                  value={item.toLowerCase()}
                   onClick={() => handleItemClick(item)}
-                  className="filter-dropdown__list"
+                  className={`filter-dropdown__list ${
+                    item.toLowerCase() === filterLabel
+                      ? "filter-dropdown__list--select"
+                      : ""
+                  }`}
                 >
                   <button>{item}</button>
                 </li>

@@ -31,7 +31,8 @@
 }
 
 .game:hover {
-  border: 2px solid var(--quinary);
+  /* border: 2px solid var(--quaternary); */
+  background-color: var(--quaternary);
 }
 
 .game__img {
@@ -94,6 +95,10 @@
 /* *{
   outline: 1px solid red;
 } */
+
+.game:hover .game__categories p{
+  background-color: var(--secondary);
+}
 
 .game__categories p {
   /* width: 100px; */
