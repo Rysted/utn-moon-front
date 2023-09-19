@@ -1,13 +1,12 @@
+import { useState } from "react";
+import { FilterItem } from "./FliterItem/FilterItem";
 import { FilterElement } from "./FilterMovil/FilterElement";
 import { FilterOrder } from "./FilterMovil/FilterOrder";
-import { filterItems } from "./FliterItem/filterItems";
-import { FilterItem } from "./FliterItem/FilterItem";
 import { FormFilter } from "./Form/Form";
-import { useState } from "react";
+import { filterItems } from "./FliterItem/filterItems";
 import "./Filter.css";
 
 const Filters = ({ games, onFilterSubmit, filterValues }) => {
-  // const [selectedFilter, setSelectedFilter] = useState(7);
   const [activeFilters, setActiveFilters] = useState({
     [filterItems[0].id]: false,
     [filterItems[1].id]: false,
@@ -37,15 +36,6 @@ const Filters = ({ games, onFilterSubmit, filterValues }) => {
       ...prevFilters,
       [filterName]: !prevFilters[filterName],
     }));
-  };
-
-  const handleSelectedClick = (filter, filterName) => {
-    setActiveFilters(prevFilters => ({
-      ...prevFilters,
-      [filterName]: !prevFilters[filterName],
-    }));
-    // setSelectedFilter(filter);
-    // console.log(filter);
   };
 
   return (
@@ -81,13 +71,19 @@ const Filters = ({ games, onFilterSubmit, filterValues }) => {
             {filterItems[0].item.map(filter => (
               <FilterElement
                 key={filter.id}
-                name={filter.name}
+                filter={filter}
                 element={
                   filter.name === "categoria" ? uniqueGenres : uniqueDeveloper
                 }
-                value={filter.value}
+                filterItems={filterItems[0]}
                 onClick={onFilterSubmit}
                 filterValues={filterValues}
+                filterLabel={
+                  filter.name === "categoria"
+                    ? filterValues.genre
+                    : filterValues.developer
+                }
+                setActiveFilters={setActiveFilters}
               />
             ))}
           </div>
@@ -112,15 +108,12 @@ const Filters = ({ games, onFilterSubmit, filterValues }) => {
           <ul>
             {filterItems[1].item.map(filter => (
               <FilterOrder
-                filterName={filterItems[1].value}
-                hola={filterItems[1]}
-                filterValue={filter.value}
-                filterValues={filterValues}
-                key={filter.id}
                 filter={filter}
-                activeFilters={activeFilters}
-                filterElementId={filterItems[1].id}
+                key={filter.id}
+                filterValues={filterValues}
                 onFilterSubmit={onFilterSubmit}
+                filterItems={filterItems[1]}
+                activeFilters={activeFilters}
                 handleFilterClick={handleFilterClick}
               />
             ))}

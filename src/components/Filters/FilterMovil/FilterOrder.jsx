@@ -1,34 +1,31 @@
 import { useId } from "react";
 
 export function FilterOrder({
+  filterItems,
   filter,
-  // selectedFilter,
   handleFilterClick,
   onFilterSubmit,
-  filterElementId,
-  filterValue,
-  filterName,
   filterValues,
-  hola,
 }) {
+  const isSelected = filter.value === filterValues.order;
+
   const handleItemClick = () => {
     onFilterSubmit({
       ...filterValues,
-      [filterName]: filterValue,
+      [filterItems.value]: filter.value,
     });
 
-    handleFilterClick(hola);
+    handleFilterClick(filterItems.id);
   };
 
   return (
     <li
-      value={filterValue}
+      value={filter.value}
       key={useId()}
-      className="filter-order__item"
-      // className={`filter-order__item ${
-      // selectedFilter === filter.id ? "filter-order__item--select" : ""
-      // }`}
-      // onClick={() => handleSelectedClick(filterValue, filterElementId)}
+      // className="filter-order__item"
+      className={`filter-order__item ${
+        isSelected ? "filter-order__item--select" : ""
+      }`}
       onClick={handleItemClick}
     >
       <button>{filter.name}</button>

@@ -100,17 +100,3 @@ li {
     width: 90%;
   }
 }
-
-body{
-  position: relative;
-}
-
-
-.prueba{
-  background-color: blue;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 5rem;
-  bottom: 0;
-}
