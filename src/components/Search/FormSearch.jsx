@@ -86,7 +86,7 @@ export const FormSearch = ({}) => {
           )}
         </div>
       </div>
-      <Explore />
+      {/* <Explore /> */}
     </form>
   );
 };
