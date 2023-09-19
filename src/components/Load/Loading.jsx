@@ -2,7 +2,7 @@ import "./Loading.css";
 import loadingCat from "../../assets/images/load/loadingCat.png";
 import danceCat from "../../assets/images/load/danceCat.gif";
 
-const Loading = () => {
+export const Loading = () => {
   return (
     <main className="loading">
       <img
@@ -18,5 +18,3 @@ const Loading = () => {
     </main>
   );
 };
-
-export default Loading;

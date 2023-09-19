@@ -1,4 +1,4 @@
-.publicity {
+.automated__carousel {
   user-select: none;
   width: 100%;
   display: flex;
@@ -6,12 +6,11 @@
   margin-bottom: 10rem;
 }
 
-.publicity__img {
+.carousel__img {
   width: 100%;
 }
 
-/* publicity__carousel */
-.publicity__carousel--images {
+.carousel__card--container {
   display: flex;
   align-items: center;
   margin-top: 1rem;
@@ -20,7 +19,7 @@
   overflow: scroll;
 }
 
-.publicity__carousel--card {
+.carousel__card {
   display: flex;
   height: 6rem;
   gap: 1rem;
@@ -31,11 +30,11 @@
   transition: 0.3s background-color;
 }
 
-.publicity__carousel--card:hover {
+.carousel__card:hover {
   background-color: var(--quaternary);
 }
 
-.publicity__selected {
+.carousel__selected {
   background: linear-gradient(to left, var(--quinary), var(--secondary));
   background-size: 200% 100%;
   animation: 5s gradientAnimation linear;
@@ -51,7 +50,7 @@
   }
 }
 
-.publicity__carousel--title {
+.carousel__title {
   display: flex;
   align-items: center;
   font-size: 1rem;
@@ -61,7 +60,7 @@
   width: 10rem;
 }
 
-.publicity__carousel--img {
+.carousel__image {
   height: 100%;
   max-width: 8rem;
   object-fit: cover;
@@ -69,12 +68,12 @@
 }
 
 @media (min-width: 480px) {
-  .publicity {
+  .automated__carousel {
     margin-top: 2rem;
     align-items: center;
   }
 
-  .publicity__container {
+  .carousel__container {
     width: 90%;
     height: 35rem;
     border-radius: 2rem;
@@ -82,37 +81,37 @@
     margin: 0;
   }
 
-  .publicity__img {
+  .carousel__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 2rem;
   }
 
-  .publicity__carousel--images {
+  .carousel__card--container {
     width: 90%;
   }
 }
 
 @media (min-width: 768px) {
-  .publicity__container {
+  .carousel__container {
     height: 50rem;
   }
 }
 
 @media (min-width: 1200px) {
-  .publicity {
+  .automated__carousel {
     flex-direction: row;
     justify-content: center;
     gap: 1rem;
   }
 
-  .publicity__container {
+  .carousel__container {
     width: 80rem;
     height: 45rem;
   }
   /*  */
-  .publicity__carousel--images {
+  .carousel__card--container {
     overflow: hidden;
     width: max-content;
     height: 45rem;
@@ -122,16 +121,16 @@
     margin: 0;
   }
 
-  .publicity__carousel--card {
+  .carousel__card {
     height: 8rem;
   }
 
-  .publicity__carousel--img {
+  .carousel__image {
     width: 12rem;
     max-width: 12rem;
   }
 
-  .publicity__carousel--title {
+  .carousel__title {
     font-size: 1.5rem;
   }
 }

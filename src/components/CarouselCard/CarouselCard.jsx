@@ -7,17 +7,17 @@ export const CarouselCard = ({ element, currentItemIndex, selectItem }) => {
 
   return (
     <div
-      className={`publicity__carousel--card ${
-        id === currentItemIndex ? "publicity__selected" : ""
+      className={`carousel__card ${
+        id === currentItemIndex ? "carousel__selected" : ""
       }`}
       onClick={() => selectItem(id)}
     >
       <img
         src={image}
         alt="gif publicitario diablo immortal"
-        className="publicity__carousel--img"
+        className="carousel__image"
       />
-      <h3 className="publicity__carousel--title">{sliceTitle(title)}</h3>
+      <h3 className="carousel__title">{sliceTitle(title)}</h3>
     </div>
   );
 };

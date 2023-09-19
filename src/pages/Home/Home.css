@@ -10,13 +10,13 @@
 /* ! */
 .recommended {
   margin-top: 5rem;
+  user-select: none;
 }
 
 .recommended__title {
   text-align: center;
   text-transform: uppercase;
   font-size: 2.2rem;
-  pointer-events: none;
 }
 
 @media (min-width: 768px) {
