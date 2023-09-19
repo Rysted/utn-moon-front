@@ -34,6 +34,8 @@
   column-gap: 1em;
   font-weight: 200;
   width: min-content;
+  text-transform: uppercase;
+  color: var(--tertiary);
 }
 
 .details__link:hover {
@@ -275,7 +277,7 @@
 
 @media (min-width: 480px) {
   .details__img {
-    height: 20px;
+    /* height: 20px; */
     display: flex;
   }
 
