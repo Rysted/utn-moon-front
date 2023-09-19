@@ -1,0 +1,27 @@
+.loading {
+  width: 100%;
+  height: 80rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading__img {
+  width: 20rem;
+  animation: 1s infinite infiniteRotate;
+}
+
+@keyframes infiniteRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading__img--dance {
+  margin-top: 5rem;
+  filter: invert(100%);
+}
