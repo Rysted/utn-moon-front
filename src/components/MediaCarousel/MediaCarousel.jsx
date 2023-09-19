@@ -1,3 +1,15 @@
+/* 
+  Debe recibir este formato de objeto.
+
+  Importante: En caso de no querer poner link, CAMBIAR por null
+ {
+    id: 0,
+    image: "https://i.postimg.cc/m2t66mVy/diablo-Immortal.png",
+    title: "Diablo Immortal",
+    link: "1",
+  },
+*/
+
 import { useState, useEffect } from "react";
 import { CarouselCard } from "../CarouselCard/CarouselCard";
 import { Link } from "react-router-dom";
