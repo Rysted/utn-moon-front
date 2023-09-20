@@ -3,12 +3,13 @@ import { ProductsContext } from "../../context/ProductsContext";
 
 import { Product } from "../../components/ProductContainer/Product";
 import { MediaCarousel } from "../../components/MediaCarousel/MediaCarousel";
+import { Loading } from "../../components/Load/Loading";
 import "./Home.css";
 
 const Home = () => {
   //! Variables de estado para los Datos de géneros
 
-  const { products, isLoading } = useContext(ProductsContext);
+  const { products, isLoading, error } = useContext(ProductsContext);
 
   //! obtener los datos de los juegos por género
   const arrayGenres = ["Estrategia", "Aventura", "Shooter"];
@@ -52,24 +53,30 @@ const Home = () => {
     },
   ];
 
-  // console.log(isLoading ? "Loading" : "Rendering...");
+  if (isLoading) return <Loading />;
+
+  if (error) return <h2>{error}</h2>;
 
   return (
-    <main className="main right-shifted">
-      <MediaCarousel data={advertisementsa} />
-      <section className="recommended">
-        <h2 className="recommended__title">Recomendado para ti</h2>
-        <div className="products">
-          {arrayGenres.map((genre) => (
-            <Product
-              key={genre}
-              products={getGamesByGenre(genre)}
-              titleGenre={genre}
-            />
-          ))}
-        </div>
-      </section>
-    </main>
+    products && (
+      <main className="main right-shifted">
+        <section className="automated__carousel">
+          <MediaCarousel data={advertisementsa} />
+        </section>
+        <section className="recommended">
+          <h2 className="recommended__title">Recomendado para ti</h2>
+          <div className="products">
+            {arrayGenres.map((genre) => (
+              <Product
+                key={genre}
+                products={getGamesByGenre(genre)}
+                titleGenre={genre}
+              />
+            ))}
+          </div>
+        </section>
+      </main>
+    )
   );
 };
 

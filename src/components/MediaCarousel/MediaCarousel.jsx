@@ -37,13 +37,13 @@ export const MediaCarousel = ({ data }) => {
   const { link, image, title } = data[currentItemIndex];
 
   return (
-    <section className="publicity">
-      <article className="publicity__container">
-        <Link to={`/detail/${link}`} className="publicity__link">
-          <img src={image} alt={title} className="publicity__img" />
+    <>
+      <article className="carousel__container">
+        <Link to={`/detail/${link}`} className="carousel__link">
+          <img src={image} alt={title} className="carousel__img" />
         </Link>
       </article>
-      <article className="publicity__carousel--images">
+      <article className="carousel__card--container">
         {data.map((element, index) => (
           <CarouselCard
             key={index}
@@ -53,6 +53,6 @@ export const MediaCarousel = ({ data }) => {
           />
         ))}
       </article>
-    </section>
+    </>
   );
 };

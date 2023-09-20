@@ -14,6 +14,7 @@ export const ProductContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   //! Función para obtener los datos de los productos
+
   const fetchData = async () => {
     try {
       setError(null);
@@ -30,9 +31,10 @@ export const ProductContextProvider = ({ children }) => {
 
   // Efecto para inicializar el contexto
   useEffect(() => {
-    fetchData();
+    setTimeout(() => {
+      fetchData();
+    }, 1000);
   }, []);
-
   // Devolver el proveedor de contexto
   const contextValues = { products, isLoading, error };
 
