@@ -16,27 +16,31 @@ function Footer() {
           <h4 className="footer__nav-title">Moon</h4>
           <ul className="footer__nav-list">
             <li className="footer__nav-item">
-              <Link to={""} className="footer__nav-link">
+              <Link
+                to={"/NotFound"}
+                className="footer__nav-link"
+                aria-label="SobreMoon"
+              >
                 Sobre Moon
               </Link>
             </li>
             <li className="footer__nav-item">
-              <Link to={""} className="footer__nav-link">
+              <Link to={"/Shop"} className="footer__nav-link">
                 Tienda
               </Link>
             </li>
             <li className="footer__nav-item">
-              <Link to={""} className="footer__nav-link">
+              <Link to={"/NotFound"} className="footer__nav-link">
                 Bibloteca
               </Link>
             </li>
             <li className="footer__nav-item">
-              <Link to={""} className="footer__nav-link">
+              <Link to={"/NotFound"} className="footer__nav-link">
                 Ajustes
               </Link>
             </li>
             <li className="footer__nav-item">
-              <Link to={""} className="footer__nav-link">
+              <Link to={"/NotFound"} className="footer__nav-link">
                 Ayuda
               </Link>
             </li>

@@ -69,9 +69,8 @@
   .footer__content {
     border-top: 1px solid gray;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    gap: 20rem;
     padding: 5rem 0;
   }
 
@@ -82,8 +81,17 @@
   .footer__socials-list {
     margin: 0;
   }
+
+  .footer__copyright {
+    margin: 0;
+  }
 }
 
-.footer__copyright {
-  margin: 0;
+@media (min-width: 400px) {
+  .footer__nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

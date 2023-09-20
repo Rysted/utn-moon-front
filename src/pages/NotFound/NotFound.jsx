@@ -1,13 +1,17 @@
 import "./NotFound.css";
-import Logo from "../../assets/images/icons/Logo.svg";
+import Gato from "../../assets/images/notfound/gatoNotFound.png";
+import Left from "../../assets/images/icons/arrow-left.svg";
+import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
     <div className="container">
-      <button className="boton">Botonparatras</button>
-      <h1 className="texto">Error 404</h1>
-      <p className="texto">Página no encontrada</p>
-      <img src={Logo} alt="img logo" />
+      <Link to="/Home" className="container__link" aria-label="Tienda">
+        <img className="container__arrowLeft" src={Left} alt="icono de izq" />
+      </Link>
+      <h2 className="container__texto">Error 404</h2>
+      <p className="container__texto">Página no encontrada</p>
+      <img className="container__imgCat" src={Gato} alt="img logo" />
     </div>
   );
 };
