@@ -95,7 +95,7 @@ export const FormFilter = ({
               name="maxPrice"
               id="maxPrice"
               maxLength="4"
-              placeholder="5000"
+              placeholder="15000"
             />
           </div>
         </div>

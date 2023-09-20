@@ -20,7 +20,7 @@ const Shop = () => {
     developer: "",
     nameGame: "",
     genre: "",
-    maxPrice: 5000,
+    maxPrice: 15000,
     minPrice: 0,
     order: "relevant",
     publisher: "",

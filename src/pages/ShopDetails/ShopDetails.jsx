@@ -76,11 +76,17 @@ const ShopDetails = () => {
                   ))}
                 </div>
                 <div className="details__cost">
-                  <p className="details__price">
-                    ${calcPrice(newData.price, newData.offer)}{" "}
-                    <span>{newData.offer}% OFF</span>
-                  </p>
-                  <p className="details__offer">${newData.price}</p>
+                  {newData.offer > 0 ? (
+                    <>
+                      <p className="details__price">
+                        ${calcPrice(newData.price, newData.offer)}{" "}
+                        <span>{newData.offer}% OFF</span>
+                      </p>
+                      <p className="details__offer">${newData.price}</p>
+                    </>
+                  ) : (
+                    <p className="details__price">${newData.price}</p>
+                  )}
                 </div>
 
                 <div className="details__info">
