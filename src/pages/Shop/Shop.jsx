@@ -9,6 +9,7 @@ import Filters from "../../components/Filters/Filters.jsx";
 import Games from "../../components/Games/Games.jsx";
 import Paginator from "../../components/Paginator/Paginator.jsx";
 import "./Shop.css";
+import { Loading } from "../../components/Load/Loading.jsx";
 
 const Shop = () => {
   const { products, isLoading, error } = useContext(ProductsContext);
@@ -60,9 +61,7 @@ const Shop = () => {
       <main className="shop container">
         <h2>Juegos</h2>
         {isLoading ? (
-          <div>
-            <h2>Loading...</h2>
-          </div>
+          <Loading />
         ) : error ? (
           <div>
             <h2>{error}</h2>
