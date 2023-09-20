@@ -5,74 +5,55 @@
 .games {
   display: grid;
   row-gap: 1rem;
-  /* column-gap: .rem; */
   margin-left: auto;
-  /* grid-auto-flow: dense; */
-  /* overflow: auto !important; */
   overflow: hidden;
-  /* height: 400px; */
 }
-
-/* .game--empty {
-  padding-top: 2em;
-} */
 
 .game {
   padding: 1.5rem;
   display: flex;
-  /* display: grid; */
   column-gap: 5vw;
   row-gap: 1rem;
   border-radius: 10px;
   border: 2px solid transparent;
   cursor: pointer;
   min-height: 12rem;
-  /* background-color: rebeccapurple; */
 }
 
 .game:hover {
-  /* border: 2px solid var(--quaternary); */
   background-color: var(--quaternary);
 }
 
 .game__img {
   border-radius: 5px;
   width: 50%;
-  /* aspect-ratio: /2; */
   object-fit: cover;
 }
 
 .game__text {
-  /* width: 60%; */
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  /* gap: 0.6rem; */
   column-gap: 1rem;
 }
 
 .game__text h3 {
   font-size: 1.4rem;
   text-transform: uppercase;
-  /* min-height: 30px; */
-  /* background-color: rebeccapurple; */
-  /* margin-bottom: auto; */
 }
 
 .game__total {
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: var(--star-colour)
-
 }
 
 .game__offer {
   width: max-content;
   color: var(--offer-colour);
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   font-weight: var(--font-semibold);
 }
 
@@ -80,6 +61,7 @@
   font-size: 1.4rem;
   text-decoration: line-through;
   color: var(--tertiary);
+  font-style: italic;
 }
 
 .game__categories {
@@ -87,22 +69,15 @@
   opacity: 0;
   display: flex;
   flex-wrap: wrap;
-  /* width: 100%; */
   gap: 0.5rem;
   text-align: center;
 }
 
-/* *{
-  outline: 1px solid red;
-} */
-
-.game:hover .game__categories p{
+.game:hover .game__categories p {
   background-color: var(--secondary);
 }
 
 .game__categories p {
-  /* width: 100px; */
-  /* flex: 100px; */
   border-radius: 10px;
   padding: 0.3rem 0.8rem;
   background-color: var(--quaternary);
@@ -123,20 +98,12 @@
     column-gap: 2rem;
   }
 
-  .game__text {
-    /* gap: 2rem; */
-  }
-
-  .game__text h4 {
-    font-size: 1.6rem;
-  }
-
   .game__total {
-    font-size: 1.6rem;
+    padding-top: 1rem;
   }
 
   .game__offer {
-    font-size: 1.4rem;
+    font-size: 1.7rem;
   }
 
   .game__price {
@@ -145,15 +112,17 @@
 
   .game__text {
     width: 100%;
-    /* text-align: center; */
-    /* background-color: rebeccapurple; */
   }
 }
 
 /*! ------------------ */
-/*!      Query Laptop  */
+/*!    Query Laptop    */
 /*! ------------------ */
 @media (min-width: 768px) {
+  .game__img {
+    min-width: 15rem;
+    object-fit: cover;
+  }
 
   .game__prices {
     display: grid;
@@ -169,16 +138,17 @@
   .games {
     column-gap: 1rem;
     width: 76%;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .game__text {
     row-gap: 1rem;
   }
-  
+
   .game__total {
     font-size: 1.8rem;
   }
-  
+
   .game__text h4 {
     font-size: 1.8rem;
   }

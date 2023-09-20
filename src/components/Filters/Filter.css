@@ -248,15 +248,23 @@
 @media (min-width: 768px) {
  
   .filters {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
+    width: 93%;
+    padding-left: 5rem;
   }
   
   .filter-order__background,
   .filter-element__background {
     left: 5rem;
     height: 100vh;
+  }
+   
+}
+
+@media (min-width: 1200px) {
+ 
+  .filters {
+    opacity: 0;
+    position: absolute;
   }
    
 }

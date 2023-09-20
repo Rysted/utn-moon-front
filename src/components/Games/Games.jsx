@@ -15,11 +15,21 @@ export const Games = ({ games }) => {
           <div className="game__text">
             <h3>{game.title}</h3>
             <div className="game__prices">
-              <p className="game__total">
-                $ {calcPrice(game.price, game.offer)}
-                <span className="game__offer">{game.offer}%</span>
-              </p>
-              <p className="game__price">$ {game.price}</p>
+              {game.offer > 0 ? (
+                <>
+                  <p className="game__total">
+                    $ {calcPrice(game.price, game.offer)}
+                    <span className="game__offer">{game.offer}%</span>
+                  </p>
+                  <p className="game__price">$ {game.price}</p>
+                </>
+              ) : (
+                <>
+                  <p className="game__total">
+                    $ {calcPrice(game.price, game.offer)}
+                  </p>
+                </>
+              )}
             </div>
             <div className="game__categories">
               {game.genre.map((category, index) => (

@@ -73,8 +73,16 @@
   }
 }
 
+/*! ------------------ */
+/*!      Query PC      */
+/*! ------------------ */
+
+
 @media (min-width: 1200px) {
   .pagination {
-    width: 76%;
+    width: 67%;
+    position: absolute;
+    top: 64rem;
+    right: 3.5vw;
   }
 }

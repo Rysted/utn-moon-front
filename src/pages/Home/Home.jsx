@@ -14,8 +14,8 @@ const Home = () => {
   //! obtener los datos de los juegos por género
   const arrayGenres = ["Estrategia", "Aventura", "Shooter"];
 
-  const getGamesByGenre = (genre) => {
-    const gamesFilter = products.filter((game) => game.genre.includes(genre));
+  const getGamesByGenre = genre => {
+    const gamesFilter = products.filter(game => game.genre.includes(genre));
     return gamesFilter.slice(0, 3);
   };
 
@@ -31,13 +31,13 @@ const Home = () => {
       id: 1,
       image: "https://i.postimg.cc/rsz0928W/mortal-kombat-one.png",
       title: "mortal kombat 1",
-      link: null,
+      link: "20",
     },
     {
       id: 2,
       image: "https://i.postimg.cc/MT9B01Fr/egs-witchfire.png",
       title: "witchfire",
-      link: null,
+      link: "21",
     },
     {
       id: 3,
@@ -66,7 +66,7 @@ const Home = () => {
         <section className="recommended">
           <h2 className="recommended__title">Recomendado para ti</h2>
           <div className="products">
-            {arrayGenres.map((genre) => (
+            {arrayGenres.map(genre => (
               <Product
                 key={genre}
                 products={getGamesByGenre(genre)}

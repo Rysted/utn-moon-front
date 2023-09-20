@@ -3,12 +3,10 @@
 /*! ------------------ */
 
 .shop {
-  /* padding-top: 15rem; */
   width: 85%;
   font-size: 1.6rem;
   padding: 3rem 0;
   overflow: hidden;
-  /* overflow: auto !important; */
 }
 
 .shop h2 {
@@ -17,6 +15,10 @@
   font-size: 2.1rem;
   margin-bottom: 2rem;
 }
+
+/*! ------------------ */
+/*!      Query Laptop  */
+/*! ------------------ */
 
 @media (min-width: 768px) {
   .shop {
@@ -41,6 +43,11 @@
     font-size: 2.3rem;
   }
 }
+
+/*! ------------------ */
+/*!      Query PC      */
+/*! ------------------ */
+
 
 @media (min-width: 1200px) {
 

@@ -2,6 +2,7 @@ import { ProductsContext } from "../../context/ProductsContext.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 import { calcPrice } from "../../utils/shopFunctions.js";
 import { useContext } from "react";
+import { Loading } from "../../components/Load/Loading.jsx";
 import "./ShopDetails.css";
 
 const ShopDetails = () => {
@@ -40,9 +41,7 @@ const ShopDetails = () => {
   return (
     <>
       {isLoading ? (
-        <div>
-          <h2>Loading...</h2>
-        </div>
+        <Loading />
       ) : error ? (
         <div>
           <h2>ERROR</h2>
@@ -77,11 +76,17 @@ const ShopDetails = () => {
                   ))}
                 </div>
                 <div className="details__cost">
-                  <p className="details__price">
-                    ${calcPrice(newData.price, newData.offer)}{" "}
-                    <span>{newData.offer}% OFF</span>
-                  </p>
-                  <p className="details__offer">${newData.price}</p>
+                  {newData.offer > 0 ? (
+                    <>
+                      <p className="details__price">
+                        ${calcPrice(newData.price, newData.offer)}{" "}
+                        <span>{newData.offer}% OFF</span>
+                      </p>
+                      <p className="details__offer">${newData.price}</p>
+                    </>
+                  ) : (
+                    <p className="details__price">${newData.price}</p>
+                  )}
                 </div>
 
                 <div className="details__info">
