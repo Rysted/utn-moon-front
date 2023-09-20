@@ -14,8 +14,8 @@ const Home = () => {
   //! obtener los datos de los juegos por género
   const arrayGenres = ["Estrategia", "Aventura", "Shooter"];
 
-  const getGamesByGenre = genre => {
-    const gamesFilter = products.filter(game => game.genre.includes(genre));
+  const getGamesByGenre = (genre) => {
+    const gamesFilter = products.filter((game) => game.genre.includes(genre));
     return gamesFilter.slice(0, 3);
   };
 
@@ -23,33 +23,40 @@ const Home = () => {
   const advertisementsa = [
     {
       id: 0,
-      image: "https://i.postimg.cc/m2t66mVy/diablo-Immortal.png",
-      title: "Diablo Immortal",
-      link: "1",
+      url: "https://cdn.akamai.steamstatic.com/steam/clusters/frontpage/e9b255d0186270e491543872/webm_page_bg_spanish.webm",
+      title: "mortal kombat 1",
+      link: "20",
+      media: "webm",
+      poster:
+        "https://cdn.akamai.steamstatic.com/steam/clusters/frontpage/e9b255d0186270e491543872/page_bg_spanish.jpg",
     },
     {
       id: 1,
-      image: "https://i.postimg.cc/rsz0928W/mortal-kombat-one.png",
-      title: "mortal kombat 1",
-      link: "20",
+      url: "https://i.postimg.cc/m2t66mVy/diablo-Immortal.png",
+      title: "Diablo Immortal",
+      link: "1",
+      media: "avif",
     },
     {
       id: 2,
-      image: "https://i.postimg.cc/MT9B01Fr/egs-witchfire.png",
+      url: "https://i.postimg.cc/MT9B01Fr/egs-witchfire.png",
       title: "witchfire",
       link: "21",
+      media: "avif",
     },
     {
       id: 3,
-      image: "https://i.postimg.cc/CKJmM24t/overwatch-2.png",
+      url: "https://i.postimg.cc/CKJmM24t/overwatch-2.png",
       title: "Overwatch 2",
       link: "0",
+      media: "avif",
     },
     {
       id: 4,
-      image: "https://i.postimg.cc/wTqmkB5C/Halo-Infinite.png",
+      url: "https://i.postimg.cc/wTqmkB5C/Halo-Infinite.png",
       title: "Halo Infinite",
       link: "14",
+      media: "avif",
     },
   ];
 
@@ -66,7 +73,7 @@ const Home = () => {
         <section className="recommended">
           <h2 className="recommended__title">Recomendado para ti</h2>
           <div className="products">
-            {arrayGenres.map(genre => (
+            {arrayGenres.map((genre) => (
               <Product
                 key={genre}
                 products={getGamesByGenre(genre)}

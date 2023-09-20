@@ -1,7 +1,7 @@
 export const getAllProducts = async () => {
   const response = await fetch("https://api.npoint.io/3d9bd33a4a70359de8a5");
 
-  if (!response) {
+  if (!response?.ok) {
     const statusCode = response.status;
 
     switch (statusCode) {

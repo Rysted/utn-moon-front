@@ -1,12 +1,17 @@
 /* 
   Debe recibir este formato de objeto.
 
-  Importante: En caso de no querer poner link, CAMBIAR por null
  {
     id: 0,
-    image: "https://i.postimg.cc/m2t66mVy/diablo-Immortal.png",
+    url: "https://i.postimg.cc/m2t66mVy/diablo-Immortal.png",
     title: "Diablo Immortal",
-    link: "1",
+
+    link: "1", // Puede no recibir un valor 'Link'. -- En caso de no querer poner 'link'
+
+    media: "png", // acepta: Imagenes:( png, jpg, jpeg, avif, webp ) -- Videos:( webp, mp4 ) 
+
+    poster:"", // Puede no recibir un valor poster. -- En caso de recibirlo, debe ser en formato imagen
+    
   },
 */
 
@@ -34,13 +39,38 @@ export const MediaCarousel = ({ data }) => {
     return () => clearInterval(intervalId);
   }, [currentItemIndex]);
 
-  const { link, image, title } = data[currentItemIndex];
+  const {
+    link = undefined,
+    url,
+    title,
+    media,
+    poster,
+  } = data[currentItemIndex];
 
   return (
     <>
       <article className="carousel__container">
         <Link to={`/detail/${link}`} className="carousel__link">
-          <img src={image} alt={title} className="carousel__img" />
+          {media === "webm" || media === "mp4" ? (
+            <video
+              className="carousel__img"
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster={poster ? poster : ""}
+            >
+              <source src={url} type={`video/${media}`} />
+            </video>
+          ) : media === "png" ||
+            media === "jpg" ||
+            media === "jpeg" ||
+            media === "avif" ||
+            media === "webp" ? (
+            <img src={url} alt={title} className="carousel__img" />
+          ) : (
+            <p className="carousel__error">Media no válido corregir</p>
+          )}
         </Link>
       </article>
       <article className="carousel__card--container">
