@@ -1,5 +1,8 @@
 import React from "react";
 
+import arrowTop from "../../../assets/images/icons/arrow-top.svg";
+import arrowBottom from "../../../assets/images/icons/arrow-bottom.svg";
+
 export function FilterElement({
   filter,
   element,
@@ -9,12 +12,12 @@ export function FilterElement({
   filterItems,
   filterLabel,
 }) {
-  const handleItemClick = itemValue => {
+  const handleItemClick = (itemValue) => {
     // Primero, llama a la función onClick existente para manejar la lógica actual
     onClick({ ...filterValues, [filter.value]: itemValue.toLowerCase() });
 
     // Luego, establece el filtro correspondiente en activeFilters como true
-    setActiveFilters(prevFilters => ({
+    setActiveFilters((prevFilters) => ({
       ...prevFilters,
       [filterItems.id]: !prevFilters,
     }));
@@ -33,14 +36,14 @@ export function FilterElement({
           <span className="filter-dropdown__icon filter-dropdown__icon--hidden">
             <img
               className="filter-dropdown__img"
-              src="./src/assets/images/icons/arrow-top.svg"
+              src={arrowTop}
               alt="flecha hacia abajo"
             />
           </span>
           <span className="filter-dropdown__icon filter-dropdown__icon--show">
             <img
               className="filter-dropdown__img"
-              src="./src/assets/images/icons/arrow-bottom.svg"
+              src={arrowBottom}
               alt="flecha hacia abajo"
             />
           </span>
