@@ -21,13 +21,13 @@ export const FormFilter = ({
     formRef.current.order.value = filterValues.order;
   }, [filterValues.genre, filterValues.developer, filterValues.order]);
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     // Accedemos a los valores de los campos directamente desde los elementos de formulario
     const nameGame = formRef.current.nameGame.value.trim();
     const minPrice = parseFloat(formRef.current.minPrice.value) || 0;
-    const maxPrice = parseFloat(formRef.current.maxPrice.value) || 5000;
+    const maxPrice = parseFloat(formRef.current.maxPrice.value) || 15000;
     const genre = formRef.current.genre.value;
     const developer = formRef.current.developer.value;
     const publisher = formRef.current.publisher.value;
@@ -48,7 +48,7 @@ export const FormFilter = ({
     onFilterSubmit(filterValues);
   };
 
-  const renderOptions = options => {
+  const renderOptions = (options) => {
     return options.map((option, index) => (
       <option key={index} value={option.toLowerCase()}>
         {option}
