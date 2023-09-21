@@ -83,7 +83,7 @@ export const FormFilter = ({
               type="text"
               name="minPrice"
               id="minPrice"
-              maxLength="4"
+              maxLength="5"
               placeholder="0"
             />
             <div className="form__linear"></div>
@@ -94,7 +94,7 @@ export const FormFilter = ({
               type="text"
               name="maxPrice"
               id="maxPrice"
-              maxLength="4"
+              maxLength="5"
               placeholder="15000"
             />
           </div>
