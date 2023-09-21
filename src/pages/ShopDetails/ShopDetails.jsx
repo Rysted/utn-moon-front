@@ -4,29 +4,20 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ProductsContext } from "../../context/ProductsContext.jsx";
 import { calcPrice } from "../../utils/shopFunctions.js";
 import { Loading } from "../../components/Load/Loading.jsx";
-import arrowLeft from "../../assets/images/icons/arrow-left.svg";
+import Left from "../../assets/images/icons/arrow-left.svg";
 
 import "./ShopDetails.css";
 
 const ShopDetails = () => {
-  const { products, isLoading, error } = useContext(ProductsContext);
+  const { products, error } = useContext(ProductsContext);
   const pagePrev = useNavigate();
   const handlePagePrev = () => pagePrev("/shop");
   const { id } = useParams();
   const newData = products.find((objeto) => objeto.id == id);
 
-  if (!newData) {
-    return (
-      <>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod aliquid
-          quo, repellendus officia perspiciatis quam tempore exercitationem
-          quis, error cupiditate itaque dolorum maxime! Magnam facere nulla a?
-          In, voluptas expedita.
-        </p>
-      </>
-    );
-  }
+  if (!newData) return <Loading />;
+
+  if (error) return <h2>{error}</h2>;
 
   const starTotal = newData.rating;
   const starsAndNone = [];
@@ -43,13 +34,7 @@ const ShopDetails = () => {
 
   return (
     <>
-      {isLoading ? (
-        <Loading />
-      ) : error ? (
-        <div>
-          <h2>ERROR</h2>
-        </div>
-      ) : (
+      {products && (
         <div className="details container">
           <div className="details__preview">
             <button
@@ -59,7 +44,7 @@ const ShopDetails = () => {
             >
               <img
                 className="details__img"
-                src={arrowLeft}
+                src={Left}
                 alt="flecha hacia la izquierda"
               />
               <p>Tienda</p>
