@@ -1,8 +1,11 @@
-import { ProductsContext } from "../../context/ProductsContext.jsx";
-import { useNavigate, useParams } from "react-router-dom";
-import { calcPrice } from "../../utils/shopFunctions.js";
 import { useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
+import { ProductsContext } from "../../context/ProductsContext.jsx";
+import { calcPrice } from "../../utils/shopFunctions.js";
 import { Loading } from "../../components/Load/Loading.jsx";
+import arrowLeft from '"../../assets/images/icons/arrow-left.svg"';
+
 import "./ShopDetails.css";
 
 const ShopDetails = () => {
@@ -10,7 +13,7 @@ const ShopDetails = () => {
   const pagePrev = useNavigate();
   const handlePagePrev = () => pagePrev("/shop");
   const { id } = useParams();
-  const newData = products.find(objeto => objeto.id == id);
+  const newData = products.find((objeto) => objeto.id == id);
 
   if (!newData) {
     return (
@@ -56,7 +59,7 @@ const ShopDetails = () => {
             >
               <img
                 className="details__img"
-                src="/src/assets/images/icons/arrow-left.svg"
+                src={arrowLeft}
                 alt="flecha hacia la izquierda"
               />
               <p>Tienda</p>
