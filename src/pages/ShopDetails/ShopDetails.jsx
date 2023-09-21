@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ProductsContext } from "../../context/ProductsContext.jsx";
 import { calcPrice } from "../../utils/shopFunctions.js";
 import { Loading } from "../../components/Load/Loading.jsx";
-import arrowLeft from '"../../assets/images/icons/arrow-left.svg"';
+import arrowLeft from "../../assets/images/icons/arrow-left.svg";
 
 import "./ShopDetails.css";
 
