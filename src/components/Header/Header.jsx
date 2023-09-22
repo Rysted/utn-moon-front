@@ -24,8 +24,8 @@ const Header = () => {
               className="header__profile-image"
             />
             <div className="header__profile-detail">
-              <span className="header__profile-name">@sebastianszz</span>
-              <span className="header__profile-email">sebastian@gmail.com</span>
+              <span className="header__profile-name">@NickName</span>
+              <span className="header__profile-email">user@email.com</span>
             </div>
           </Link>
           <Link to="/cart" className="header__link">
