@@ -242,7 +242,7 @@
 }
 
 .details__ctas {
-  padding-top: 3.5em;
+  padding: 3.5em 0;
   display: flex;
   gap: 1em 2em;
   flex-wrap: wrap;
@@ -277,8 +277,9 @@
 
 @media (min-width: 480px) {
   .details__img {
-    /* height: 20px; */
     display: flex;
+    width: 30px;
+    height: 20px;
   }
 
   .details__content,
@@ -359,14 +360,6 @@
     padding-top: 1em;
     grid-area: 4 / 1 / 4 / 3;
   }
-}
-
-.sidebar {
-  z-index: 1;
-}
-
-.nav {
-  z-index: 2;
 }
 
 /*! ------------------ */

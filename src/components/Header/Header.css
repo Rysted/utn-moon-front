@@ -14,6 +14,7 @@
   height: 100%;
   width: 93%;
   margin: 0 auto;
+  max-width: 1200px;
 }
 
 .header__link {
@@ -155,8 +156,22 @@
 }
 
 @media (min-width: 768px) {
+  .right-shifted {
+    position: relative;
+  }
+
+  .header__wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0 0 5rem;
+  }
+
   .header__logo {
     display: none;
+  }
+
+  .header__form-label {
+    left: -10px;
   }
 
   .header__form {

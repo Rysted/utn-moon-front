@@ -105,15 +105,9 @@ input {
 /*! ------------------ */
 /*!    Query Laptop    */
 /*! ------------------ */
-
 @media (min-width: 768px) {
-  .right-shifted {
-    width: calc(100% - 5rem);
-    position: relative;
-    right: -5rem;
-  }
-
   .container {
+  max-width: 1200px;
     padding-left: 5rem;
     /* tiene un minimo de 50px de padding porque 
     el menu de navegacion tiene posion fixed*/

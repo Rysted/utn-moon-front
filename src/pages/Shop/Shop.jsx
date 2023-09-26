@@ -53,12 +53,12 @@ const Shop = () => {
 
   return (
     <>
-      <Filters
-        games={products}
-        onFilterSubmit={handleFilterSubmit}
-        filterValues={filterValues}
-      />
       <main className="shop container">
+        <Filters
+          games={products}
+          onFilterSubmit={handleFilterSubmit}
+          filterValues={filterValues}
+        />
         <h2>Juegos</h2>
         {isLoading ? (
           <Loading />

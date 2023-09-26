@@ -9,9 +9,9 @@ function Footer() {
   return (
     <footer className="footer container">
       <section className="footer__content">
-        <div className="footer__mobile-nav">
+        <Link to={"/home"} className="footer__mobile-nav">
           <img src={LogoFooter} alt="logo" className="footer__logo" />
-        </div>
+        </Link>
         <nav className="footer__nav">
           <h4 className="footer__nav-title">Moon</h4>
           <ul className="footer__nav-list">

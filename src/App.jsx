@@ -1,12 +1,12 @@
 import { ProductContextProvider } from "./context/ProductsContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ShopDetails from "./pages/ShopDetails/ShopDetails";
+import NotFound from "./pages/NotFound/NotFound";
+import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav.jsx";
 import Home from "./pages/Home/Home.jsx";
-import CheckboxGroup from "./pages/Shop/Shop.jsx";
-import Footer from "./components/Footer/Footer";
-import NotFound from "./pages/NotFound/NotFound";
+import Shop from "./pages/Shop/Shop.jsx";
 import "./App.css";
 
 export const App = () => {
@@ -18,7 +18,8 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/shop" element={<CheckboxGroup />} />
+          <Route path="/shop" element={<Shop />} />
+          {/* <Route path="/help" element={<Help />} /> */}
           <Route path="/detail/:id" element={<ShopDetails />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

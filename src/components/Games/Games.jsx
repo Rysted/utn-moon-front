@@ -11,6 +11,7 @@ export const Games = ({ games }) => {
             className="game__img"
             src={game.img}
             alt={`imagen de ${game.title}`}
+            loading="lazy"
           />
           <div className="game__text">
             <h3>{game.title}</h3>

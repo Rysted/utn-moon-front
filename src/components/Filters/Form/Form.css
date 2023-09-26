@@ -7,18 +7,20 @@
   opacity: 0;
   pointer-events: none;
   font-size: 1.6rem;
-  width: 20%;
-  left: calc(3.5vw + 5rem);
-  top: 165px;
+  width: 22%;
+  /* left: calc(5.4vw + 20%); */
+  /* left: max(1%, 9%); */
+  /* left: calc(3.5vw + 5rem); */
+  left: 5rem;
+  top: 10.5rem;
   border-radius: 5px;
   justify-items: center;
   padding: 2rem .9rem;
-  /* padding: 0 1rem; */
-  /* justify-content: center; */
   display: grid;
   gap: 1.2rem;
   background-color: var(--secondary);
   box-shadow: 2px 0px 4px 0px #00000084, -2px 0px 4px 0px #00000084;
+  /* max-width: 250px; */
 }
 
 .form__group {

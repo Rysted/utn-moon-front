@@ -27,7 +27,7 @@ export const FormFilter = ({
     // Accedemos a los valores de los campos directamente desde los elementos de formulario
     const nameGame = formRef.current.nameGame.value.trim();
     const minPrice = parseFloat(formRef.current.minPrice.value) || 0;
-    const maxPrice = parseFloat(formRef.current.maxPrice.value) || 5000;
+    const maxPrice = parseFloat(formRef.current.maxPrice.value) || 15000;
     const genre = formRef.current.genre.value;
     const developer = formRef.current.developer.value;
     const publisher = formRef.current.publisher.value;
@@ -83,7 +83,7 @@ export const FormFilter = ({
               type="text"
               name="minPrice"
               id="minPrice"
-              maxLength="4"
+              maxLength="5"
               placeholder="0"
             />
             <div className="form__linear"></div>
@@ -94,7 +94,7 @@ export const FormFilter = ({
               type="text"
               name="maxPrice"
               id="maxPrice"
-              maxLength="4"
+              maxLength="5"
               placeholder="15000"
             />
           </div>
