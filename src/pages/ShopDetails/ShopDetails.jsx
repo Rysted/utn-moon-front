@@ -4,27 +4,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ProductsContext } from "../../context/ProductsContext.jsx";
 import { calcPrice } from "../../utils/shopFunctions.js";
 import { Loading } from "../../components/Load/Loading.jsx";
-<<<<<<< HEAD
 import Left from "../../assets/images/icons/arrow-left.svg";
 
-=======
-import arrowLeft from "../../assets/images/icons/arrow-left.svg";
->>>>>>> d6483b1d3a50146f9c1306f332ac63fceaf1f974
 import "./ShopDetails.css";
-import NotFound from "../NotFound/NotFound.jsx";
 
 const ShopDetails = () => {
-  const { products, error } = useContext(ProductsContext);
+  const { products, error, isLoading } = useContext(ProductsContext);
   const pagePrev = useNavigate();
   const { id } = useParams();
-<<<<<<< HEAD
-  const newData = products.find((objeto) => objeto.id == id);
-
-  if (!newData) return <Loading />;
-
-  if (error) return <h2>{error}</h2>;
-=======
-  const newData = products.find(objeto => objeto.id === Number(id));
+  const newData = products.find((objeto) => objeto.id === Number(id));
 
   if (isLoading) {
     return <Loading />;
@@ -37,7 +25,6 @@ const ShopDetails = () => {
       </div>
     );
   }
->>>>>>> d6483b1d3a50146f9c1306f332ac63fceaf1f974
 
   const starTotal = newData.rating;
   const starsAndNone = [];
@@ -53,27 +40,6 @@ const ShopDetails = () => {
   }
 
   return (
-<<<<<<< HEAD
-    <>
-      {products && (
-        <div className="details container">
-          <div className="details__preview">
-            <button
-              className="details__link"
-              onClick={handlePagePrev}
-              aria-label="enlace de volver"
-            >
-              <img
-                className="details__img"
-                src={Left}
-                alt="flecha hacia la izquierda"
-              />
-              <p>Tienda</p>
-            </button>
-            <p className="details__icon">&#62;</p>
-            <p>{newData.title}</p>
-          </div>
-=======
     <div className="details container">
       <div className="details__preview">
         <button
@@ -83,7 +49,7 @@ const ShopDetails = () => {
         >
           <img
             className="details__img"
-            src={arrowLeft}
+            src={Left}
             alt="flecha hacia la izquierda"
           />
           <p>Tienda</p>
@@ -91,7 +57,6 @@ const ShopDetails = () => {
         <p className="details__icon">&#62;</p>
         <p>{newData.title}</p>
       </div>
->>>>>>> d6483b1d3a50146f9c1306f332ac63fceaf1f974
 
       <div className="details__content">
         <img src={newData.img} alt={`imagen de ${newData.title}`} />
