@@ -2,10 +2,12 @@
   position: relative;
   background-color: var(--primary);
   height: 5rem;
-  width: 93%;
+  /* width: 93%; */
   margin: 0 auto;
-
+  bottom: 30px;
 }
+
+
 
 .filters__container {
   position: relative;
@@ -248,8 +250,7 @@
 @media (min-width: 768px) {
  
   .filters {
-    width: 93%;
-    padding-left: 5rem;
+    /* width: 93%; */
   }
   
   .filter-order__background,
@@ -265,6 +266,7 @@
   .filters {
     opacity: 0;
     position: absolute;
+    pointer-events: none;
   }
    
 }

@@ -9,45 +9,43 @@ function Footer() {
   return (
     <footer className="footer container">
       <section className="footer__content">
-        <div className="footer__mobile-nav">
+        <Link to={"/home"} className="footer__mobile-nav">
           <img src={LogoFooter} alt="logo" className="footer__logo" />
-        </div>
-        <div className="footer__container--nav">
-          <nav className="footer__nav">
-            <h4 className="footer__nav-title">Moon</h4>
-            <ul className="footer__nav-list">
-              <li className="footer__nav-item">
-                <Link
-                  to={"/NotFound"}
-                  className="footer__nav-link"
-                  aria-label="SobreMoon"
-                >
-                  Sobre Moon
-                </Link>
-              </li>
-              <li className="footer__nav-item">
-                <Link to={"/Shop"} className="footer__nav-link">
-                  Tienda
-                </Link>
-              </li>
-              <li className="footer__nav-item">
-                <Link to={"/NotFound"} className="footer__nav-link">
-                  Bibloteca
-                </Link>
-              </li>
-              <li className="footer__nav-item">
-                <Link to={"/NotFound"} className="footer__nav-link">
-                  Ajustes
-                </Link>
-              </li>
-              <li className="footer__nav-item">
-                <Link to={"/NotFound"} className="footer__nav-link">
-                  Ayuda
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
+        </Link>
+        <nav className="footer__nav">
+          <h4 className="footer__nav-title">Moon</h4>
+          <ul className="footer__nav-list">
+            <li className="footer__nav-item">
+              <Link
+                to={"/NotFound"}
+                className="footer__nav-link"
+                aria-label="SobreMoon"
+              >
+                Sobre Moon
+              </Link>
+            </li>
+            <li className="footer__nav-item">
+              <Link to={"/Shop"} className="footer__nav-link">
+                Tienda
+              </Link>
+            </li>
+            <li className="footer__nav-item">
+              <Link to={"/NotFound"} className="footer__nav-link">
+                Bibloteca
+              </Link>
+            </li>
+            <li className="footer__nav-item">
+              <Link to={"/NotFound"} className="footer__nav-link">
+                Ajustes
+              </Link>
+            </li>
+            <li className="footer__nav-item">
+              <Link to={"/NotFound"} className="footer__nav-link">
+                Ayuda
+              </Link>
+            </li>
+          </ul>
+        </nav>
         <div className="footer__socials">
           <ul className="footer__socials-list">
             <li className="footer__socials-item">

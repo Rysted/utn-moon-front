@@ -1,17 +1,28 @@
 import "./NotFound.css";
 import Gato from "../../assets/images/notfound/gatoNotFound.png";
 import Left from "../../assets/images/icons/arrow-left.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NotFound = () => {
+  const pagePrev = useNavigate();
+  const handlePagePrev = () => pagePrev("/shop");
+
   return (
     <div className="container">
-      <Link to="/Home" className="container__link" aria-label="Tienda">
-        <img className="container__arrowLeft" src={Left} alt="icono de izq" />
-      </Link>
-      <h2 className="container__texto">Error 404</h2>
-      <p className="container__texto">Página no encontrada</p>
-      <img className="container__imgCat" src={Gato} alt="img logo" />
+      <button
+        className="error__link"
+        onClick={handlePagePrev}
+        aria-label="enlace de volver"
+      >
+        <img
+          className="error__arrowLeft"
+          src={Left}
+          alt="flecha hacia la izquierda"
+        />
+      </button>
+      <h2 className="error__title">Error 404</h2>
+      <p className="error__text">Página no encontrada</p>
+      <img className="error__imgCat" src={Gato} alt="img logo" />
     </div>
   );
 };

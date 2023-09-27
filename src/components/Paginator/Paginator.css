@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  /* max-width: 1200px; */
 }
 
 .pagination__list {
@@ -80,9 +81,10 @@
 
 @media (min-width: 1200px) {
   .pagination {
-    width: 67%;
     position: absolute;
-    top: 64rem;
-    right: 3.5vw;
+    width: 100%;
+    max-width: 875px;
+    right: 0;
+    top: 60rem;
   }
 }
