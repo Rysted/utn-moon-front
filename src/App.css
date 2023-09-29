@@ -42,7 +42,7 @@
   --quaternary: #262649;
   --quinary: #1565c0;
   --star-colour: #f3f71d;
-  --offer-colour: #be0910;
+  --offer-colour: #1565c0;
 
   --primary-contrast: #ffffff;
   --secondary-contrast: #eeeeee;
@@ -107,9 +107,13 @@ input {
 /*! ------------------ */
 @media (min-width: 768px) {
   .container {
-  max-width: 1200px;
+    max-width: 1200px;
     padding-left: 5rem;
     /* tiene un minimo de 50px de padding porque 
     el menu de navegacion tiene posion fixed*/
+  }
+
+  .right-shifted {
+    padding-left: 5rem;
   }
 }
