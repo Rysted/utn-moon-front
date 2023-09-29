@@ -9,8 +9,10 @@
 /* ! */
 /* ! */
 .recommended {
-  margin-top: 5rem;
   user-select: none;
+  width: 93%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .recommended__title {
