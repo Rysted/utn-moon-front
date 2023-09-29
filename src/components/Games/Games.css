@@ -54,7 +54,7 @@
 
 .game__offer {
   width: max-content;
-  color: var(--offer-colour);
+  color: var(--quinary);
   text-transform: uppercase;
   font-size: 1.8rem;
   font-weight: var(--font-semibold);

@@ -7,7 +7,7 @@ export const Product = ({ products, titleGenre }) => {
   };
 
   return (
-    <div className="products__grid br-right">
+    <div className="products__list border-line">
       <h3 className="products__title-genre">Juegos de {titleGenre}</h3>
       {products.map(({ id, img, title, price, offer }) => (
         <article className="product" key={id}>

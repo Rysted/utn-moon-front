@@ -60,9 +60,8 @@ const Home = () => {
   return (
     products && (
       <main className="main right-shifted">
-        <section className="automated__carousel">
-          <MediaCarousel data={advertisementsa} />
-        </section>
+        <MediaCarousel data={advertisementsa} />
+
         <section className="recommended">
           <h2 className="recommended__title">Recomendado para ti</h2>
           <div className="products">

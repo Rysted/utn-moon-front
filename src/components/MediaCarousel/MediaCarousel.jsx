@@ -37,7 +37,7 @@ export const MediaCarousel = ({ data }) => {
   const { link, image, title } = data[currentItemIndex];
 
   return (
-    <>
+    <section className="automated__carousel">
       <article className="carousel__container">
         <Link to={`/detail/${link}`} className="carousel__link">
           <img src={image} alt={title} className="carousel__img" />
@@ -53,6 +53,6 @@ export const MediaCarousel = ({ data }) => {
           />
         ))}
       </article>
-    </>
+    </section>
   );
 };
