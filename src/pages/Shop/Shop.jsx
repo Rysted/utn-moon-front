@@ -26,7 +26,7 @@ const Shop = () => {
     publisher: "",
   });
 
-  const recordsPerPage = 6;
+  const recordsPerPage = 8;
   const startIndex = (currentPage - 1) * recordsPerPage;
   const endIndex = startIndex + recordsPerPage;
   const gamesToDisplay = filterResult.slice(startIndex, endIndex);
@@ -70,7 +70,9 @@ const Shop = () => {
           <>
             {gamesToDisplay.length > 0 ? (
               <>
-                <Games games={gamesToDisplay} />
+                <div className="games">
+                  <Games games={gamesToDisplay} />
+                </div>
                 <Paginator
                   currentPage={currentPage}
                   totalPages={totalPages}

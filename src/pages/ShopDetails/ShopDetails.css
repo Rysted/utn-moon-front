@@ -53,11 +53,18 @@
   border-radius: 5px;
 }
 
-.details__offer {
+.details__text{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.details__total {
   font-size: 1.9rem;
   text-decoration: line-through;
   font-weight: var(--font-semibold);
   color: var(--tertiary);
+  font-style: italic;
 }
 
 .details__price {
@@ -67,10 +74,11 @@
   font-size: 2.4rem;
 }
 
-.details__price span {
-  font-size: 1.9rem;
-  padding-left: 10px;
-  color: var(--offer-colour);
+.details__offer{
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--quinary);
+  margin-left: 1rem;
 }
 
 .stars {

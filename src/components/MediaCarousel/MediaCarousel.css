@@ -43,16 +43,6 @@
   animation: 5s gradientAnimation linear;
 }
 
-@keyframes gradientAnimation {
-  0% {
-    background-position: 200% 0%;
-  }
-
-  100% {
-    background-position: 100% 200%;
-  }
-}
-
 .carousel__title {
   display: flex;
   align-items: center;
@@ -125,5 +115,15 @@
   .carousel__title {
     font-size: 1.5rem;
     width: 100%;
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 200% 0%;
+  }
+
+  100% {
+    background-position: 100% 200%;
   }
 }

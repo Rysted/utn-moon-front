@@ -1,18 +1,16 @@
 import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
 import { ProductsContext } from "../../context/ProductsContext.jsx";
 import { calcPrice } from "../../utils/shopFunctions.js";
 import { Loading } from "../../components/Load/Loading.jsx";
 import Left from "../../assets/images/icons/arrow-left.svg";
-
 import "./ShopDetails.css";
 
 const ShopDetails = () => {
   const { products, error, isLoading } = useContext(ProductsContext);
   const pagePrev = useNavigate();
   const { id } = useParams();
-  const newData = products.find((objeto) => objeto.id === Number(id));
+  const newData = products.find(objeto => objeto.id === Number(id));
 
   if (isLoading) {
     return <Loading />;
@@ -71,11 +69,14 @@ const ShopDetails = () => {
             <div className="details__cost">
               {newData.offer > 0 ? (
                 <>
-                  <p className="details__price">
-                    ${calcPrice(newData.price, newData.offer)}{" "}
-                    <span>{newData.offer}% OFF</span>
+                  <p className="details__text">
+                    <span className="details__price">
+                      ${calcPrice(newData.price, newData.offer)}{" "}
+                    </span>
+                    <span className="details__offer">{newData.offer}%</span>
                   </p>
-                  <p className="details__offer">${newData.price}</p>
+
+                  <p className="details__total">${newData.price}</p>
                 </>
               ) : (
                 <p className="details__price">${newData.price}</p>

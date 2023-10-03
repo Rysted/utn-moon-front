@@ -123,6 +123,12 @@
 }
 
 .btn--secondary {
+  border-color: #ecc2c5;
+  background-color: #ecc2c5;
+  color: rgb(235, 25, 25);
+}
+
+.btn--secondary:hover{
   border-color: rgb(235, 25, 25);
   background-color: rgb(235, 25, 25);
   color: #fff;

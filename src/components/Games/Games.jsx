@@ -3,8 +3,12 @@ import { Link, Outlet } from "react-router-dom";
 import "./Games.css";
 
 export const Games = ({ games }) => {
+  const sliceTitle = title => {
+    return title.length > 30 ? `${title.slice(0, 30)}...` : title;
+  };
+
   return (
-    <div className="games">
+    <>
       {games.map(game => (
         <Link to={`/detail/${game.id}`} className="game" key={game.id}>
           <img
@@ -14,12 +18,12 @@ export const Games = ({ games }) => {
             loading="lazy"
           />
           <div className="game__text">
-            <h3>{game.title}</h3>
+            <h4>{sliceTitle(game.title)}</h4>
             <div className="game__prices">
               {game.offer > 0 ? (
                 <>
                   <p className="game__total">
-                    $ {calcPrice(game.price, game.offer)}
+                    $ {calcPrice(game.price, game.offer).toFixed()}
                     <span className="game__offer">{game.offer}%</span>
                   </p>
                   <p className="game__price">$ {game.price}</p>
@@ -32,16 +36,11 @@ export const Games = ({ games }) => {
                 </>
               )}
             </div>
-            <div className="game__categories">
-              {game.genre.map((category, index) => (
-                <p key={index}>{category}</p>
-              ))}
-            </div>
           </div>
         </Link>
       ))}
       <Outlet />
-    </div>
+    </>
   );
 };
 

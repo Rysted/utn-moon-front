@@ -1,9 +1,9 @@
-import { useContext } from "react";
-import { ProductsContext } from "../../context/ProductsContext";
-
-import { Product } from "../../components/ProductContainer/Product";
 import { MediaCarousel } from "../../components/MediaCarousel/MediaCarousel";
+import { ProductsContext } from "../../context/ProductsContext";
 import { Loading } from "../../components/Load/Loading";
+import Games from "../../components/Games/Games";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
 import "./Home.css";
 
 const Home = () => {
@@ -14,8 +14,8 @@ const Home = () => {
   //! obtener los datos de los juegos por género
   const arrayGenres = ["Estrategia", "Aventura", "Shooter"];
 
-  const getGamesByGenre = (genre) => {
-    const gamesFilter = products.filter((game) => game.genre.includes(genre));
+  const getGamesByGenre = genre => {
+    const gamesFilter = products.filter(game => game.genre.includes(genre));
     return gamesFilter.slice(0, 3);
   };
 
@@ -65,12 +65,22 @@ const Home = () => {
         <section className="recommended">
           <h2 className="recommended__title">Recomendado para ti</h2>
           <div className="products">
-            {arrayGenres.map((genre) => (
-              <Product
-                key={genre}
-                products={getGamesByGenre(genre)}
-                titleGenre={genre}
-              />
+            {arrayGenres.map(genre => (
+              <div className="products__list border-line" key={genre}>
+                <h3 className="products__title-genre">{`Juegos de ${genre}`}</h3>
+                <Games
+                  className="products__item"
+                  games={getGamesByGenre(genre)}
+                />
+                <div className="product__see-more">
+                  <Link
+                    to="/genre"
+                    className="product__see-more-link adjustSize"
+                  >
+                    ver más
+                  </Link>
+                </div>
+              </div>
             ))}
           </div>
         </section>
