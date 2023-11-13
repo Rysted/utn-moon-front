@@ -9,12 +9,22 @@ export const FormSearch = ({}) => {
   const { products } = useContext(ProductsContext);
 
   //! Variables de estado para el buscador
+  const [showResults, setShowResults] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
+
+  //! Alternar Estado de resultados
+  const handleToggleResults = () => {
+    setShowResults(!showResults);
+  };
 
   //! Función para abrir la lista de productos
   const getGamesFilter = (query) => {
     setSearchQuery(query);
+
+    if (!query) {
+      return setFilteredProducts([]);
+    }
 
     // Filtrar los productos basados en la query
     const gamesFilter = products.filter((game) =>
@@ -41,6 +51,8 @@ export const FormSearch = ({}) => {
         <div className="header__form-label">
           <input
             value={searchQuery}
+            onFocus={handleToggleResults}
+            onBlur={handleToggleResults}
             onChange={(e) => getGamesFilter(e.target.value.toLowerCase())}
             type="search"
             placeholder="Buscar en la tienda"
@@ -48,17 +60,17 @@ export const FormSearch = ({}) => {
             id="search"
             className="header__form-input"
           />
-          {!searchQuery && (
+          {!showResults && (
             <img
               src={searchIcon}
               alt="Icono de búsqueda"
               className="header__form-icon"
             />
           )}
-          {searchQuery && (
-            <nav className="product-list">
-              <ul className="product-list__items">
-                {displayedProducts.map(({ id, img, title }) => (
+          <nav className="product-list">
+            <ul className="product-list__items">
+              {searchQuery &&
+                displayedProducts.map(({ id, img, title }) => (
                   <li key={id} className="product-list__item">
                     <Link
                       to={`/detail/${id}`}
@@ -66,7 +78,7 @@ export const FormSearch = ({}) => {
                       onClick={onCloseList}
                     >
                       <img
-                        src={img}
+                        src={`./images/products/${img}`}
                         alt={title}
                         className="product-list__image"
                       />
@@ -76,14 +88,15 @@ export const FormSearch = ({}) => {
                     </Link>
                   </li>
                 ))}
+              {showResults && (
                 <li className="product-list__results">
                   <span className="product-list__name">
                     Resultados: {filteredProducts.length}
                   </span>
                 </li>
-              </ul>
-            </nav>
-          )}
+              )}
+            </ul>
+          </nav>
         </div>
       </div>
       {/* <Explore /> */}

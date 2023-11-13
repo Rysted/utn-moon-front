@@ -3,8 +3,6 @@ import { Link, Outlet } from "react-router-dom";
 import "./Games.css";
 
 export const Games = ({ games }) => {
-  console.log(games);
-
   const sliceTitle = (title) => {
     return title.length > 30 ? `${title.slice(0, 30)}...` : title;
   };
