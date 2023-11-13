@@ -67,9 +67,9 @@
 
 .header__form-icon {
   position: absolute;
-  top: 50%;
+  top: 0.8rem;
   right: 0;
-  transform: translate(-30%, -50%);
+  transform: translate(-30%);
   width: 1.8rem;
   filter: var(--firter-tertiary);
 }

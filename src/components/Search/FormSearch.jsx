@@ -20,6 +20,7 @@ export const FormSearch = ({}) => {
 
   //! Función para abrir la lista de productos
   const getGamesFilter = (query) => {
+    console.log(query);
     setSearchQuery(query);
 
     if (!query) {
@@ -60,13 +61,11 @@ export const FormSearch = ({}) => {
             id="search"
             className="header__form-input"
           />
-          {!showResults && (
-            <img
-              src={searchIcon}
-              alt="Icono de búsqueda"
-              className="header__form-icon"
-            />
-          )}
+          <img
+            src={searchIcon}
+            alt="Icono de búsqueda"
+            className="header__form-icon"
+          />
           <nav className="product-list">
             <ul className="product-list__items">
               {searchQuery &&
@@ -88,7 +87,7 @@ export const FormSearch = ({}) => {
                     </Link>
                   </li>
                 ))}
-              {showResults && (
+              {(showResults || searchQuery) && (
                 <li className="product-list__results">
                   <span className="product-list__name">
                     Resultados: {filteredProducts.length}
