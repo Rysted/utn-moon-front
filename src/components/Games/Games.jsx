@@ -3,17 +3,19 @@ import { Link, Outlet } from "react-router-dom";
 import "./Games.css";
 
 export const Games = ({ games }) => {
-  const sliceTitle = title => {
+  console.log(games);
+
+  const sliceTitle = (title) => {
     return title.length > 30 ? `${title.slice(0, 30)}...` : title;
   };
 
   return (
     <>
-      {games.map(game => (
+      {games.map((game) => (
         <Link to={`/detail/${game.id}`} className="game" key={game.id}>
           <img
             className="game__img"
-            src={game.img}
+            src={`./images/products/${game.img}`}
             alt={`imagen de ${game.title}`}
             loading="lazy"
           />
