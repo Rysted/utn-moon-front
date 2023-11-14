@@ -77,7 +77,7 @@ export const FormSearch = ({}) => {
                       onClick={onCloseList}
                     >
                       <img
-                        src={`./images/products/${img}`}
+                        src={`/images/products/${img}`}
                         alt={title}
                         className="product-list__image"
                       />

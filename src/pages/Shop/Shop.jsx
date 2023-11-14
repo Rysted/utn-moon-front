@@ -6,7 +6,7 @@ import {
   calcPrice,
 } from "../../utils/shopFunctions.js";
 import Filters from "../../components/Filters/Filters.jsx";
-import Games from "../../components/Games/Games.jsx";
+import { Games } from "../../components/Game/Games.jsx";
 import Paginator from "../../components/Paginator/Paginator.jsx";
 import "./Shop.css";
 import { Loading } from "../../components/Load/Loading.jsx";
@@ -43,11 +43,11 @@ const Shop = () => {
     filterProducts();
   }, [filterProducts]);
 
-  const handleFilterSubmit = value => {
+  const handleFilterSubmit = (value) => {
     setFilterValues(value);
   };
 
-  const handlePageChange = newPage => {
+  const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
 

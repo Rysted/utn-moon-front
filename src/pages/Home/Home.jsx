@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { MediaCarousel } from "../../components/MediaCarousel/MediaCarousel";
 import { ProductsContext } from "../../context/ProductsContext";
 import { Loading } from "../../components/Load/Loading";
-import Games from "../../components/Games/Games";
+import { Games } from "../../components/Game/Games.jsx";
 
 import { advertisements } from "./advertisements.js";
 
