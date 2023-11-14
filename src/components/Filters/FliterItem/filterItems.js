@@ -6,7 +6,7 @@ export const filterItems = [
       {
         id: 2,
         name: "categoria",
-        value: "genre",
+        value: "genres",
         element: [],
       },
       {

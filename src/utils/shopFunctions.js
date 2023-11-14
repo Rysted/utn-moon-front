@@ -20,9 +20,9 @@ export function filterAndSortProducts(products, filterValues) {
           .includes(filterValues.nameGame.toLowerCase());
 
       const genreFilter =
-        !filterValues.genre ||
-        element.genre.some(g =>
-          g.toLowerCase().includes(filterValues.genre.toLowerCase())
+        !filterValues.genres ||
+        element.genres.some(g =>
+          g.toLowerCase().includes(filterValues.genres.toLowerCase())
         );
 
       const developerFilter =

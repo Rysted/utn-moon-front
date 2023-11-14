@@ -1,5 +1,3 @@
-import { useId } from "react";
-
 export function FilterOrder({
   filterItems,
   filter,
@@ -12,7 +10,7 @@ export function FilterOrder({
   const handleItemClick = () => {
     onFilterSubmit({
       ...filterValues,
-      [filterItems.value]: filter.value,
+      order: filter.value,
     });
 
     handleFilterClick(filterItems.id);
@@ -21,8 +19,7 @@ export function FilterOrder({
   return (
     <li
       value={filter.value}
-      key={useId()}
-      // className="filter-order__item"
+      key={filter.id}
       className={`filter-order__item ${
         isSelected ? "filter-order__item--select" : ""
       }`}

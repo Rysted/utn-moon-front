@@ -57,7 +57,10 @@ const ShopDetails = () => {
       </div>
 
       <div className="details__content">
-        <img src={newData.img} alt={`imagen de ${newData.title}`} />
+        <img
+          src={`../images/products/${newData.img}`}
+          alt={`imagen de ${newData.title}`}
+        />
         <div className="details__data">
           <div className="details__datas">
             <h2>{newData.title}</h2>
@@ -100,7 +103,7 @@ const ShopDetails = () => {
         <div className="details__categories">
           <h3>Categoría</h3>
           <div className="details__roles">
-            {newData.genre.map((genre, index) => (
+            {newData.genres.map((genre, index) => (
               <p key={index}>{genre}</p>
             ))}
           </div>

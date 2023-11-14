@@ -23,7 +23,7 @@ const Filters = ({ games, onFilterSubmit, filterValues }) => {
   const uniqueGenres = Array.from(
     new Set(
       games.reduce((genres, game) => {
-        game.genre.forEach((genre) => {
+        game.genres.forEach(genre => {
           genres.add(genre);
         });
         return genres;
@@ -32,25 +32,27 @@ const Filters = ({ games, onFilterSubmit, filterValues }) => {
   );
 
   const uniqueDeveloper = Array.from(
-    new Set(games.map((game) => game.developer))
+    new Set(games.map(game => game.developer))
   );
 
   const uniquePublishers = Array.from(
-    new Set(games.map((game) => game.publisher))
+    new Set(games.map(game => game.publisher))
   );
 
-  const handleFilterClick = (filterName) => {
-    setActiveFilters((prevFilters) => ({
+  const handleFilterClick = filterName => {
+    setActiveFilters(prevFilters => ({
       ...prevFilters,
       [filterName]: !prevFilters[filterName],
     }));
+
+    console.log(filterName);
   };
 
   return (
     <>
       <section className="filters">
         <div className="filters__container">
-          {filterItems.map((filter) => (
+          {filterItems.map(filter => (
             <FilterItem
               key={filter.id}
               item={filter}
@@ -59,7 +61,7 @@ const Filters = ({ games, onFilterSubmit, filterValues }) => {
               filtros={filtros}
             />
           ))}
-          {orderItems.map((filter) => (
+          {orderItems.map(filter => (
             <FilterItem
               key={filter.id}
               item={filter}
@@ -86,7 +88,7 @@ const Filters = ({ games, onFilterSubmit, filterValues }) => {
           </button>
           <h3>Filtrar por</h3>
           <div className="filter">
-            {filterItems[0].item.map((filter) => (
+            {filterItems[0].item.map(filter => (
               <FilterElement
                 key={filter.id}
                 filter={filter}
@@ -98,7 +100,7 @@ const Filters = ({ games, onFilterSubmit, filterValues }) => {
                 filterValues={filterValues}
                 filterLabel={
                   filter.name === "categoria"
-                    ? filterValues.genre
+                    ? filterValues.genres
                     : filterValues.developer
                 }
                 setActiveFilters={setActiveFilters}
@@ -124,13 +126,13 @@ const Filters = ({ games, onFilterSubmit, filterValues }) => {
           </button>
           <h3>Ordenar por</h3>
           <ul>
-            {orderItems[0].item.map((filter) => (
+            {orderItems[0].item.map(filter => (
               <FilterOrder
                 filter={filter}
                 key={filter.id}
                 filterValues={filterValues}
                 onFilterSubmit={onFilterSubmit}
-                filterItems={orderItems[1]}
+                filterItems={orderItems[0]}
                 activeFilters={activeFilters}
                 handleFilterClick={handleFilterClick}
               />

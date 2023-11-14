@@ -19,7 +19,7 @@ const Shop = () => {
   const [filterValues, setFilterValues] = useState({
     developer: "",
     nameGame: "",
-    genre: "",
+    genres: "",
     maxPrice: 15000,
     minPrice: 0,
     order: "relevant",
