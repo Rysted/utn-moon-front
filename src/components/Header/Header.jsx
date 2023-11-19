@@ -28,7 +28,7 @@ const Header = () => {
               <span className="header__profile-email">user@email.com</span>
             </div>
           </Link>
-          <Link to="/cart" className="header__link">
+          <Link to="/Cart" className="header__link">
             <img
               src={cartIcon}
               alt="Icono del carrito"
