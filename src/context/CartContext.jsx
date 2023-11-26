@@ -25,16 +25,17 @@ export function CartProvider({ children }) {
   };
   const clearCart = () => {
     setCart([]);
+    /* agregar el boton de vaciar carrito */
   };
-  const deleteGame = () => {
-    /* Hacer la logika para borrar spesifikamente el objeto q se clickea */
-    /*   setCart([]); */
+  const deleteGame = (newArray) => {
+    setCart(newArray);
   };
 
   return (
     <CartContext.Provider
       value={{
         cart,
+        setCart,
         addToCart,
         clearCart,
         deleteGame,

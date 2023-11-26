@@ -13,6 +13,15 @@ const ShopDetails = () => {
   const { id } = useParams();
   const newData = products.find((objeto) => objeto.id === Number(id));
   const { addToCart } = useContext(CartContext);
+  function asda() {
+    addToCart(newData);
+    const pepis = localStorage.getItem("cart");
+    if (pepis) {
+      const pepe = JSON.parse(pepis);
+      console.log(pepe);
+    }
+    localStorage.setItem("cart", [{ name: "matiputo" }]);
+  }
 
   if (isLoading) {
     return <Loading />;
@@ -119,7 +128,7 @@ const ShopDetails = () => {
           comprar ahora
         </a>
         <a
-          onClick={() => addToCart(newData)}
+          onClick={() => asda()}
           className="cta cta--secondary"
           href="#"
           aria-label="enlace de agregar al carrito"
