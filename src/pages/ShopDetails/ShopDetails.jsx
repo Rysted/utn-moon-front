@@ -14,13 +14,15 @@ const ShopDetails = () => {
   const newData = products.find((objeto) => objeto.id === Number(id));
   const { addToCart } = useContext(CartContext);
   function asda() {
-    addToCart(newData);
-    const pepis = localStorage.getItem("cart");
-    if (pepis) {
-      const pepe = JSON.parse(pepis);
-      console.log(pepe);
-    }
-    localStorage.setItem("cart", [{ name: "matiputo" }]);
+    const game = {
+      id: newData.id,
+      title: newData.title,
+      price: newData.price,
+      offer: newData.offer,
+      img: newData.img,
+    };
+
+    addToCart(game);
   }
 
   if (isLoading) {

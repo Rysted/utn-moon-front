@@ -4,17 +4,14 @@ import { ProductsContext } from "../../context/ProductsContext";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext.jsx";
 
-/*
-
-  if (context === undefined) {
+const jueguito = (id, img, title, price, offer) => {
+  /* if (context === undefined) {
     throw new Error("useCart must be used within a CartProvider");
   }
 
   return context;
-};
- */
+}; */
 
-const jueguito = (id, img, title, price, offer) => {
   const { deleteGame, cart } = useContext(CartContext);
   const total = calcPrice(price, offer).toFixed();
 
