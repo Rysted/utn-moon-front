@@ -12,7 +12,6 @@
 
 import { useState, useEffect } from "react";
 import { CarouselCard } from "../CarouselCard/CarouselCard";
-import { Link } from "react-router-dom";
 
 import "./MediaCarousel.css";
 
@@ -39,9 +38,7 @@ export const MediaCarousel = ({ data }) => {
   return (
     <section className="automated__carousel">
       <article className="carousel__container">
-        <Link to={`/detail/${link}`} className="carousel__link">
-          <img src={image} alt={title} className="carousel__img" />
-        </Link>
+        <img src={image} alt={title} className="carousel__img" />
       </article>
       <article className="carousel__card--container">
         {data.map((element, index) => (

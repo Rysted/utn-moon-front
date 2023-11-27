@@ -3,7 +3,6 @@
 /*! ------------------ */
 
 .details {
-  /* margin-top: 5rem; */
   font-size: 1.6rem;
 }
 
@@ -264,6 +263,8 @@
   font-weight: var(--font-semibold);
   border-radius: 10px;
   padding: 0.7em 0;
+  color: var(--primary-contrast);
+  cursor: pointer;
 }
 
 .cta--primary {
@@ -271,12 +272,30 @@
 }
 
 .cta--secondary {
+  background-color: transparent;
   border: 3px solid var(--quaternary);
+}
+
+.cta--tertiary {
+  border-color: #ecc2c5;
+  background-color: #ecc2c5;
+  color: rgb(235, 25, 25);
+}
+
+.cta--primary {
+  background-color: var(--quinary);
 }
 
 .cta--primary:hover,
 .cta--secondary:hover {
   background-color: var(--quaternary);
+}
+
+
+.cta--tertiary:hover{
+  border-color: rgb(235, 25, 25);
+  background-color: rgb(235, 25, 25);
+  color: #fff;
 }
 
 /*! ------------------ */
@@ -391,3 +410,4 @@
     font-size: 2.4rem;
   }
 }
+
