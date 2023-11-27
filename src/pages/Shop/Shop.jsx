@@ -51,11 +51,11 @@ const Shop = () => {
     filterProducts();
   }, [filterProducts]);
 
-  const handleFilterSubmit = value => {
+  const handleFilterSubmit = (value) => {
     setFilterValues(value);
   };
 
-  const handlePageChange = newPage => {
+  const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
 

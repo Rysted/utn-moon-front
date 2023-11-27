@@ -57,21 +57,3 @@ export const Games = ({ games }) => {
     </>
   );
 };
-
-/*<>
-{ { {games.map((game) => (
-  <Link to={`/detail/${game.id}`} className="game" key={game.id}>
-    <img
-      className="game__img"
-      src={`/images/products/${game.img}`}
-      alt={`imagen de ${game.title}`}
-      loading="lazy"
-    />
-    <div className="game__text">
-      <h4>{sliceTitle(game.title)}</h4>
-      <GamePrice price={game.price} offer={game.offer} />
-    </div>
-  </Link>
-))}
-<Outlet />
-</> */
