@@ -66,3 +66,74 @@ export function filterAndSortProducts(products, filterValues) {
 export function calcPages(total, recordsPerPage) {
   return Math.ceil(total / recordsPerPage);
 }
+
+export function validateValues(value1, value2, value3) {
+  if (
+    (value1 !== "" || value2 !== "" || value3 !== "") &&
+    // Verifica si hay al menos dos valuees diferentes
+    (value1 !== value2 || value1 === "") &&
+    (value1 !== value3 || value1 === "") &&
+    (value2 !== value3 || value2 === "")
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export function validateFields(regexPatterns, formData, validateField) {
+  const fieldsToValidate = [
+    "title",
+    "price",
+    "offer",
+    "stock",
+    "release_date",
+    "genres",
+    "developer",
+    "publisher",
+    "short_description",
+  ];
+
+  // Validar todos los campos
+  fieldsToValidate.forEach(field => {
+    const expression = regexPatterns[field];
+    const inputValue = { value: formData[field] };
+
+    validateField(expression, inputValue, field);
+  });
+}
+
+// export const sendData = async (url, body) => {
+//   try {
+//     toggleLoader(true);
+
+//     const response = await fetch(url, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Accept: "application/json",
+//       },
+//       body: JSON.stringify(Object.fromEntries(body)),
+//     });
+
+//     if (!response.ok) {
+//       throw new Error("La solicitud no fue exitosa.");
+//     }
+
+//     setSuccessMessageVisible(true);
+
+//     setTimeout(() => {
+//       setSuccessMessageVisible(false);
+//     }, 5000);
+
+//     setFormData({
+//       name: "",
+//       email: "",
+//       message: "",
+//     });
+//   } catch (error) {
+//     console.error("Hubo un error:", error);
+//   } finally {
+//     toggleLoader(false);
+//   }
+// };

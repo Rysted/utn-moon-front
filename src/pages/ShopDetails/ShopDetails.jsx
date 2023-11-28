@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { ShopDetailsIconsMethod } from "./ShopDetailsIconsMethod.jsx";
 import { ProductsContext } from "../../context/ProductsContext.jsx";
 import { calcPrice } from "../../utils/shopFunctions.js";
 import { Loading } from "../../components/Load/Loading.jsx";
@@ -77,6 +78,8 @@ const ShopDetails = () => {
         <div className="details__data">
           <div className="details__datas">
             <h2>{newData.title}</h2>
+            <ShopDetailsIconsMethod id={id} />
+
             <div className="stars">
               {starsAndNone.map((element, index) => (
                 <div className={element} key={index}></div>

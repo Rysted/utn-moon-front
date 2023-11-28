@@ -1,5 +1,5 @@
 export const getAllProducts = async () => {
-  const response = await fetch(`${import.meta.env.VITE_API}`);
+  const response = await fetch(`http://localhost:3000/api/games`);
 
   if (!response?.ok) {
     const statusCode = response.status;

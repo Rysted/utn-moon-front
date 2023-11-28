@@ -20,7 +20,7 @@ const Shop = () => {
     developer: "",
     nameGame: "",
     genres: "",
-    maxPrice: 15000,
+    maxPrice: 999999,
     minPrice: 0,
     order: "relevant",
     publisher: "",
@@ -32,7 +32,15 @@ const Shop = () => {
   const gamesToDisplay = filterResult.slice(startIndex, endIndex);
 
   const filterProducts = useCallback(() => {
-    const filteredProducts = filterAndSortProducts(products, filterValues);
+    const newGameObject = {
+      id: "newGame",
+      img: "add.webp",
+    };
+
+    const filteredProducts = [
+      newGameObject,
+      ...filterAndSortProducts(products, filterValues),
+    ];
 
     setCurrentPage(1);
     setTotalPages(calcPages(filteredProducts.length, recordsPerPage));
@@ -43,11 +51,11 @@ const Shop = () => {
     filterProducts();
   }, [filterProducts]);
 
-  const handleFilterSubmit = (value) => {
+  const handleFilterSubmit = value => {
     setFilterValues(value);
   };
 
-  const handlePageChange = (newPage) => {
+  const handlePageChange = newPage => {
     setCurrentPage(newPage);
   };
 

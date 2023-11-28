@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import "./Games.css";
 
 export const Games = ({ games }) => {
-  const sliceTitle = (title) => {
+  const sliceTitle = title => {
     return title.length > 30 ? `${title.slice(0, 30)}...` : title;
   };
 
@@ -34,9 +34,40 @@ export const Games = ({ games }) => {
 
   return (
     <>
+<<<<<<< HEAD
       {games.map(({ id, img, title, price, offer }, index) => (
         <Link to={`/detail/${id}`} className="game" key={index}>
           <Game id={id} img={img} title={title} price={price} offer={offer} />
+=======
+      {games.map(game => (
+        <Link
+          key={game.id}
+          to={game.id !== "newGame" ? `/detail/${game.id}` : "/create"}
+          className={game.id !== "newGame" ? `game` : "game game--color"}
+        >
+          <img
+            className="game__img"
+            src={`/images/products/${game.img}`}
+            alt={
+              game.id !== "newGame"
+                ? `imagen de ${game.title}`
+                : "imagen de crear juego"
+            }
+            loading="lazy"
+          />
+          <div className="game__text">
+            {game.id !== "newGame" ? (
+              <>
+                <h4>{sliceTitle(game.title)}</h4>
+                <GamePrice price={game.price} offer={game.offer} />
+              </>
+            ) : (
+              <>
+                <h4 className="game__title">Agregar Nuevo Juego</h4>
+              </>
+            )}
+          </div>
+>>>>>>> dev/matiaspaz
         </Link>
       ))}
       <Outlet />
