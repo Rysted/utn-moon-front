@@ -44,8 +44,6 @@ const Filters = ({ games, onFilterSubmit, filterValues }) => {
       ...prevFilters,
       [filterName]: !prevFilters[filterName],
     }));
-
-    console.log(filterName);
   };
 
   return (
