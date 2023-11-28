@@ -30,13 +30,13 @@ export default function Nav() {
             </NavLink>
           </li>
           <li className="menu__item">
-            <button href="#search" className="menu__link" aria-label="Buscar">
+            <a href="#search" className="menu__link" aria-label="Buscar">
               <img
                 className="menu__img"
                 src={searchIcon}
                 alt="icono de buscar"
               />
-            </button>
+            </a>
           </li>
           <li className="menu__item">
             <NavLink

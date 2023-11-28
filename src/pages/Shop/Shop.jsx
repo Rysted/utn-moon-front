@@ -6,7 +6,7 @@ import {
   calcPrice,
 } from "../../utils/shopFunctions.js";
 import Filters from "../../components/Filters/Filters.jsx";
-import Games from "../../components/Games/Games.jsx";
+import { Games } from "../../components/Game/Games.jsx";
 import Paginator from "../../components/Paginator/Paginator.jsx";
 import "./Shop.css";
 import { Loading } from "../../components/Load/Loading.jsx";
@@ -19,8 +19,8 @@ const Shop = () => {
   const [filterValues, setFilterValues] = useState({
     developer: "",
     nameGame: "",
-    genre: "",
-    maxPrice: 15000,
+    genres: "",
+    maxPrice: 999999,
     minPrice: 0,
     order: "relevant",
     publisher: "",
@@ -32,7 +32,15 @@ const Shop = () => {
   const gamesToDisplay = filterResult.slice(startIndex, endIndex);
 
   const filterProducts = useCallback(() => {
-    const filteredProducts = filterAndSortProducts(products, filterValues);
+    const newGameObject = {
+      id: "newGame",
+      img: "add.webp",
+    };
+
+    const filteredProducts = [
+      newGameObject,
+      ...filterAndSortProducts(products, filterValues),
+    ];
 
     setCurrentPage(1);
     setTotalPages(calcPages(filteredProducts.length, recordsPerPage));

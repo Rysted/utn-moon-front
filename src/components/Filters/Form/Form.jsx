@@ -12,23 +12,23 @@ export const FormFilter = ({
 
   useEffect(() => {
     // Actualiza el valor seleccionado del campo "Género" cuando filterValues.genre cambie
-    formRef.current.genre.value = filterValues.genre;
+    formRef.current.genres.value = filterValues.genres;
 
     // Actualiza el valor seleccionado del campo "Desarrollador" cuando filterValues.developer cambie
     formRef.current.developer.value = filterValues.developer;
 
     // Actualiza el valor seleccionado del campo "Ordenar por" cuando filterValues.order cambie
     formRef.current.order.value = filterValues.order;
-  }, [filterValues.genre, filterValues.developer, filterValues.order]);
+  }, [filterValues.genres, filterValues.developer, filterValues.order]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
 
     // Accedemos a los valores de los campos directamente desde los elementos de formulario
     const nameGame = formRef.current.nameGame.value.trim();
     const minPrice = parseFloat(formRef.current.minPrice.value) || 0;
-    const maxPrice = parseFloat(formRef.current.maxPrice.value) || 15000;
-    const genre = formRef.current.genre.value;
+    const maxPrice = parseFloat(formRef.current.maxPrice.value) || 999999;
+    const genres = formRef.current.genres.value;
     const developer = formRef.current.developer.value;
     const publisher = formRef.current.publisher.value;
     const order = formRef.current.order.value;
@@ -38,7 +38,7 @@ export const FormFilter = ({
       nameGame,
       minPrice,
       maxPrice,
-      genre,
+      genres,
       developer,
       publisher,
       order,
@@ -48,7 +48,7 @@ export const FormFilter = ({
     onFilterSubmit(filterValues);
   };
 
-  const renderOptions = (options) => {
+  const renderOptions = options => {
     return options.map((option, index) => (
       <option key={index} value={option.toLowerCase()}>
         {option}
@@ -68,8 +68,8 @@ export const FormFilter = ({
         />
       </div>
       <div className="form__group">
-        <label htmlFor="genre">Género</label>
-        <select name="genre" id="genre">
+        <label htmlFor="genres">Género</label>
+        <select name="genres" id="genres">
           <option value="">Todos</option>
           {renderOptions(genres)}
         </select>
@@ -83,7 +83,7 @@ export const FormFilter = ({
               type="text"
               name="minPrice"
               id="minPrice"
-              maxLength="5"
+              maxLength="6"
               placeholder="0"
             />
             <div className="form__linear"></div>
@@ -94,8 +94,8 @@ export const FormFilter = ({
               type="text"
               name="maxPrice"
               id="maxPrice"
-              maxLength="5"
-              placeholder="15000"
+              maxLength="6"
+              placeholder="999999"
             />
           </div>
         </div>

@@ -14,7 +14,7 @@ export const CarouselCard = ({ element, currentItemIndex, selectItem }) => {
     >
       <img
         src={image}
-        alt="gif publicitario diablo immortal"
+        alt={`gif publicitario ${sliceTitle(title)}`}
         className="carousel__image"
       />
       <h3 className="carousel__title">{sliceTitle(title)}</h3>

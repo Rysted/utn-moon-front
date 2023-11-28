@@ -12,12 +12,12 @@ export function FilterElement({
   filterItems,
   filterLabel,
 }) {
-  const handleItemClick = (itemValue) => {
+  const handleItemClick = itemValue => {
     // Primero, llama a la función onClick existente para manejar la lógica actual
     onClick({ ...filterValues, [filter.value]: itemValue.toLowerCase() });
 
     // Luego, establece el filtro correspondiente en activeFilters como true
-    setActiveFilters((prevFilters) => ({
+    setActiveFilters(prevFilters => ({
       ...prevFilters,
       [filterItems.id]: !prevFilters,
     }));
