@@ -1,11 +1,11 @@
-const ImageUpload = ({ img, handleImageChange }) => {
+const ImageUpload = ({ img, imgView, handleImageChange }) => {
   return (
     <div className="edition__content-img">
       <div className="content-img">
         <img
-          src={img || "/images/products/default.webp"}
+          src={imgView || "http://localhost:3000/default.webp"}
           alt="imagen de nuevo juego"
-          className="details__img"
+          className="edition__img"
         />
         <input
           className="edition__form-input--none"

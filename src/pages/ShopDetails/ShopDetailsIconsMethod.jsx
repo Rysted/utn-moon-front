@@ -1,15 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Eliminate from "../../assets/images/icons/eliminate.svg";
 import Change from "../../assets/images/icons/change.svg";
 import { useState } from "react";
 
 export const ShopDetailsIconsMethod = ({ id }) => {
-  const [showAlert, setShowAlert] = useState(false);
+  const navigate = useNavigate();
 
-  console.log(id);
+  const [showAlert, setShowAlert] = useState(false);
+  const [showError, setErrorAlert] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [deleteGame, setDeleteGame] = useState(false);
 
   const handleEliminateClick = () => {
-    // Aquí puedes realizar acciones adicionales antes de mostrar la alerta si es necesario
     setShowAlert(true);
   };
 
@@ -17,7 +19,37 @@ export const ShopDetailsIconsMethod = ({ id }) => {
     setShowAlert(false);
   };
 
-  const handleAcceptClick = () => {
+  const handleAcceptClick = async () => {
+    try {
+      if (
+        showSuccess === false &&
+        showError === false &&
+        deleteGame === false
+      ) {
+        const response = await fetch(`http://localhost:3000/api/games/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (response.ok) {
+          setDeleteGame(true);
+          setShowSuccess(true);
+          setTimeout(() => {
+            setShowSuccess(false);
+            navigate(-1); // This is equivalent to goBack()
+          }, 5000);
+        } else {
+          setErrorAlert(true);
+          setTimeout(() => {
+            setErrorAlert(false);
+          }, 5000);
+        }
+      }
+    } catch (error) {
+      console.error("Error de red al eliminar el juego", error);
+    }
     setShowAlert(false);
   };
 
@@ -35,6 +67,21 @@ export const ShopDetailsIconsMethod = ({ id }) => {
           <img src={Eliminate} alt="Icono para eliminar juego" />
         </button>
       </div>
+      <p
+        className={`details-form__alert details-form__alert--error ${
+          showError === true ? "details-form__alert--opacity" : ""
+        } `}
+      >
+        Eliminación del juego fallida
+      </p>
+
+      <p
+        className={`details-form__alert details-form__alert--success ${
+          showSuccess === true ? "details-form__alert--opacity" : ""
+        }`}
+      >
+        Juego eliminado, recarga la página después de 5 segundos.
+      </p>
 
       <div
         className={`details__alert-content ${
@@ -55,7 +102,6 @@ export const ShopDetailsIconsMethod = ({ id }) => {
           </div>
         </div>
       </div>
-      {/* )} */}
     </>
   );
 };

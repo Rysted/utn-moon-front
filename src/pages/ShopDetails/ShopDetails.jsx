@@ -59,7 +59,8 @@ const ShopDetails = () => {
 
       <div className="details__content">
         <img
-          src={`../images/products/${newData.img}`}
+          className="details__main-img"
+          src={`${newData.img}`}
           alt={`imagen de ${newData.title}`}
         />
         <div className="details__data">

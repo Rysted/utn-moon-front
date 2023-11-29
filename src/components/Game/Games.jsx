@@ -31,7 +31,7 @@ export const Games = ({ games }) => {
         >
           <img
             className="game__img"
-            src={`/images/products/${game.img}`}
+            src={`${game.img}`}
             alt={
               game.id !== "newGame"
                 ? `imagen de ${game.title}`
