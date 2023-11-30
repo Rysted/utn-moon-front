@@ -27,7 +27,7 @@ const Edition = () => {
   const [descriptionValid, setDescriptionValid] = useState(true);
   const [formError, setFormError] = useState(true);
   const [formSuccess, setFormSuccess] = useState(false);
-  const [formTime, setFormTime] = useState(true);
+  const [formTime, setFormTime] = useState(false);
   // const [loaderVisible, setLoaderVisible] = useState(false);
   // const [successMessageVisible, setSuccessMessageVisible] = useState(false);
   // const [errorMessageVisible, setErrorMessageVisible] = useState(false);
@@ -55,7 +55,8 @@ const Edition = () => {
       reader.onloadend = () => {
         setFormData(prevState => ({
           ...prevState,
-          img: reader.result,
+          img: file,
+          imgView: reader.result,
         }));
       };
       reader.readAsDataURL(file);
@@ -64,21 +65,20 @@ const Edition = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    validateFields(regexPatterns, formData, validateField);
 
-    if (formTime) {
-      validateFields(regexPatterns, formData, validateField);
-
-      if (
-        titleValid &&
-        priceValid &&
-        offerValid &&
-        stockValid &&
-        dateValid &&
-        genresValid &&
-        developerValid &&
-        publisherValid &&
-        descriptionValid
-      ) {
+    if (
+      titleValid &&
+      priceValid &&
+      offerValid &&
+      stockValid &&
+      dateValid &&
+      genresValid &&
+      developerValid &&
+      publisherValid &&
+      descriptionValid & formTime
+    ) {
+      if (formTime) {
         const formDataToSend = new FormData();
 
         // Append genres as an array, removing empty strings
@@ -94,7 +94,7 @@ const Edition = () => {
             (genre, index, array) =>
               genre !== null && array.indexOf(genre) === index
           ),
-          img: "",
+          img: formData.img,
           title: formData.title,
           price: formData.price,
           offer: formData.offer,
@@ -128,7 +128,6 @@ const Edition = () => {
 
         setFormTime(false);
         try {
-          // Enviar la solicitud a http://localhost:3000
           const response = await fetch("http://localhost:3000/api/games", {
             method: "POST",
             body: formDataToSend,
@@ -164,6 +163,8 @@ const Edition = () => {
           setFormTime(true);
         }, 5000);
       }
+    } else {
+      setFormTime(true);
     }
   };
 

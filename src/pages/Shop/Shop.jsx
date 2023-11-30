@@ -35,7 +35,7 @@ const Shop = () => {
   const filterProducts = useCallback(() => {
     const newGameObject = {
       id: "newGame",
-      img: "add.webp",
+      img: "http://localhost:3000/add.webp",
     };
 
     const filteredProducts = [

@@ -23,9 +23,13 @@ const EditionForm = ({
   formSuccess,
 }) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} encType="multipart/form-data">
       <div className="edition__content">
-        <ImageUpload img={formData.img} handleImageChange={handleImageChange} />
+        <ImageUpload
+          img={formData.img}
+          imgView={formData.imgView}
+          handleImageChange={handleImageChange}
+        />
 
         <EditionDetails
           formData={formData}

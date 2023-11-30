@@ -58,6 +58,7 @@ export const regexPatterns = {
 
 export const initialFormData = {
   img: "",
+  imgView: "",
   title: "",
   price: "",
   offer: "",
