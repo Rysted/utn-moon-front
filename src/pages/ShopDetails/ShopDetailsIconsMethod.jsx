@@ -3,7 +3,7 @@ import Eliminate from "../../assets/images/icons/eliminate.svg";
 import Change from "../../assets/images/icons/change.svg";
 import { useState } from "react";
 
-export const ShopDetailsIconsMethod = ({ id }) => {
+export const ShopDetailsIconsMethod = ({ id, setData }) => {
   const navigate = useNavigate();
 
   const [showAlert, setShowAlert] = useState(false);
@@ -26,12 +26,15 @@ export const ShopDetailsIconsMethod = ({ id }) => {
         showError === false &&
         deleteGame === false
       ) {
-        const response = await fetch(`http://localhost:3000/api/games/${id}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          `${import.meta.env.VITE_API}/api/games/${id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         if (response.ok) {
           setDeleteGame(true);

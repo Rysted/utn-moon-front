@@ -47,13 +47,13 @@ const Edition = () => {
     );
   }
 
-  const handleImageChange = e => {
+  const handleImageChange = (e) => {
     const file = e.target.files[0];
 
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setFormData(prevState => ({
+        setFormData((prevState) => ({
           ...prevState,
           img: file,
           imgView: reader.result,
@@ -63,7 +63,7 @@ const Edition = () => {
     }
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     validateFields(regexPatterns, formData, validateField);
 
@@ -128,10 +128,13 @@ const Edition = () => {
 
         setFormTime(false);
         try {
-          const response = await fetch("http://localhost:3000/api/games", {
-            method: "POST",
-            body: formDataToSend,
-          });
+          const response = await fetch(
+            `${import.meta.env.VITE_API}/api/games`,
+            {
+              method: "POST",
+              body: formDataToSend,
+            }
+          );
 
           if (response.ok) {
             // La solicitud fue exitosa

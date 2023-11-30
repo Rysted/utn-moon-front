@@ -3,7 +3,7 @@ const ImageUpload = ({ img, imgView, handleImageChange }) => {
     <div className="edition__content-img">
       <div className="content-img">
         <img
-          src={imgView || "http://localhost:3000/default.webp"}
+          src={imgView || `${import.meta.env.VITE_API}/images/default.webp`}
           alt="imagen de nuevo juego"
           className="edition__img"
         />

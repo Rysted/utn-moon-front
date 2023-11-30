@@ -30,12 +30,11 @@ const Shop = () => {
   const startIndex = (currentPage - 1) * recordsPerPage;
   const endIndex = startIndex + recordsPerPage;
   const gamesToDisplay = filterResult.slice(startIndex, endIndex);
-  console.log(gamesToDisplay);
 
   const filterProducts = useCallback(() => {
     const newGameObject = {
       id: "newGame",
-      img: "http://localhost:3000/add.webp",
+      img: "add.webp",
     };
 
     const filteredProducts = [

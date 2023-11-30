@@ -29,12 +29,22 @@ export const ProductContextProvider = ({ children }) => {
     }
   };
 
+  /*   const setData = async (id) => {
+    try {
+      setProducts((prevData) =>
+        prevData.filter((product) => product.id !== Number(id))
+      );
+    } catch (error) {
+      console.error(error);
+      setError(error.message);
+    }
+  }; */
+
   // Efecto para inicializar el contexto
   useEffect(() => {
-    setTimeout(() => {
-      fetchData();
-    }, 1000);
+    fetchData();
   }, []);
+
   // Devolver el proveedor de contexto
   const contextValues = { products, isLoading, error };
 
