@@ -35,6 +35,7 @@
   right: 10px;
   cursor: pointer;
 }
+
 .cart__paper:hover {
   filter: var(--firter-secondary);
 }
