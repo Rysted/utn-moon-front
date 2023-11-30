@@ -61,7 +61,7 @@ Los diseños fueron creados con los siguientes anchos:
 
 ## Autores
 
-- [SeezDev](https://github.com/SeezDev)
+- [Rysted](https://github.com/Rysted)
 - [Matias-Paz](https://github.com/Matias-Paz)
 - [Mikpiciosa](https://github.com/Mikpiciosa)
 

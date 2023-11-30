@@ -7,22 +7,38 @@ export const Games = ({ games }) => {
     return title.length > 30 ? `${title.slice(0, 30)}...` : title;
   };
 
-  const GamePrice = ({ price, offer }) => {
+  const Game = ({ id, img, title, price, offer }) => {
     const total = calcPrice(price, offer).toFixed();
 
     return (
-      <div className="game__prices">
-        <p className="game__total">
-          $ {total}
-          {offer > 0 && <span className="game__offer">{offer}%</span>}
-        </p>
-        {offer > 0 && <p className="game__price">$ {price}</p>}
-      </div>
+      <>
+        <img
+          className="game__img"
+          src={`/images/products/${img}`}
+          alt={`imagen de ${title}`}
+          loading="lazy"
+        />
+        <div className="game__text">
+          <h4>{sliceTitle(title)}</h4>
+          <div className="game__prices">
+            <p className="game__total">
+              $ {total}
+              {offer > 0 && <span className="game__offer">{offer}%</span>}
+            </p>
+            {offer > 0 && <p className="game__price">$ {price}</p>}
+          </div>
+        </div>
+      </>
     );
   };
 
   return (
     <>
+<<<<<<< HEAD
+      {games.map(({ id, img, title, price, offer }, index) => (
+        <Link to={`/detail/${id}`} className="game" key={index}>
+          <Game id={id} img={img} title={title} price={price} offer={offer} />
+=======
       {games.map(game => (
         <Link
           key={game.id}
@@ -51,6 +67,7 @@ export const Games = ({ games }) => {
               </>
             )}
           </div>
+>>>>>>> dev/matiaspaz
         </Link>
       ))}
       <Outlet />

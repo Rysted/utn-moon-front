@@ -4,6 +4,7 @@ import { ShopDetailsIconsMethod } from "./ShopDetailsIconsMethod.jsx";
 import { ProductsContext } from "../../context/ProductsContext.jsx";
 import { calcPrice } from "../../utils/shopFunctions.js";
 import { Loading } from "../../components/Load/Loading.jsx";
+import { CartContext, CartProvider } from "../../context/CartContext.jsx";
 import Left from "../../assets/images/icons/arrow-left.svg";
 import "./ShopDetails.css";
 
@@ -11,7 +12,19 @@ const ShopDetails = () => {
   const { products, error, isLoading } = useContext(ProductsContext);
   const pagePrev = useNavigate();
   const { id } = useParams();
-  const newData = products.find(objeto => objeto.id === Number(id));
+  const newData = products.find((objeto) => objeto.id === Number(id));
+  const { addToCart } = useContext(CartContext);
+  function asda() {
+    const game = {
+      id: newData.id,
+      title: newData.title,
+      price: newData.price,
+      offer: newData.offer,
+      img: newData.img,
+    };
+
+    addToCart(game);
+  }
 
   if (isLoading) {
     return <Loading />;
@@ -121,6 +134,7 @@ const ShopDetails = () => {
           comprar ahora
         </a>
         <a
+          onClick={() => asda()}
           className="cta cta--secondary"
           href="#"
           aria-label="enlace de agregar al carrito"
