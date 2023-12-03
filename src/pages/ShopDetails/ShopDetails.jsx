@@ -14,8 +14,8 @@ const ShopDetails = () => {
   const { id } = useParams();
   const newData = products.find((objeto) => objeto.id === Number(id));
   const { addToCart } = useContext(CartContext);
-  function asda() {
-    const game = {
+  function addProduct() {
+    const product = {
       id: newData.id,
       title: newData.title,
       price: newData.price,
@@ -23,7 +23,7 @@ const ShopDetails = () => {
       img: newData.img,
     };
 
-    addToCart(game);
+    addToCart(product);
   }
 
   if (isLoading) {
@@ -134,7 +134,7 @@ const ShopDetails = () => {
           comprar ahora
         </a>
         <a
-          onClick={() => asda()}
+          onClick={() => addProduct()}
           className="cta cta--secondary"
           href="#"
           aria-label="enlace de agregar al carrito"
