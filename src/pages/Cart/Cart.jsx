@@ -10,6 +10,7 @@ export const Cart = () => {
     cart: cartItems,
     removeFromCart,
     clearCart,
+    addToCart,
   } = useContext(CartContext);
   const deleteOne = (id) => removeFromCart(id);
   const pagePrev = useNavigate();
@@ -23,6 +24,18 @@ export const Cart = () => {
 
     return total;
   };
+
+  function addProduct(game) {
+    const product = {
+      id: game.id,
+      title: game.title,
+      price: game.price,
+      offer: game.offer,
+      img: game.img,
+    };
+
+    addToCart(product);
+  }
 
   return (
     <main>
@@ -47,7 +60,12 @@ export const Cart = () => {
         <section className="cart__cont">
           <article className="cart__art">
             {cartItems.map((cartItem, index) => (
-              <Card key={index} game={cartItem} deleteOne={deleteOne} />
+              <Card
+                key={index}
+                game={cartItem}
+                deleteOne={deleteOne}
+                addProduct={addProduct}
+              />
             ))}
           </article>
 
