@@ -28,14 +28,6 @@ export const Card = ({ game, deleteOne, addProduct }) => {
               </p>
               {offer > 0 && <p className="cart__price">$ {price}</p>}
             </div>
-            {/* <button className="cart__paper" onClick={() => deleteOne(id)}>
-              <img
-                className="cart__img--paper"
-                src={Paper}
-                alt="icono de eliminar"
-              />
-            </button> */}
-            {/* me falta agregar la kuantiti */}
             <div className="cart__kuan">
               Cantidad:{" "}
               <a onClick={() => deleteOne(id)} className="btn__quan">
