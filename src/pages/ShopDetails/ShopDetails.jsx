@@ -9,7 +9,7 @@ import Left from "../../assets/images/icons/arrow-left.svg";
 import "./ShopDetails.css";
 
 const ShopDetails = () => {
-  const { products, error, isLoading, setData } = useContext(ProductsContext);
+  const { products, error, isLoading } = useContext(ProductsContext);
   const pagePrev = useNavigate();
   const { id } = useParams();
   const newData = products.find((objeto) => objeto.id === Number(id));
@@ -79,7 +79,7 @@ const ShopDetails = () => {
         <div className="details__data">
           <div className="details__datas">
             <h2>{newData.title}</h2>
-            <ShopDetailsIconsMethod id={id} setData={setData} />
+            <ShopDetailsIconsMethod id={id} />
 
             <div className="stars">
               {starsAndNone.map((element, index) => (

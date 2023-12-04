@@ -3,7 +3,7 @@ import Gato from "../../assets/images/notfound/gatoNotFound.png";
 import Left from "../../assets/images/icons/arrow-left.svg";
 import { Link, useNavigate } from "react-router-dom";
 
-const NotFound = () => {
+const NotFound = ({ message }) => {
   const pagePrev = useNavigate();
   const handlePagePrev = () => pagePrev("/shop");
 
@@ -21,7 +21,7 @@ const NotFound = () => {
         />
       </button>
       <h2 className="error__title">Error 404</h2>
-      <p className="error__text">Página no encontrada</p>
+      <p className="error__text">{message || "Página no encontrada"}</p>
       <img className="error__imgCat" src={Gato} alt="img logo" />
     </div>
   );

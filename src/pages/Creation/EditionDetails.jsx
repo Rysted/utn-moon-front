@@ -34,8 +34,8 @@ const EditionDetails = ({
               minLength="1"
               maxLength="255"
               value={formData.title}
-              onChange={event => handleInputChange(event, "title")}
-              onBlur={event => handleBlur(event, "title")}
+              onChange={(event) => handleInputChange(event, "title")}
+              onBlur={(event) => handleBlur(event, "title")}
             />
             {!titleValid && (
               <p className="edition__form-paragraph edition__form-paragraph--error">
@@ -60,8 +60,8 @@ const EditionDetails = ({
               minLength="1"
               maxLength="6"
               value={formData.price}
-              onChange={event => handleInputChange(event, "price")}
-              onBlur={event => handleBlur(event, "price")}
+              onChange={(event) => handleInputChange(event, "price")}
+              onBlur={(event) => handleBlur(event, "price")}
             />
             {!priceValid && (
               <p className="edition__form-paragraph edition__form-paragraph--error">
@@ -87,8 +87,8 @@ const EditionDetails = ({
                 placeholder="Oferta del juego"
                 maxLength="3"
                 value={formData.offer}
-                onChange={event => handleInputChange(event, "offer")}
-                onBlur={event => handleBlur(event, "offer")}
+                onChange={(event) => handleInputChange(event, "offer")}
+                onBlur={(event) => handleBlur(event, "offer")}
               />
               {!offerValid && (
                 <p className="edition__form-paragraph edition__form-paragraph--error">
@@ -113,8 +113,8 @@ const EditionDetails = ({
                 placeholder="Stock del juego"
                 maxLength="3"
                 value={formData.stock}
-                onChange={event => handleInputChange(event, "stock")}
-                onBlur={event => handleBlur(event, "stock")}
+                onChange={(event) => handleInputChange(event, "stock")}
+                onBlur={(event) => handleBlur(event, "stock")}
               />
               {!stockValid && (
                 <p className="edition__form-paragraph edition__form-paragraph--error">
@@ -139,8 +139,8 @@ const EditionDetails = ({
               className="edition__form-input"
               placeholder="aaaa/mm/dd"
               value={formData.release_date}
-              onChange={event => handleInputChange(event, "release_date")}
-              onBlur={event => handleBlur(event, "release_date")}
+              onChange={(event) => handleInputChange(event, "release_date")}
+              onBlur={(event) => handleBlur(event, "release_date")}
             />
             {!dateValid && (
               <p className="edition__form-paragraph edition__form-paragraph--error">
@@ -167,11 +167,11 @@ const EditionDetails = ({
                 id="gameGenres1"
                 className="edition__form-input edition__form-input--padding"
                 value={formData.genre1}
-                onChange={event => handleInputChange(event, "genre1")}
-                onBlur={event => handleBlur(event, "genres")}
+                onChange={(event) => handleInputChange(event, "genre1")}
+                onBlur={(event) => handleBlur(event, "genres")}
               >
                 <option value="">Seleccionar</option>
-                {genresData.map(genre => (
+                {genresData.map((genre) => (
                   <option key={genre.id} value={genre.id}>
                     {genre.name}
                   </option>
@@ -187,11 +187,11 @@ const EditionDetails = ({
                 id="gameGenres2"
                 className="edition__form-input edition__form-input--padding"
                 value={formData.genre2}
-                onChange={event => handleInputChange(event, "genre2")}
-                onBlur={event => handleBlur(event, "genres")}
+                onChange={(event) => handleInputChange(event, "genre2")}
+                onBlur={(event) => handleBlur(event, "genres")}
               >
                 <option value="">Seleccionar</option>
-                {genresData.map(genre => (
+                {genresData.map((genre) => (
                   <option key={genre.id} value={genre.id}>
                     {genre.name}
                   </option>
@@ -207,11 +207,11 @@ const EditionDetails = ({
                 id="gameGenres3"
                 className="edition__form-input edition__form-input--padding"
                 value={formData.genre3}
-                onChange={event => handleInputChange(event, "genre3")}
-                onBlur={event => handleBlur(event, "genres")}
+                onChange={(event) => handleInputChange(event, "genre3")}
+                onBlur={(event) => handleBlur(event, "genres")}
               >
                 <option value="">Seleccionar</option>
-                {genresData.map(genre => (
+                {genresData.map((genre) => (
                   <option key={genre.id} value={genre.id}>
                     {genre.name}
                   </option>
@@ -239,11 +239,11 @@ const EditionDetails = ({
               name="publisher"
               id="publisher"
               value={formData.publisher}
-              onChange={event => handleInputChange(event, "publisher")}
-              onBlur={event => handleBlur(event, "publisher")}
+              onChange={(event) => handleInputChange(event, "publisher")}
+              onBlur={(event) => handleBlur(event, "publisher")}
             >
               <option value="">Seleccionar</option>
-              {companyData.map(publisher => (
+              {companyData.map((publisher) => (
                 <option key={`publisher-${publisher.id}`} value={publisher.id}>
                   {publisher.name}
                 </option>
@@ -268,11 +268,11 @@ const EditionDetails = ({
               name="developer"
               id="developer"
               value={formData.developer}
-              onChange={event => handleInputChange(event, "developer")}
-              onBlur={event => handleBlur(event, "developer")}
+              onChange={(event) => handleInputChange(event, "developer")}
+              onBlur={(event) => handleBlur(event, "developer")}
             >
               <option value="">Seleccionar</option>
-              {companyData.map(developer => (
+              {companyData.map((developer) => (
                 <option key={`developer-${developer.id}`} value={developer.id}>
                   {developer.name}
                 </option>
