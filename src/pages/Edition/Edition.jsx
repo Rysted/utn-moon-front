@@ -204,8 +204,6 @@ const Edition = () => {
 
       const dataResponse = await response.json();
 
-      console.log(dataResponse);
-
       if (response.ok) {
         alert("Juego editado correctamente");
         // Redireccionar a la página de inicio
