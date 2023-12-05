@@ -62,6 +62,10 @@ export function calcPages(total, recordsPerPage) {
   return Math.ceil(total / recordsPerPage);
 }
 
+export const sliceTitle = (title) => {
+  return title.length > 20 ? `${title.slice(0, 30)}...` : title;
+};
+
 export function validateValues(value1, value2, value3) {
   if (
     (value1 !== "" || value2 !== "" || value3 !== "") &&

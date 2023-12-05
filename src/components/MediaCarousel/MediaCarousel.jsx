@@ -1,19 +1,8 @@
-/* 
-  Debe recibir este formato de objeto.
+import "./MediaCarousel.css";
 
-  Importante: En caso de no querer poner link, CAMBIAR por null
- {
-    id: 0,
-    image: "https://i.postimg.cc/m2t66mVy/diablo-Immortal.png",
-    title: "Diablo Immortal",
-    link: "1",
-  },
-*/
+import { sliceTitle } from "../../utils/shopFunctions.js";
 
 import { useState, useEffect } from "react";
-import { CarouselCard } from "../CarouselCard/CarouselCard";
-
-import "./MediaCarousel.css";
 
 export const MediaCarousel = ({ data }) => {
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
@@ -33,21 +22,33 @@ export const MediaCarousel = ({ data }) => {
     return () => clearInterval(intervalId);
   }, [currentItemIndex]);
 
-  const { link, image, title } = data[currentItemIndex];
+  const { image: currentImage, title: currentTitle } = data[currentItemIndex];
 
   return (
     <section className="automated__carousel">
       <article className="carousel__container">
-        <img src={image} alt={title} className="carousel__img" />
+        <img
+          src={currentImage}
+          className="carousel__img"
+          alt="Imagen de la publicidad"
+        />
       </article>
       <article className="carousel__card--container">
-        {data.map((element, index) => (
-          <CarouselCard
+        {data.map(({ id, image, title }, index) => (
+          <div
             key={index}
-            element={element}
-            selectItem={selectItem}
-            currentItemIndex={currentItemIndex}
-          />
+            className={`carousel__card ${
+              id === currentItemIndex ? "carousel__selected" : ""
+            }`}
+            onClick={() => selectItem(id)}
+          >
+            <img
+              src={image}
+              alt={`gif publicitario ${title}`}
+              className="carousel__image"
+            />
+            <h3 className="carousel__title">{sliceTitle(title)}</h3>
+          </div>
         ))}
       </article>
     </section>

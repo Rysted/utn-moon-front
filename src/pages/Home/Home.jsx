@@ -45,7 +45,7 @@ const Home = () => {
                 />
                 <div className="product__see-more">
                   <Link
-                    to="/genre"
+                    to={`/shop?genre=${genre}`}
                     className="product__see-more-link adjustSize"
                   >
                     ver más

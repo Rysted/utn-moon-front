@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -7,31 +7,13 @@ import searchIcon from "../../assets/images/icons/search.svg";
 
 export const FormSearch = ({}) => {
   const { products } = useContext(ProductsContext);
-  /*   const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    const getGamesFilter = async () => {
-      const response = await fetch(
-        `${import.meta.env.VITE_API}/api/games?search=${search}`
-      );
-      const data = await response.json();
-    };
-    getGamesFilter();
-  }, [search]); */
-
-  /*  const SubmitForm = (e) => {
-    const formData = new FormData(e.target);
-    for (const search of formData.entries()) {
-      console.log(search);
-      useNavigate(`/shop?${search[0]}=${search[0]}`);
-    }
-    e.preventDefault();
-  };
- */
   //! Variables de estado para el buscador
   const [showResults, setShowResults] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
+
+  const navigate = useNavigate();
 
   //! Alternar Estado de resultados
   const handleToggleResults = () => {
@@ -65,20 +47,13 @@ export const FormSearch = ({}) => {
     return title.length > 30 ? `${title.slice(0, 30)}...` : title;
   };
 
-  /*   const SubmitForm = (e) => {
-    useEffect(() => {
-      const getGamesFilter = async () => {
-        const response = await fetch(
-          `${import.meta.env.VITE_API}/api/games?search=${searchQuery}`
-        );
-        const data = await response.json();
-      };
-      getGamesFilter();
-    }, [searchQuery]);
-  }; */
+  const SubmitForm = (e) => {
+    // e.preventDefault();
+    navigate(`/shop?searchTerm=${searchQuery}`);
+  };
 
   return (
-    <form /* onSubmit={SubmitForm} */ className="header__form">
+    <form onSubmit={SubmitForm} className="header__form">
       <div className="header__form-container">
         <div className="header__form-label">
           <input
@@ -87,8 +62,8 @@ export const FormSearch = ({}) => {
             onBlur={handleToggleResults}
             onChange={(e) => getGamesFilter(e.target.value.toLowerCase())}
             type="search"
-            placeholder="Buscar en la tienda"
-            name="search"
+            placeholder="Buscar..."
+            name="searchTerm"
             id="search"
             className="header__form-input"
           />
@@ -108,7 +83,7 @@ export const FormSearch = ({}) => {
                       onClick={onCloseList}
                     >
                       <img
-                        src={`/images/products/${img}`}
+                        src={`${import.meta.env.VITE_API}/images/${img}`}
                         alt={title}
                         className="product-list__image"
                       />
@@ -129,7 +104,7 @@ export const FormSearch = ({}) => {
           </nav>
         </div>
       </div>
-      {/* <Explore /> */}
+      <Explore />
     </form>
   );
 };

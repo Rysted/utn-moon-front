@@ -9,7 +9,6 @@ export function CartProvider({ children }) {
     const productInCartIndex = cart.findIndex(
       (item) => item.id === products.id
     );
-    console.log(productInCartIndex);
 
     if (productInCartIndex >= 0) {
       const newCart = structuredClone(cart);

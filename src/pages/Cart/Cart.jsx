@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext.jsx";
 import { useNavigate } from "react-router-dom";
 
+import Left from "../../assets/images/icons/arrow-left.svg";
+
 const jueguito = ({ id, img, title, price, offer, discounted_price }) => {
   const { deleteGame, cart } = useContext(CartContext);
   const total = discounted_price;
@@ -40,8 +42,8 @@ const jueguito = ({ id, img, title, price, offer, discounted_price }) => {
 const HandleCart = ({ cart }) => {
   return (
     <article className="cart__art">
-      {cart.map((game) => (
-        <div key={id}>{jueguito(game)}</div>
+      {cart.map((game, index) => (
+        <div key={index}>{jueguito(game)}</div>
       ))}
     </article>
   );
@@ -67,7 +69,7 @@ export const Cart = () => {
       <div className="details__preview">
         <button
           className="details__link"
-          onClick={() => pagePrev("/home")}
+          onClick={() => pagePrev("/shop")}
           aria-label="enlace de volver"
         >
           <img

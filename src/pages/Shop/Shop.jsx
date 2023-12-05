@@ -1,93 +1,169 @@
-import { useContext, useEffect, useState, useCallback } from "react";
-import { ProductsContext } from "../../context/ProductsContext.jsx";
-import { filterAndSortProducts, calcPages } from "../../utils/shopFunctions.js";
-import Filters from "../../components/Filters/Filters.jsx";
-import { Games } from "../../components/Game/Games.jsx";
-import Paginator from "../../components/Paginator/Paginator.jsx";
 import "./Shop.css";
-import { Loading } from "../../components/Load/Loading.jsx";
+
+import { FilterPhone } from "./FilterPhone/FilterPhone.jsx";
+import { Games } from "../../components/Game/Games.jsx";
+// import { FilterDesktop } from "./FilterDesktop/FilterDesktop.jsx";
+
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Shop = () => {
-  const { products, isLoading, error } = useContext(ProductsContext);
-  const [filterResult, setFilterResult] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(null);
-  const [filterValues, setFilterValues] = useState({
-    developer: "",
-    nameGame: "",
-    genres: "",
-    maxPrice: 999999,
-    minPrice: 0,
-    order: "relevant",
+  const initialFilters = {
+    searchTerm: "",
+    genre: "",
     publisher: "",
-  });
-
-  const recordsPerPage = 8;
-  const startIndex = (currentPage - 1) * recordsPerPage;
-  const endIndex = startIndex + recordsPerPage;
-  const gamesToDisplay = filterResult.slice(startIndex, endIndex);
-
-  const filterProducts = useCallback(() => {
-    const newGameObject = {
-      id: "newGame",
-      img: "add.webp",
-    };
-
-    const filteredProducts = [
-      newGameObject,
-      ...filterAndSortProducts(products, filterValues),
-    ];
-
-    setCurrentPage(1);
-    setTotalPages(calcPages(filteredProducts.length, recordsPerPage));
-    setFilterResult(filteredProducts);
-  }, [filterValues, products]);
-
-  useEffect(() => {
-    filterProducts();
-  }, [filterProducts]);
-
-  const handleFilterSubmit = (value) => {
-    setFilterValues(value);
+    developer: "",
+    min: "",
+    max: "",
+    sortOrder: "ASC",
   };
 
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
+  const [filtersApplied, setFilters] = useState(initialFilters);
+
+  const [genreData, setGenreData] = useState([]);
+  const [companysData, setCompanysData] = useState([]);
+
+  const [searchResults, setSearchResults] = useState([]);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const fetchDataFromApi = async (url) => {
+    try {
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(
+          `Error en la respuesta: ${response.status} ${response.statusText}`
+        );
+      }
+
+      const data = await response.json();
+
+      return data;
+    } catch (error) {
+      console.error("Error al obtener datos:", error);
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const host = `${import.meta.env.VITE_API}`;
+
+      const queryParams = new URLSearchParams(location.search);
+
+      const newFilters = {};
+      for (const key of queryParams.keys()) {
+        if (queryParams.get(key) !== filtersApplied[key]) {
+          newFilters[key] = queryParams.get(key);
+        }
+      }
+
+      setFilters((prevFilters) => ({ ...prevFilters, ...newFilters }));
+
+      try {
+        const data = await fetchDataFromApi(
+          `${host}/api/games?${queryParams.toString()}`
+        );
+
+        setSearchResults(data);
+      } catch (error) {
+        console.error("Error al obtener productos:", error);
+      }
+    };
+
+    fetchData();
+  }, [location.search]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [genresResponse, companyResponse] = await Promise.all([
+          fetch(`${import.meta.env.VITE_API}/api/genres`),
+          fetch(`${import.meta.env.VITE_API}/api/company`),
+        ]);
+
+        const [genres, companys] = await Promise.all([
+          genresResponse.json(),
+          companyResponse.json(),
+        ]);
+
+        setGenreData(genres || []);
+        setCompanysData(companys || []);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleInputChange = (e) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleReset = (e) => {
+    setFilters(initialFilters);
+    handleSubmit(e);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const queryParams = new URLSearchParams();
+
+    for (const key in filtersApplied) {
+      if (filtersApplied[key] !== "") {
+        queryParams.set(key, filtersApplied[key]);
+      }
+    }
+
+    navigate(`/shop?${queryParams.toString()}`);
+
+    try {
+      const host = `${import.meta.env.VITE_API}`;
+      const data = await fetchDataFromApi(
+        `${host}/api/games?${queryParams.toString()}`
+      );
+      setSearchResults(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  const renderResults = () => {
+    if (searchResults.length === 0) {
+      return <p className="results">No se encontraron resultados.</p>;
+    }
+
+    return (
+      <div className="endpoint">
+        <Games games={searchResults} />
+      </div>
+    );
   };
 
   return (
     <>
       <main className="shop container">
-        <Filters
-          games={products}
-          onFilterSubmit={handleFilterSubmit}
-          filterValues={filterValues}
+        <FilterPhone
+          genreData={genreData}
+          companysData={companysData}
+          handleInputChange={handleInputChange}
+          filtersApplied={filtersApplied}
+          handleSubmit={handleSubmit}
+          handleReset={handleReset}
         />
-        <h2>Juegos</h2>
-        {isLoading ? (
-          <Loading />
-        ) : error ? (
-          <div>
-            <h2>{error}</h2>
-          </div>
-        ) : (
-          <>
-            {gamesToDisplay.length > 0 ? (
-              <>
-                <div className="games">
-                  <Games games={gamesToDisplay} />
-                </div>
-                <Paginator
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={handlePageChange}
-                />
-              </>
-            ) : (
-              <p className="shop__result">No hay resultados</p>
-            )}
-          </>
-        )}
+
+        <section>
+          <h2>Juegos</h2>
+          {renderResults()}
+        </section>
+
+        <section>{/* <FilterDesktop /> */}</section>
       </main>
     </>
   );
