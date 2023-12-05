@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ShopDetailsIconsMethod } from "./ShopDetailsIconsMethod.jsx";
 import { ProductsContext } from "../../context/ProductsContext.jsx";
-import { calcPrice } from "../../utils/shopFunctions.js";
 import { Loading } from "../../components/Load/Loading.jsx";
 import { CartContext, CartProvider } from "../../context/CartContext.jsx";
 import Left from "../../assets/images/icons/arrow-left.svg";
@@ -91,7 +90,7 @@ const ShopDetails = () => {
                 <>
                   <p className="details__text">
                     <span className="details__price">
-                      ${calcPrice(newData.price, newData.offer)}{" "}
+                      ${newData.discounted_price}
                     </span>
                     <span className="details__offer">{newData.offer}%</span>
                   </p>

@@ -1,4 +1,3 @@
-import { calcPrice } from "../../utils/shopFunctions";
 import { Link, Outlet } from "react-router-dom";
 import "./Games.css";
 
@@ -7,15 +6,19 @@ export const Games = ({ games }) => {
     return title.length > 30 ? `${title.slice(0, 30)}...` : title;
   };
 
-  const GamePrice = ({ price, offer }) => {
-    const total = calcPrice(price, offer).toFixed();
-
+  const GamePrice = ({ price, offer, discounted_price }) => {
     return (
       <div className="game__prices">
-        <p className="game__total">
-          $ {total}
-          {offer > 0 && <span className="game__offer">{offer}%</span>}
-        </p>
+        {offer > 0 ? (
+          <>
+            <p className="game__total">
+              $ {discounted_price}
+              <span className="game__offer">{offer}%</span>
+            </p>
+          </>
+        ) : (
+          <p className="game__total">$ {price}</p>
+        )}
         {offer > 0 && <p className="game__price">$ {price}</p>}
       </div>
     );
@@ -23,27 +26,29 @@ export const Games = ({ games }) => {
 
   return (
     <>
-      {games.map((game) => (
+      {games.map(({ id, img, title, price, offer, discounted_price }) => (
         <Link
-          key={game.id}
-          to={game.id !== "newGame" ? `/detail/${game.id}` : "/create"}
-          className={game.id !== "newGame" ? `game` : "game game--color"}
+          key={id}
+          to={id !== "newGame" ? `/detail/${id}` : "/create"}
+          className={id !== "newGame" ? `game` : "game game--color"}
         >
           <img
             className="game__img"
-            src={`${import.meta.env.VITE_API}/images/${game.img}`}
+            src={`${import.meta.env.VITE_API}/images/${img}`}
             alt={
-              game.id !== "newGame"
-                ? `imagen de ${game.title}`
-                : "imagen de crear juego"
+              id !== "newGame" ? `imagen de ${title}` : "imagen de crear juego"
             }
             loading="lazy"
           />
           <div className="game__text">
-            {game.id !== "newGame" ? (
+            {id !== "newGame" ? (
               <>
-                <h4>{sliceTitle(game.title)}</h4>
-                <GamePrice price={game.price} offer={game.offer} />
+                <h4>{sliceTitle(title)}</h4>
+                <GamePrice
+                  price={price}
+                  offer={offer}
+                  discounted_price={discounted_price}
+                />
               </>
             ) : (
               <>

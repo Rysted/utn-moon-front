@@ -1,10 +1,6 @@
 import { useContext, useEffect, useState, useCallback } from "react";
 import { ProductsContext } from "../../context/ProductsContext.jsx";
-import {
-  filterAndSortProducts,
-  calcPages,
-  calcPrice,
-} from "../../utils/shopFunctions.js";
+import { filterAndSortProducts, calcPages } from "../../utils/shopFunctions.js";
 import Filters from "../../components/Filters/Filters.jsx";
 import { Games } from "../../components/Game/Games.jsx";
 import Paginator from "../../components/Paginator/Paginator.jsx";

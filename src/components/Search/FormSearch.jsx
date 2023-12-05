@@ -1,13 +1,33 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Explore } from "../Explore/Explore";
 import searchIcon from "../../assets/images/icons/search.svg";
 
 export const FormSearch = ({}) => {
   const { products } = useContext(ProductsContext);
+  /*   const [search, setSearch] = useState("");
 
+  useEffect(() => {
+    const getGamesFilter = async () => {
+      const response = await fetch(
+        `${import.meta.env.VITE_API}/api/games?search=${search}`
+      );
+      const data = await response.json();
+    };
+    getGamesFilter();
+  }, [search]); */
+
+  /*  const SubmitForm = (e) => {
+    const formData = new FormData(e.target);
+    for (const search of formData.entries()) {
+      console.log(search);
+      useNavigate(`/shop?${search[0]}=${search[0]}`);
+    }
+    e.preventDefault();
+  };
+ */
   //! Variables de estado para el buscador
   const [showResults, setShowResults] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -20,7 +40,6 @@ export const FormSearch = ({}) => {
 
   //! Función para abrir la lista de productos
   const getGamesFilter = (query) => {
-    console.log(query);
     setSearchQuery(query);
 
     if (!query) {
@@ -46,8 +65,20 @@ export const FormSearch = ({}) => {
     return title.length > 30 ? `${title.slice(0, 30)}...` : title;
   };
 
+  /*   const SubmitForm = (e) => {
+    useEffect(() => {
+      const getGamesFilter = async () => {
+        const response = await fetch(
+          `${import.meta.env.VITE_API}/api/games?search=${searchQuery}`
+        );
+        const data = await response.json();
+      };
+      getGamesFilter();
+    }, [searchQuery]);
+  }; */
+
   return (
-    <form onSubmit={(e) => e.preventDefault()} className="header__form">
+    <form /* onSubmit={SubmitForm} */ className="header__form">
       <div className="header__form-container">
         <div className="header__form-label">
           <input

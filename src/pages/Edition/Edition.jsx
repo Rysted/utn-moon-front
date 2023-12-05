@@ -194,8 +194,6 @@ const Edition = () => {
         }
       });
 
-      console.log("formData", formData);
-
       const response = await fetch(
         `${import.meta.env.VITE_API}/api/games/${id}`,
         {
@@ -204,11 +202,32 @@ const Edition = () => {
         }
       );
 
+      const dataResponse = await response.json();
+
+      console.log(dataResponse);
+
       if (response.ok) {
         alert("Juego editado correctamente");
-        // return pagePrev("/shop");
+        // Redireccionar a la página de inicio
+        return pagePrev("/shop");
+      } else if (dataResponse.message) {
+        // Si hay un mensaje de error, almacenarlo en una variable
+        let errorMessage = dataResponse.message;
+
+        if (errorMessage.issues && Array.isArray(errorMessage.issues)) {
+          // Usar map para obtener un array de mensajes y luego unirlos en una cadena
+          const mensajes = errorMessage.issues.map(
+            (issue) => `${String(issue.path).toUpperCase()}: ${issue.message}`
+          );
+
+          // Unir los mensajes en una cadena separada por saltos de línea
+          // (esto es para que se muestren en líneas separadas en el alert)
+          errorMessage = mensajes.join("\n");
+        }
+        // Mostrar el mensaje de error
+        alert(errorMessage);
       } else {
-        alert("Error al editar el juego");
+        alert("Error al editar el juego, intentelo de nuevo");
       }
     } catch (error) {
       console.error("Error fetching data:", error);
