@@ -2,14 +2,13 @@ import { useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ShopDetailsIconsMethod } from "./ShopDetailsIconsMethod.jsx";
 import { ProductsContext } from "../../context/ProductsContext.jsx";
-import { calcPrice } from "../../utils/shopFunctions.js";
 import { Loading } from "../../components/Load/Loading.jsx";
 import { CartContext, CartProvider } from "../../context/CartContext.jsx";
 import Left from "../../assets/images/icons/arrow-left.svg";
 import "./ShopDetails.css";
 
 const ShopDetails = () => {
-  const { products, error, isLoading, setData } = useContext(ProductsContext);
+  const { products, error, isLoading } = useContext(ProductsContext);
   const pagePrev = useNavigate();
   const { id } = useParams();
   const newData = products.find((objeto) => objeto.id === Number(id));
@@ -21,6 +20,7 @@ const ShopDetails = () => {
       price: newData.price,
       offer: newData.offer,
       img: newData.img,
+      discounted_price: newData.discounted_price,
     };
 
     addToCart(product);
@@ -79,7 +79,7 @@ const ShopDetails = () => {
         <div className="details__data">
           <div className="details__datas">
             <h2>{newData.title}</h2>
-            <ShopDetailsIconsMethod id={id} setData={setData} />
+            <ShopDetailsIconsMethod id={id} />
 
             <div className="stars">
               {starsAndNone.map((element, index) => (
@@ -91,7 +91,7 @@ const ShopDetails = () => {
                 <>
                   <p className="details__text">
                     <span className="details__price">
-                      ${calcPrice(newData.price, newData.offer)}{" "}
+                      ${newData.discounted_price}
                     </span>
                     <span className="details__offer">{newData.offer}%</span>
                   </p>

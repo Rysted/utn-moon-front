@@ -177,25 +177,6 @@ export default function Nav() {
 
             <li className="menu__item">
               <NavLink
-                to="/bin"
-                aria-label="Papelera"
-                className={({ isActive }) =>
-                  isActive ? "menu__link menu__link--select" : "menu__link"
-                }
-              >
-                <picture className="menu__picture">
-                  <img
-                    className="menu__img"
-                    src={binIcon}
-                    alt="logo de papelera"
-                  />
-                </picture>
-                <h2>Papelera</h2>
-              </NavLink>
-            </li>
-
-            <li className="menu__item">
-              <NavLink
                 to="/settings"
                 aria-label="Ajustes"
                 className={({ isActive }) =>

@@ -29,17 +29,6 @@ export const ProductContextProvider = ({ children }) => {
     }
   };
 
-  /*   const setData = async (id) => {
-    try {
-      setProducts((prevData) =>
-        prevData.filter((product) => product.id !== Number(id))
-      );
-    } catch (error) {
-      console.error(error);
-      setError(error.message);
-    }
-  }; */
-
   // Efecto para inicializar el contexto
   useEffect(() => {
     fetchData();

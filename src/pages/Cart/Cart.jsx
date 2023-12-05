@@ -32,6 +32,7 @@ export const Cart = () => {
       price: game.price,
       offer: game.offer,
       img: game.img,
+      discounted_price: game.discounted_price,
     };
 
     addToCart(product);

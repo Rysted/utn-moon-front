@@ -1,5 +1,4 @@
 import { calcPrice } from "../../utils/shopFunctions";
-import Paper from "../../assets/images/icons/papelera.svg";
 
 export const Card = ({ game, deleteOne, addProduct }) => {
   const { id, img, title, price, offer, quantity } = game;

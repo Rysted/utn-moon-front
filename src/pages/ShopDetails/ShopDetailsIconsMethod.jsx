@@ -3,7 +3,7 @@ import Eliminate from "../../assets/images/icons/eliminate.svg";
 import Change from "../../assets/images/icons/change.svg";
 import { useState } from "react";
 
-export const ShopDetailsIconsMethod = ({ id, setData }) => {
+export const ShopDetailsIconsMethod = ({ id }) => {
   const navigate = useNavigate();
 
   const [showAlert, setShowAlert] = useState(false);
@@ -59,13 +59,13 @@ export const ShopDetailsIconsMethod = ({ id, setData }) => {
   return (
     <>
       <div className="details__icons--method">
-        <Link className="details__icon--method" to="/edition">
+        <Link className="details__icon--method" to={`/edition/${id}`}>
           <img src={Change} alt="Icono para editar juego" />
         </Link>
 
         <button
           className="details__icon--method"
-          onClick={handleEliminateClick}
+          onClick={() => handleEliminateClick()}
         >
           <img src={Eliminate} alt="Icono para eliminar juego" />
         </button>

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Explore } from "../Explore/Explore";
 import searchIcon from "../../assets/images/icons/search.svg";
@@ -13,6 +13,8 @@ export const FormSearch = ({}) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
 
+  const navigate = useNavigate();
+
   //! Alternar Estado de resultados
   const handleToggleResults = () => {
     setShowResults(!showResults);
@@ -20,7 +22,6 @@ export const FormSearch = ({}) => {
 
   //! Función para abrir la lista de productos
   const getGamesFilter = (query) => {
-    console.log(query);
     setSearchQuery(query);
 
     if (!query) {
@@ -46,8 +47,13 @@ export const FormSearch = ({}) => {
     return title.length > 30 ? `${title.slice(0, 30)}...` : title;
   };
 
+  const SubmitForm = (e) => {
+    // e.preventDefault();
+    navigate(`/shop?searchTerm=${searchQuery}`);
+  };
+
   return (
-    <form onSubmit={(e) => e.preventDefault()} className="header__form">
+    <form onSubmit={SubmitForm} className="header__form">
       <div className="header__form-container">
         <div className="header__form-label">
           <input
@@ -56,8 +62,8 @@ export const FormSearch = ({}) => {
             onBlur={handleToggleResults}
             onChange={(e) => getGamesFilter(e.target.value.toLowerCase())}
             type="search"
-            placeholder="Buscar en la tienda"
-            name="search"
+            placeholder="Buscar..."
+            name="searchTerm"
             id="search"
             className="header__form-input"
           />
@@ -77,7 +83,7 @@ export const FormSearch = ({}) => {
                       onClick={onCloseList}
                     >
                       <img
-                        src={`/images/products/${img}`}
+                        src={`${import.meta.env.VITE_API}/images/${img}`}
                         alt={title}
                         className="product-list__image"
                       />
@@ -98,7 +104,7 @@ export const FormSearch = ({}) => {
           </nav>
         </div>
       </div>
-      {/* <Explore /> */}
+      <Explore />
     </form>
   );
 };

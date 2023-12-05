@@ -33,13 +33,16 @@ export const Explore = () => {
         <nav className={`explore__dropdown ${showMenu && "explore__open"}`}>
           <ul className="explore__list">
             <li className="explore__item">
-              <Link to="/nuevos" className="explore__link">
-                Nuevos
+              <Link to="/shop?sortOrder=ASC" className="explore__link">
+                Más baratos
               </Link>
             </li>
             <li className="explore__item">
-              <Link to="/oferta" className="explore__link">
-                Ofertas
+              <Link
+                to="/shop?publisher=Xbox+Game+Studios"
+                className="explore__link"
+              >
+                Xbox Game Studios
               </Link>
             </li>
             <li className="explore__item">

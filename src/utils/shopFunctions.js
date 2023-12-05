@@ -6,8 +6,8 @@ export function calcPrice(price, offer) {
 
 export function filterAndSortProducts(products, filterValues) {
   return products
-    .filter(element => {
-      const total = calcPrice(element.price, element.offer);
+    .filter((element) => {
+      const total = element.discounted_price;
 
       const priceFilter =
         (!filterValues.minPrice || total >= filterValues.minPrice) &&
@@ -21,7 +21,7 @@ export function filterAndSortProducts(products, filterValues) {
 
       const genreFilter =
         !filterValues.genres ||
-        element.genres.some(g =>
+        element.genres.some((g) =>
           g.toLowerCase().includes(filterValues.genres.toLowerCase())
         );
 
@@ -47,8 +47,8 @@ export function filterAndSortProducts(products, filterValues) {
       );
     })
     .sort((a, b) => {
-      const totalPriceA = calcPrice(a.price, a.offer);
-      const totalPriceB = calcPrice(b.price, b.offer);
+      const totalPriceA = a.discounted_price;
+      const totalPriceB = b.discounted_price;
 
       if (filterValues.order === "lowPrice") {
         // Ordenar los productos por el precio total de menor a mayor
@@ -66,6 +66,10 @@ export function filterAndSortProducts(products, filterValues) {
 export function calcPages(total, recordsPerPage) {
   return Math.ceil(total / recordsPerPage);
 }
+
+export const sliceTitle = (title) => {
+  return title.length > 20 ? `${title.slice(0, 30)}...` : title;
+};
 
 export function validateValues(value1, value2, value3) {
   if (
@@ -95,45 +99,10 @@ export function validateFields(regexPatterns, formData, validateField) {
   ];
 
   // Validar todos los campos
-  fieldsToValidate.forEach(field => {
+  fieldsToValidate.forEach((field) => {
     const expression = regexPatterns[field];
     const inputValue = { value: formData[field] };
 
     validateField(expression, inputValue, field);
   });
 }
-
-// export const sendData = async (url, body) => {
-//   try {
-//     toggleLoader(true);
-
-//     const response = await fetch(url, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Accept: "application/json",
-//       },
-//       body: JSON.stringify(Object.fromEntries(body)),
-//     });
-
-//     if (!response.ok) {
-//       throw new Error("La solicitud no fue exitosa.");
-//     }
-
-//     setSuccessMessageVisible(true);
-
-//     setTimeout(() => {
-//       setSuccessMessageVisible(false);
-//     }, 5000);
-
-//     setFormData({
-//       name: "",
-//       email: "",
-//       message: "",
-//     });
-//   } catch (error) {
-//     console.error("Hubo un error:", error);
-//   } finally {
-//     toggleLoader(false);
-//   }
-// };
