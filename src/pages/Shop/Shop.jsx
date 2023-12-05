@@ -29,12 +29,10 @@ const Shop = () => {
 
   const fetchDataFromApi = async (url) => {
     try {
-      const response = await fetch(url);
+      let response = await fetch(url);
 
       if (!response.ok) {
-        throw new Error(
-          `Error en la respuesta: ${response.status} ${response.statusText}`
-        );
+        return [];
       }
 
       const data = await response.json();

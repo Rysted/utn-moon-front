@@ -201,7 +201,7 @@ export const FilterPhone = ({
               <button className="filter-phone__button-container">
                 <div className="filter-phone__info-container">
                   <span className="filter-phone__field">
-                    Seleccionar publisher
+                    Seleccionar editor
                   </span>
                   <span className="filter-phone__applied">
                     {filtersApplied.publisher}
@@ -223,6 +223,49 @@ export const FilterPhone = ({
                   name="publisher"
                   className="filter-publisher__select"
                   value={filtersApplied.publisher}
+                  onChange={handleInputChange}
+                >
+                  <option value="" className="filter-publisher__option">
+                    Todos
+                  </option>
+                  {companysData.map((company, index) => (
+                    <option
+                      key={index}
+                      value={company._name}
+                      className="filter-publisher__option"
+                    >
+                      {company._name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            <div className="filter-phone-container">
+              <button className="filter-phone__button-container">
+                <div className="filter-phone__info-container">
+                  <span className="filter-phone__field">
+                    Seleccionar desarrollador
+                  </span>
+                  <span className="filter-phone__applied">
+                    {filtersApplied.developer}
+                  </span>
+                </div>
+                <div className="filter-phone__icon-container">
+                  <img
+                    src="./icons/nav-arrow-down.svg"
+                    alt="Icono para abrir el filtro"
+                    className="filter-phone__icon-img"
+                  />
+                </div>
+              </button>
+              <label
+                htmlFor="publisher"
+                className="filter-publisher__label filter-phone__hide"
+              >
+                <select
+                  name="publisher"
+                  className="filter-publisher__select"
+                  value={filtersApplied.developer}
                   onChange={handleInputChange}
                 >
                   <option value="" className="filter-publisher__option">
