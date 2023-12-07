@@ -11,6 +11,10 @@
   border: 2px solid transparent;
   cursor: pointer;
   min-height: 12rem;
+  max-height: 33%;
+/* NO CAMBIAR max-height 
+  sino se romper en home con 
+  1 solo juego con genero */
 }
 
 .game--color{

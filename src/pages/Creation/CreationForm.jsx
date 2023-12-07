@@ -1,4 +1,4 @@
-import EditionDetails from "./EditionDetails";
+import CreateDetails from "./CreationDetails";
 import ImageUpload from "./ImageUpload";
 
 const EditionForm = ({
@@ -24,14 +24,14 @@ const EditionForm = ({
 }) => {
   return (
     <form onSubmit={handleSubmit} encType="multipart/form-data">
-      <div className="edition__content">
+      <div className="create__content">
         <ImageUpload
           img={formData.img}
           imgView={formData.imgView}
           handleImageChange={handleImageChange}
         />
 
-        <EditionDetails
+        <CreateDetails
           formData={formData}
           handleInputChange={handleInputChange}
           handleBlur={handleBlur}
@@ -48,15 +48,15 @@ const EditionForm = ({
         />
       </div>
       <div
-        className={`edition__form-group edition__form-group--margin ${
-          descriptionValid ? "" : "edition__form-group--error"
+        className={`create__form-group create__form-group--margin ${
+          descriptionValid ? "" : "create__form-group--error"
         }`}
       >
-        <label htmlFor="shortDescription" className="edition__subtitle">
+        <label htmlFor="shortDescription" className="create__subtitle">
           Descripcion
         </label>
         <textarea
-          className="edition__form-textarea"
+          className="create__form-textarea"
           name="shortDescription"
           id="shortDescription"
           cols="30"
@@ -66,23 +66,23 @@ const EditionForm = ({
           onBlur={event => handleBlur(event, "short_description")}
         ></textarea>
         {!descriptionValid && (
-          <p className="edition__form-paragraph edition__form-paragraph--error">
+          <p className="create__form-paragraph create__form-paragraph--error">
             La descripcion debe tener entre 1 y 255 caracteres.
           </p>
         )}
       </div>
 
       {!formError && (
-        <p className={`edition-form__alert edition-form__alert--error`}>
+        <p className={`create-form__alert create-form__alert--error`}>
           Por favor, complete todos los campos del formulario
         </p>
       )}
       {formSuccess && (
-        <p className={`edition-form__alert edition-form__alert--success`}>
+        <p className={`create-form__alert create-form__alert--success`}>
           El formulario ha sido enviado correctamente
         </p>
       )}
-      <div className="details__ctas">
+      <div className="create__ctas">
         <input
           className="cta cta--tertiary"
           aria-label="enlace de limpiar"

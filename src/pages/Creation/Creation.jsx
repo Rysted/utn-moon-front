@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ProductsContext } from "../../context/ProductsContext.jsx";
 import { Loading } from "../../components/Load/Loading.jsx";
-import EditionForm from "./EditionForm";
+import CreateForm from "./CreationForm.jsx";
 import Left from "../../assets/images/icons/arrow-left.svg";
 import { validateValues, validateFields } from "../../utils/shopFunctions.js";
 import {
@@ -10,10 +10,10 @@ import {
   companyData,
   regexPatterns,
   initialFormData,
-} from "./EditionGame.js";
-import "./Edition.css";
+} from "./CreationGame.js";
+import "./Create.css";
 
-const Edition = () => {
+const Creation = () => {
   const { products, error, isLoading } = useContext(ProductsContext);
   const [formData, setFormData] = useState(initialFormData);
   const [titleValid, setTitleValid] = useState(true);
@@ -28,11 +28,6 @@ const Edition = () => {
   const [formError, setFormError] = useState(true);
   const [formSuccess, setFormSuccess] = useState(false);
   const [formTime, setFormTime] = useState(false);
-  // const [loaderVisible, setLoaderVisible] = useState(false);
-  // const [successMessageVisible, setSuccessMessageVisible] = useState(false);
-  // const [errorMessageVisible, setErrorMessageVisible] = useState(false);
-
-  // console.log(genresValid);
   const pagePrev = useNavigate();
 
   if (isLoading) {
@@ -47,13 +42,13 @@ const Edition = () => {
     );
   }
 
-  const handleImageChange = (e) => {
+  const handleImageChange = e => {
     const file = e.target.files[0];
 
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setFormData((prevState) => ({
+        setFormData(prevState => ({
           ...prevState,
           img: file,
           imgView: reader.result,
@@ -63,7 +58,7 @@ const Edition = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     validateFields(regexPatterns, formData, validateField);
 
@@ -190,9 +185,6 @@ const Edition = () => {
     setDeveloperValid(true);
     setPublisherValid(true);
     setDescriptionValid(true);
-    // setLoaderVisible(false);
-    // setSuccessMessageVisible(false);
-    // setErrorMessageVisible(false);
   };
 
   const validateField = (expression, input, field) => {
@@ -234,25 +226,25 @@ const Edition = () => {
   };
 
   return (
-    <div className="details container">
-      <div className="details__preview">
+    <div className="create container">
+      <div className="create__preview">
         <button
-          className="details__link"
+          className="create__link"
           onClick={() => pagePrev("/shop")}
           aria-label="enlace de volver"
         >
           <img
-            className="details__img"
+            className="create__img"
             src={Left}
             alt="flecha hacia la izquierda"
           />
           <p>Tienda</p>
         </button>
-        <p className="details__icon">&#62;</p>
+        <p className="create__icon">&#62;</p>
         <p>Nuevo Juego</p>
       </div>
 
-      <EditionForm
+      <CreateForm
         formData={formData}
         handleImageChange={handleImageChange}
         handleInputChange={handleInputChange}
@@ -277,4 +269,4 @@ const Edition = () => {
   );
 };
 
-export default Edition;
+export default Creation;

@@ -1,11 +1,11 @@
 const ImageUpload = ({ img, imgView, handleImageChange }) => {
   return (
-    <div className="edition__content-img">
-      <div className="content-img">
+    <div className="create__image-upload">
+      <div className="create__image-upload--container">
         <img
           src={imgView || `${import.meta.env.VITE_API}/images/default.webp`}
           alt="imagen de nuevo juego"
-          className="edition__img"
+          className="create__image"
         />
         <input
           className="edition__form-input--none"
@@ -16,8 +16,8 @@ const ImageUpload = ({ img, imgView, handleImageChange }) => {
           onChange={handleImageChange}
         />
         <label
-          className={`edition__label--file ${
-            img === "" ? "" : "edition__label--color"
+          className={`create__label--file ${
+            img === "" ? "" : "create__label--color"
           }`}
           htmlFor="fileGame"
         >

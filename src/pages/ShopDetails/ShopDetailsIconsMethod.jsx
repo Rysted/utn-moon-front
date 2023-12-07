@@ -41,7 +41,8 @@ export const ShopDetailsIconsMethod = ({ id }) => {
           setShowSuccess(true);
           setTimeout(() => {
             setShowSuccess(false);
-            navigate(-1); // This is equivalent to goBack()
+            navigate("/shop");
+            window.location.reload();
           }, 5000);
         } else {
           setErrorAlert(true);
@@ -83,7 +84,7 @@ export const ShopDetailsIconsMethod = ({ id }) => {
           showSuccess === true ? "details-form__alert--opacity" : ""
         }`}
       >
-        Juego eliminado, recarga la página después de 5 segundos.
+        Juego eliminado
       </p>
 
       <div

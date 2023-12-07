@@ -7,14 +7,13 @@ export function CartProvider({ children }) {
     const existStorage = localStorage.getItem("cart");
     return existStorage ? JSON.parse(existStorage) : [];
   });
-  console.log("cart", cart);
 
-  const addToCart = (product) => {
-    const existItem = cart.find((item) => item.id === product.id);
+  const addToCart = product => {
+    const existItem = cart.find(item => item.id === product.id);
     console.log(existItem);
 
     if (existItem) {
-      const newCart = cart.map((cartItem) => {
+      const newCart = cart.map(cartItem => {
         return cartItem.id === product.id
           ? { ...cartItem, quantity: cartItem.quantity + 1 }
           : cartItem;
@@ -29,8 +28,8 @@ export function CartProvider({ children }) {
     }
   };
 
-  const removeFromCart = (productId) => {
-    const newCart = cart.map((cartItem) => {
+  const removeFromCart = productId => {
+    const newCart = cart.map(cartItem => {
       return cartItem.id === productId
         ? {
             ...cartItem,
@@ -39,7 +38,7 @@ export function CartProvider({ children }) {
         : cartItem;
     });
 
-    const filterCart = newCart.filter((cartItem) => cartItem.quantity > 0);
+    const filterCart = newCart.filter(cartItem => cartItem.quantity > 0);
     setCart(filterCart);
 
     localStorage.setItem("cart", JSON.stringify(filterCart));

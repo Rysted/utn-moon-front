@@ -9,7 +9,7 @@ import Nav from "./components/Nav/Nav.jsx";
 import { Cart } from "./pages/Cart/Cart.jsx";
 import Home from "./pages/Home/Home.jsx";
 import Shop from "./pages/Shop/Shop.jsx";
-import Creation from "./pages/Creation/Edition.jsx";
+import Creation from "./pages/Creation/Creation.jsx";
 import Edition from "./pages/Edition/Edition.jsx";
 import "./App.css";
 
