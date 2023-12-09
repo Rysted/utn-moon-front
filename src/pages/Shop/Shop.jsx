@@ -37,6 +37,16 @@ const Shop = () => {
 
       const data = await response.json();
 
+      console.log("Data:", data);
+
+      const addProduct = {
+        id: "AddProduct",
+        name: "Agregar nuevo producto",
+        img: "add.webp",
+      };
+
+      data.unshift(addProduct);
+
       return data;
     } catch (error) {
       console.error("Error al obtener datos:", error);
@@ -134,11 +144,11 @@ const Shop = () => {
 
   const renderResults = () => {
     if (searchResults.length === 0) {
-      return <p className="results">No se encontraron resultados.</p>;
+      return;
     }
 
     return (
-      <div className="endpoint">
+      <div className="games__container">
         <Games games={searchResults} />
       </div>
     );
@@ -146,7 +156,7 @@ const Shop = () => {
 
   return (
     <>
-      <main className="shop container">
+      <main className="container">
         <FilterPhone
           genreData={genreData}
           companysData={companysData}
@@ -156,8 +166,10 @@ const Shop = () => {
           handleReset={handleReset}
         />
 
-        <section>
-          <h2>Juegos</h2>
+        <section className="shop__games">
+          <h2 className="shop__title">
+            Resultados de la búsqueda: {searchResults.length}
+          </h2>
           {renderResults()}
         </section>
 

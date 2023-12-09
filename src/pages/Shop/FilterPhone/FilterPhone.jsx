@@ -24,7 +24,11 @@ export const FilterPhone = ({
   return (
     <section className="filter-phone">
       <article className="filter-phone__open-container">
-        <button className="filter-phone__button" onClick={handleToggle}>
+        <button
+          className="filter-phone__button"
+          onClick={handleToggle}
+          type="button"
+        >
           <img
             src="./icons/filter.svg"
             alt="Icono para los filtros"

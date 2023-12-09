@@ -17,14 +17,14 @@
   align-items: center;
   gap: 1rem;
   background-color: var(--quaternary);
-  width: max-content;
+  width: 100%;
   padding: 1rem 2rem;
   border-radius: 1rem;
   margin-bottom: 2rem;
 }
 
 .filter-phone__text {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 /*  */
@@ -238,4 +238,26 @@
   padding: 1rem;
   border-radius: 1rem;
   width: 10rem;
+}
+
+/* games__container */
+.games__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
+/*  */
+
+@media (min-width: 480px) {
+  .games__container {
+    justify-content: space-between;
+  }
+
+  .game {
+    max-width: 48%;
+  }
 }

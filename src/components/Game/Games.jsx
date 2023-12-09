@@ -29,19 +29,21 @@ export const Games = ({ games }) => {
       {games.map(({ id, img, title, price, offer, discounted_price }) => (
         <Link
           key={id}
-          to={id !== "newGame" ? `/detail/${id}` : "/create"}
-          className={id !== "newGame" ? `game` : "game game--color"}
+          to={id !== "AddProduct" ? `/detail/${id}` : "/create"}
+          className={id !== "AddProduct" ? `game` : "game game--color"}
         >
           <img
             className="game__img"
             src={`${import.meta.env.VITE_API}/images/${img}`}
             alt={
-              id !== "newGame" ? `imagen de ${title}` : "imagen de crear juego"
+              id !== "AddProduct"
+                ? `imagen de ${title}`
+                : "imagen de crear juego"
             }
             loading="lazy"
           />
           <div className="game__text">
-            {id !== "newGame" ? (
+            {id !== "AddProduct" ? (
               <>
                 <h4>{sliceTitle(title)}</h4>
                 <GamePrice
