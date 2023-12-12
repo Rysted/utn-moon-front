@@ -27,7 +27,9 @@
 }
 
 .products__list {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   gap: 2rem;
   margin-top: 3rem;
   margin-bottom: 5rem;
@@ -39,6 +41,13 @@
   font-size: 1.8rem;
   text-align: center;
   color: var(--secondary-contrast);
+}
+
+.products__items {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
 }
 
 .product__title {

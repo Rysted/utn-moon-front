@@ -1,6 +1,6 @@
 import "./Home.css";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { MediaCarousel } from "../../components/MediaCarousel/MediaCarousel";
 import { ProductsContext } from "../../context/ProductsContext";
@@ -10,23 +10,30 @@ import { Games } from "../../components/Game/Games.jsx";
 import { advertisements } from "./advertisements.js";
 
 const Home = () => {
-  //! Variables de estado para los Datos de géneros
+  const [arrayGenres, setArrayGenres] = useState([]);
 
   const { products, isLoading, error } = useContext(ProductsContext);
 
-  //! obtener los datos de los juegos por género
-  const arrayGenres = ["Estrategia", "Aventura", "Shooter"];
+  const genresStatic = ["Acción", "MMOARPG"];
 
-  const getGamesByGenre = (genre) => {
-    const gamesFilter = products.filter((game) => game.genres.includes(genre));
-    return gamesFilter.slice(0, 3);
-  };
+  useEffect(() => {
+    const updatedArrayGenres = [];
 
-  //! Carrusel publicity
+    genresStatic.forEach((genre) => {
+      const gamesFilter = products.filter((game) =>
+        game.genres.includes(genre)
+      );
+      updatedArrayGenres.push(gamesFilter.slice(0, 3));
+    });
+
+    setArrayGenres(updatedArrayGenres);
+  }, [products]);
 
   if (isLoading) return <Loading />;
 
   if (error) return <h2>{error}</h2>;
+
+  if (arrayGenres.length === 0) return <h2>No hay juegos disponibles</h2>;
 
   return (
     products && (
@@ -36,20 +43,21 @@ const Home = () => {
         <section className="recommended">
           <h2 className="recommended__title">Recomendado para ti</h2>
           <div className="products">
-            {arrayGenres.map((genre) => (
-              <div className="products__list border-line" key={genre}>
-                <h3 className="products__title-genre">{`Juegos de ${genre}`}</h3>
-                <Games
-                  className="products__item"
-                  games={getGamesByGenre(genre)}
-                />
+            {arrayGenres.map((genres, index) => (
+              <div className="products__list border-line" key={index}>
+                <h3 className="products__title-genre">{`Juegos de ${genresStatic[index]}`}</h3>
+                <div className="products__items">
+                  <Games className="products__item" games={genres} />
+                </div>
                 <div className="product__see-more">
-                  <Link
-                    to={`/shop?genre=${genre}`}
-                    className="product__see-more-link adjustSize"
-                  >
-                    ver más
-                  </Link>
+                  {arrayGenres[index].length >= 3 && (
+                    <Link
+                      to={`/shop?genre=${genres}`}
+                      className="product__see-more-link adjustSize"
+                    >
+                      ver más
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}

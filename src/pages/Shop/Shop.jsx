@@ -2,7 +2,6 @@ import "./Shop.css";
 
 import { FilterPhone } from "./FilterPhone/FilterPhone.jsx";
 import { Games } from "../../components/Game/Games.jsx";
-// import { FilterDesktop } from "./FilterDesktop/FilterDesktop.jsx";
 
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -172,8 +171,6 @@ const Shop = () => {
           </h2>
           {renderResults()}
         </section>
-
-        <section>{/* <FilterDesktop /> */}</section>
       </main>
     </>
   );
